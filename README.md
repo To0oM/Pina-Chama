@@ -19,6 +19,10 @@ Please visit our wiki for furthur project info:
 ### [User Manual](../../wiki/user-manual) (empty)
 
 ### [Team Page](../../wiki/team)
+[![Hila](https://avatars0.githubusercontent.com/u/17547529?v=3&s=80)](https://github.com/hilaop)
+[![Alona](https://avatars0.githubusercontent.com/u/17547564?v=3&s=80)](https://github.com/alonaya)
+[![Tom](https://avatars3.githubusercontent.com/u/17547447?v=3&s=80)](https://github.com/To0oM)
+[![Moran](https://avatars2.githubusercontent.com/u/17547605?v=3&s=80)](https://github.com/moranas)
 
 ### Project Documents
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/presentation.pptx))
