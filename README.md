@@ -4,9 +4,9 @@ Web application for Pina-Chama organization
 
 ![project logo](https://github.com/alonaya/Pina-Chama/blob/master/logo.png)
 
-## Please visit our [live application]() 
+## Please visit our [live application](http://pina-chama.azurewebsites.net) 
 
-# Our chat
+## Our chat
 [![Join the chat at https://gitter.im/alonaya/Pina-Chama](https://badges.gitter.im/alonaya/Pina-Chama.svg)](https://gitter.im/alonaya/Pina-Chama?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## [Issue Board](https://huboard.com/alonaya/Pina-Chama/)
@@ -27,6 +27,7 @@ Please visit our wiki for furthur project info:
 ### Project Documents
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/presentation.pptx))
 - [Project Inception](../../wiki/inception)
+- [Organization facebook page](https://www.facebook.com/pinahama2015)
 - [Software Requirements Specification](../../wiki/srs)
 - [Software Design Specification](../../wiki/sds)
 
