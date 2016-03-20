@@ -1,0 +1,113 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+* { 
+	margin: 0;
+	padding: 0;
+}
+#imgLogo {
+	width: 250px;
+	height: 200px;
+	margin-left:55px;
+}
+#cmdSignUp, #cmdSignIn {
+	text-shadow: 2px 2px 7px #020202;
+	color: white;
+	font-family: 'Open Sans Hebrew', sans-serif;
+	font-size: 20px;
+	width: 280px;
+	height: 45px;
+	border-radius: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#cmdSignUp{
+	background: linear-gradient(to top, #435869, #92b2bd);
+}
+#cmdSignUp:hover{
+	background: linear-gradient(to top, #3878a0, #92b2bd);
+}
+
+#cmdSignIn{
+	background: linear-gradient(to top, #698347, #d2dda8);
+}
+#cmdSignIn:hover{
+	background: linear-gradient(to top, #83ab4d, #BDC697);
+}
+
+body { 
+	font: normal 85% TapuzBlackMF, Helvetica, sans-serif;
+	font-family: 'Open Sans Hebrew', sans-serif;
+	background-color: #580000;
+}
+h2 { 
+	font: normal 280% Dorian CLM, Helvetica, sans-serif;
+	font-family: 'Open Sans Hebrew', sans-serif;
+	color: white;
+	letter-spacing: -0.3px;
+	margin: 0 0 10px 0;
+	margin-bottom: 20px;
+	margin-top: -50px;
+}
+#secondTitle {
+	font: normal 170% Dorian CLM, Helvetica, sans-serif;
+	font-family: 'Open Sans Hebrew', sans-serif;
+	color: #FFF;
+	letter-spacing: -0.3px;
+	margin: 0 0 10px 0;
+	margin-bottom: 20px;
+	margin-top: -20px;
+
+}
+
+#main, #header, #footer { 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#main {
+	background: transparent;
+}
+  
+#header { 
+	width: 960px;
+	height: 120px;
+	background: transparent;
+}
+
+#site_content2 {
+	width: 695px;
+	padding-left: 5px;
+	padding-right: -5px;
+	padding-top: 30px;
+	overflow: hidden;
+	margin: 0 auto;
+	background: url(../img/bg.png);
+	background-blend-mode: soft-light;
+	border-radius: 15px 15px 15px 15px;
+	-moz-border-radius: 0px 0px 15px 15px;
+	-webkit-border: 0px 0px 15px 15px;
+	box-shadow:0px 0px 10px #ebebeb;
+} 
+ 
+#footer {
+	font-size: 15px;
+	width: 960px;
+	height: 20px;
+	margin-top: 30px;
+	padding-top: 20px;
+	text-align: center; 
+	background: transparent;
+	color: white;
+}
+
+#footer a, #footer a:hover { 
+	color: white;
+	text-decoration: none;
+	padding-bottom: 20px;
+}
+
+#footer a:hover { 
+	text-decoration: underline;
+}
