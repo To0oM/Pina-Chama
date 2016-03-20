@@ -28,7 +28,7 @@ Please visit our wiki for furthur project info:
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/presentation.pptx))
 - [Project Inception](../../wiki/inception)
 - [Organization facebook page](https://www.facebook.com/pinahama2015)
-- [Software Requirements Specification](../../wiki/srs)
+- [Software Requirements Specification](docs/SRS.docx)
 - [Software Design Specification](../../wiki/sds)
 
 ### Iteration Pages
