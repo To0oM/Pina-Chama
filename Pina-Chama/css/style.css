@@ -1,0 +1,112 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+.cubes{
+	color: #333;
+	text-align:center;
+	padding-top: 50px;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+		
+}
+
+.scrollit {
+    overflow:scroll;
+    height:295px;
+}
+
+#volunteer {
+	font-family: 'Open Sans Hebrew', sans-serif;
+	border: 1px solid #B24033;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#volunteer td, #volunteer th {
+	border-style: 18px  outset  #d2e3ed;
+	text-align: center;
+	padding: 8px;
+}
+
+#volunteer td: {
+	color: white;
+}
+
+#volunteer tr:hover {
+	font-weight: bold;
+	color: #A52A2A;
+}
+
+#volunteer tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+
+#volunteer tr:nth-child(odd){
+	background-color: white;
+}
+
+
+#volunteer th {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	background-color: #BD3636;
+	color: #F0D9AD;
+}
+
+#volunteer tr{
+	color: #333335;
+}
+
+#inactive{
+	color: #A8A8A8;
+}
+
+#active{
+	color: #339933;
+}
+
+.col1{
+	width: 8.9px;
+}
+
+.col2{
+	width: 130px;
+}
+
+.col3{
+	width: 71px;
+}
+
+.col4{
+	width: 127px;
+}
+
+.col5{
+	width: 170px;
+}
+
+.col6{
+	width: 145px;
+}
+
+.col7{
+	width: 91px;
+}
+
+.col8{
+	width: 88px;
+	font-family: 'alef', sans-serif;
+	font-weight: bold;
+}
+
+.col9{
+	width: 153px;
+}
+
+.col10{
+	width: 0.1px;
+}
+
