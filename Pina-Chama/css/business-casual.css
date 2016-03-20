@@ -1,0 +1,265 @@
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color:  #580000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+	font-family: 'Open Sans Hebrew', sans-serif;
+}
+
+p {
+    font-size: 1.25em;
+    line-height: 1.6;
+    color: #000;
+	font-family: 'Open Sans Hebrew', sans-serif;
+	text-align: right;
+}
+
+p.text{	
+	font-size: 1.25em;
+    line-height: 1.6;
+    color: #000;
+	text-align: center;
+}
+
+hr {
+    max-width: 400px;
+    border-color: #999999;
+}
+
+header{
+	background: url(../img/logo.png);
+	background-repeat: no-repeat;
+	background-position: right;	
+	margin-right: 2%; 
+	height: 190px;
+}
+
+.navbar-nav {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.img-full {
+    min-width: 100%;
+}
+
+.brand-before, .brand-name {
+    text-transform: capitalize;
+}
+
+.brand-before {
+    margin: 15px 0;
+}
+
+.brand-name {
+    margin: 0;
+    font-size: 4em;
+}
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
+.box {
+    margin-bottom: 20px;
+    padding: 30px 15px;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+.intro-text {
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.img-border {
+    float: none;
+    margin: 0 auto 0;
+    border: #999999 solid 1px;
+}
+
+.img-left {
+    float: none;
+    margin: 0 auto 0;
+}
+
+footer {
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+}
+
+footer p {
+    margin: 0;
+    padding: 30px 0;
+}
+
+.ProjectTitle {
+	display: inherit;
+	margin: 0;
+	padding: 30px 0 10px;
+	text-align: center;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 5em;
+	font-weight: 700;
+	line-height: normal;
+	color: #fff;
+}
+
+.top-divider {
+	margin-top: 0;
+}
+
+.img-left {
+	float: left;
+	margin-right: 25px;
+}
+
+.secondTitle {
+	display: inherit;
+	margin: 0;
+	padding: 0 0 40px;
+	text-align: center;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	text-transform: uppercase;
+	font-size: 1.25em;
+	font-weight: 400;
+	letter-spacing: 3px;
+	font-family: 'Open Sans Hebrew', sans-serif;
+	color: #fff;
+}
+
+nav {
+	border-radius: 0;
+	min-height: 0;
+}
+
+nav{
+	border: none;
+	background: #fff;
+	background: rgba(255,255,255,0.9);
+}
+
+.nav>li>a {
+	padding: 35px;
+}
+
+.navbar-nav>li>a {
+	line-height: normal;
+}
+
+.navbar-nav {
+	display: table;
+	float: none;
+	margin: 0 auto;
+	table-layout: fixed;
+	font-size: 1.25em;
+}
+
+.box:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/*--------------- Guests pages ---------------*/
+/*----------- Main Area -----------*/
+
+/*-------- Guest Book Area --------*/
+.guestBookDiv{
+    background-image: url("../img/openBook.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 590px;
+}
+
+#cmdDiv{
+    width: 100%;
+	display:inline-block;
+}
+
+#cmdNext{
+	width: 9%;
+    padding-right: 4%;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}
+
+#next{
+	width: 100%;
+}
+
+#cmdPrev{
+	width: 9%;
+    padding-left: 4%;
+	display: inline-block;
+	float: left;
+	cursor: pointer;
+}
+
+#prev{
+	width: 100%;
+}
+
+#cmdAdd{
+    padding-left: 1%;
+    margin-top: -1%;
+    text-align: center;
+	width: 82%;
+	display: inline-block;
+	float: right;
+	cursor: pointer;
+}
+
+#add{
+	width: 7.6%;
+}
+
+#next:active, #prev:active, #add:active{
+	position:relative;
+	top:1.2px;
+}
+
+.guestBookPage{
+    font-family: "Guttman Yad-Brush";
+    text-align: right;
+    width: 50%;
+    padding-top: 4%;
+    height: 500px;
+    display: inline-block;
+}
+
+.GuestsWords{
+    
+}
+
+#rightPage{
+    padding-right: 4%;
+    padding-left: 1%;
+    float: right;
+}
+
+#leftPage{
+    padding-right: 1%;
+    padding-left: 4%;
+    float: left;
+}
+
+/*--------- Donation Area ---------*/
