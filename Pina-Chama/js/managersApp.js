@@ -22,6 +22,10 @@
             $(".activeTab").prop('class','navTabs');
             $("#navTab5").prop('class','activeTab');
         });
+        $("#navTab6").click(function(){
+            $(".activeTab").prop('class','navTabs');
+            $("#navTab6").prop('class','activeTab');
+        });
     });
     app.controller('mainController', function($scope) {
         
@@ -38,17 +42,34 @@
     app.controller('arrangementController', function($scope) {
         
     });
-    
+    app.controller('guestBookController', function($scope) {
+        
+    });
     
     app.config(function ($routeProvider) {
         $routeProvider
+            .when('/guestBook', {
+            templateUrl: 'guestBook.html',
+            controller: 'guestBookController',
+            controllerAs:'guestBook'
+        })
             .when('/arrangement', {
             templateUrl: 'voluntaryArrangement.html',
             controller: 'arrangementController',
             controllerAs:'arrangement'
         })
-            .when('/database', {
+            .when('/volunteersDB', {
             templateUrl: 'volunteersDatabase.html',
+            controller: 'databaseController',
+            controllerAs:'database'
+        })
+            .when('/bakersDB', {
+            templateUrl: 'bakersDatabase.html',
+            controller: 'databaseController',
+            controllerAs:'database'
+        })
+            .when('/guestsDB', {
+            templateUrl: 'guestsDatabase.html',
             controller: 'databaseController',
             controllerAs:'database'
         })
