@@ -31,10 +31,18 @@
     app.controller('arrangementController', function($scope) {
         
     });
+    app.controller('guestBookController', function($scope) {
+        
+    });
     
     
     app.config(function ($routeProvider) {
         $routeProvider
+            .when('/guestBook', {
+            templateUrl: 'guestBook.html',
+            controller: 'guestBookController',
+            controllerAs:'guestBook'
+        })
             .when('/arrangement', {
             templateUrl: 'voluntaryArrangement.html',
             controller: 'arrangementController',
