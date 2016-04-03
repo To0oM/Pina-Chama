@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html ng-app="managersApp">
     <head>
         <title>Pina-Chama</title>
@@ -7,8 +7,8 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="../css/business-casual.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/style.css" />
+        <link href="../css/business-casual.css" rel="stylesheet">
 
         <!-- Fonts -->
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -44,10 +44,24 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
+                            <a id = "navTab6" class = "navTabs" href = "#/guestBook">ספר אורחים</a>
+                        </li>
+                        <li>
                             <a id = "navTab5" class = "navTabs" href = "#/arrangement">סידורי תורמים</a>
                         </li>
                         <li>
-                            <a id = "navTab4" class = "navTabs" href = "#/database">מאגר תורמים</a>
+                            <a id = "navTab4" class = "navTabs" href = "#/volunteersDB">מאגר תורמים</a>
+                            <ul class = "nav navbar-nav">
+                                <li>
+                                    <a id = "navTab4.1" class = "navTabs" href = "#/volunteersDB">מתנדבים</a>
+                                </li>
+                                <li>
+                                    <a id = "navTab4.2" class = "navTabs" href = "#/bakersDB">אופי עוגות</a>
+                                </li>
+                                <li>
+                                    <a id = "navTab4.3" class = "navTabs" href = "#/guestsDB">אורחים</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a id = "navTab3" class = "navTabs" href = "#/stock">חסרים במלאי</a>
