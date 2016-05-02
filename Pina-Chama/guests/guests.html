@@ -7,6 +7,7 @@
         <link href="../css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
+		<link rel="stylesheet" href="../css/style.css" />
         <link href="../css/business-casual.css" rel="stylesheet">
 
         <!-- Fonts -->
@@ -34,6 +35,11 @@
         <script type="application/javascript" src="../js/guestsApp.js"></script>
 
         <header>
+			<div class = "connection" ng-controller="connectionContreoller">
+				<span>שלום </span>
+				<span id = "userName"></span>
+				<a id = "googleLogout" ng-click="signOut()" href="">, התנתק</a>
+			</div>
             <div class="ProjectTitle">Pina-Chama</div>
             <div class="secondTitle">לזכר ד"ר שמואל גיליס וצחי ששון הי"ד</div>
         </header>
@@ -46,7 +52,7 @@
                             <a id = "navTab3" class = "navTabs" href = "#/donations">לתרומות</a>
                         </li>
                         <li>
-                            <a id = "navTab2" class = "navTabs" href = "#/guestBook">ספר אורחים</a>
+                            <a id = "navTab2" class = "navTabs" href = "#/guestBook">ספר אורחים וחיילים</a>
                         </li>
                         <li>
                             <a id = "navTab1" class = "activeTab" href = "#/main">בית</a>

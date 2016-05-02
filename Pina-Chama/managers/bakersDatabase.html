@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row" ng-controller="databaseController">
     <div class="box">
         <div class="col-lg-12">
             <hr>
             <h2 class="intro-text text-center">
-                <strong>מאגר אופי העוגות</strong>
+                <strong>{{title}}</strong>
             </h2>
             <hr>
             
@@ -14,16 +14,13 @@
             <table id="volunteer">
                 <thead>
                     <tr>
-                        <th class="col10"></th>
-                        <th class="col9"><img src = "../img/mail.jpg"></img></th>
-                        <th class="col8">סטטוס</th>
-                        <th class="col7">כתובת</th>
-                        <th class="col6">טלפון</th>
-                        <th class="col5">סלולרי</th>
-                        <th class="col4">שם משפחה</th>
-                        <th class="col3">שם</th>
-                        <th class="col2">.ת.ז</th>
-                        <th class="col1"></th>
+                        <th id="head17" class="col17"><img src = "../img/mail.jpg"></img></th>
+                        <th id="head16" class="col16">סטטוס</th>
+                        <th id="head15" class="col15">קביעות</th>
+                        <th id="head14" class="col14">כתובת</th>
+                        <th id="head13" class="col13">טלפון</th>
+                        <th id="head12" class="col12">שם משפחה</th>
+                        <th id="head11" class="col11">שם פרטי</th>
                     </tr>
                 </thead>
 
@@ -32,36 +29,14 @@
                         <td>
                             <div class="scrollit">
                                 <table id="volunteer">
-                                    <tr>
-                                        <td class="col9"><a href="https://www.google.co.il">avinerto@gmail.com</a></td>
-                                        <td class="col8" id="active">פעיל</td>
-                                        <td class="col7">כרמי צור</td>
-                                        <td class="col6">02-5459245</td>
-                                        <td class="col5">059-7634977</td>
-                                        <td class="col4">טולדנו</td>
-                                        <td class="col3">אבינר</td>
-                                        <td class="col2">021462778</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col9"><a href="https://www.google.co.il">avishagle@gmail.com</a></td>
-                                        <td class="col8" id="active">פעיל</td>
-                                        <td class="col7">כרמי צור</td>
-                                        <td class="col6">02-5452935</td>
-                                        <td class="col5">059-3978557</td>
-                                        <td class="col4">לוי</td>
-                                        <td class="col3">אבישג</td>
-                                        <td class="col2">031462578</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col9"><a href="https://www.google.co.il">adamco@gmail.com</a></td>
-                                        <td class="col8" id="active">פעיל</td>
-                                        <td class="col7">כרמי צור</td>
-                                        <td class="col6">02-5459245</td>
-                                        <td class="col5">059-2349677</td>
-                                        <td class="col4">כהן</td>
-                                        <td class="col3">אדם</td>
-                                        <td class="col2">027632776</td>
+                                    <tr ng-repeat="user in usersList">
+                                        <td class="col17"><a href="https://www.google.co.il">{{user.email}}</a></td>
+                                        <td class="col16" id="active">{{user.active}}</td>
+                                        <td class="col15">{{user.permanent}}</td>
+                                        <td class="col14">{{user.address}}</td>
+                                        <td class="col13">{{user.phoneNumber}}</td>
+                                        <td class="col12">{{user.lastName}}</td>
+                                        <td class="col11">{{user.firstName}}</td>
                                     </tr>
                                 </table>
                             </div>	

@@ -206,13 +206,13 @@ a.bg-danger:focus,a.bg-danger:hover{
 }
 .nav>li{
 	position:relative;
-	display:block
+	display:block;
 }
 
 .nav>li>a{
 	position:relative;
 	display:block;
-	padding:10px 15px
+	padding:10px 15px;
 }
 
 .nav>li>a:focus,.nav>li>a:hover{
@@ -226,7 +226,7 @@ a.bg-danger:focus,a.bg-danger:hover{
 
 nav{
 	position:relative;
-	min-height:50px;
+	min-height:40px;
 	margin-bottom:20px;
 	border:1px solid transparent
 }
