@@ -35,6 +35,11 @@
         <script type="application/javascript" src="../js/managersApp.js"></script>
 
         <header>
+			<div class = "connection" ng-controller="connectionContreoller">
+				<span>שלום </span>
+				<span id = "userName"></span>
+				<a id = "googleLogout" ng-click="signOut()" href="">, התנתק</a>
+			</div>
             <div class="ProjectTitle">Pina-Chama</div>
             <div class="secondTitle">לזכר ד"ר שמואל גיליס וצחי ששון הי"ד</div>
         </header>
@@ -44,22 +49,25 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a id = "navTab6" class = "navTabs" href = "#/guestBook">ספר אורחים</a>
+                            <a id = "navTab6" class = "navTabs" href = "#/guestBook">ספר אורחים וחיילים</a>
                         </li>
                         <li>
                             <a id = "navTab5" class = "navTabs" href = "#/arrangement">סידורי תורמים</a>
                         </li>
-                        <li>
-                            <a id = "navTab4" class = "navTabs" href = "#/volunteersDB">מאגר תורמים</a>
+                        <li ng-controller="databaseController">
+                            <a id = "navTab4" class = "navTabs" href = "#/volunteersDB" ng-click="loadVolunteersDB()">מאגר תורמים</a>
                             <ul class = "nav navbar-nav">
                                 <li>
-                                    <a id = "navTab4.1" class = "navTabs" href = "#/volunteersDB">מתנדבים</a>
+                                    <a id = "navTab4.1" class = "navTabs" href = "#/volunteersDB" ng-click="loadVolunteersDB()">מתנדבים</a>
+                                </li>
+								<li>
+                                    <a id = "navTab4.2" class = "navTabs" href = "#/bakeryDB" ng-click="loadBakeryDB()">מתנדבים בחדר אפייה</a>
                                 </li>
                                 <li>
-                                    <a id = "navTab4.2" class = "navTabs" href = "#/bakersDB">אופי עוגות</a>
+                                    <a id = "navTab4.3" class = "navTabs" href = "#/bakersDB" ng-click="loadBakersDB()">אופי עוגות</a>
                                 </li>
                                 <li>
-                                    <a id = "navTab4.3" class = "navTabs" href = "#/guestsDB">אורחים</a>
+                                    <a id = "navTab4.4" class = "navTabs" href = "#/guestsDB" ng-click="loadGuestsDB()">אורחים</a>
                                 </li>
                             </ul>
                         </li>

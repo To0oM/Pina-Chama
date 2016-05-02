@@ -8,8 +8,7 @@
 	padding-top: 50px;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	background-position: center;
-		
+	background-position: center;	
 }
 
 .scrollit {
@@ -68,45 +67,83 @@
 	color: #339933;
 }
 
-.col1{
-	width: 8.9px;
+/*VolunteersDatabase*/
+.col1{width: 10%;}
+.col2{width: 9%;}
+.col3{width: 9%;}
+.col4{width: 9%;}
+.col5{width: 11%;}
+.col6{width: 11%;}
+.col7{width: 9.5%;}
+.col8{width: 7%;}
+.col9{width: 6.5%;}
+.col10{width: 18%;}
+
+#head1{text-indent: -2%; width: 12%;}
+#head2{width: 8.5%;}
+#head3{text-indent: 0.2%; width: 9.5%;}
+#head4{text-indent: 0.2%; width: 8.5%;}
+#head5{width: 10.5%;}
+#head6{width: 10.5%}
+#head7{width: 9.5%;}
+#head8{width: 6.5%}
+#head9{width: 6.5%;}
+#head10{text-indent: 1%; width: 18%;}
+
+/*BakersDatabase*/
+.col11{width: 14%;}
+.col12{width: 14%;}
+.col13{width: 11%;}
+.col14{width: 17%;}
+.col15{width: 11%;}
+.col16{width: 11%;}
+.col17{width: 22%;}
+
+#head11{text-indent: -1.5%; width: 16%;}
+#head12{width: 13%;}
+#head13{width: 11%;}
+#head14{width: 16.5%;}
+#head15{width: 10.5%;}
+#head16{width: 11%}
+#head17{text-indent: 1%; width: 22%;}
+
+/*GuestsDatabase*/
+.col21{width: 11%;}
+.col22{width: 11%;}
+.col23{width: 11%;}
+.col24{width: 11%;}
+.col25{width: 13%;}
+.col26{width: 11%;}
+.col27{width: 13%;}
+.col28{width: 19%;}
+
+#head21{text-indent: -1.5%; width: 13%;}
+#head22{width: 10.5%;}
+#head23{width: 10.5%;}
+#head24{width: 11%;}
+#head25{width: 12%;}
+#head26{width: 11%}
+#head27{width: 12.5%;}
+#head28{text-indent: 1%; width: 19.5%;}
+
+/*-------------------------for the logout-------------------------*/
+.connection {
+	font-size: 15px;
+	width: 960px;
+	height: 20px;
+	margin-top: 30px;
+	padding-top: 20px;
+	text-align: left; 
+	background: transparent;
+	color: white;
 }
 
-.col2{
-	width: 130px;
+.connection a, .connection a:hover { 
+	color: white;
+	text-decoration: none;
+	padding-bottom: 20px;
 }
 
-.col3{
-	width: 71px;
+.connection a:hover { 
+	text-decoration: underline;
 }
-
-.col4{
-	width: 127px;
-}
-
-.col5{
-	width: 170px;
-}
-
-.col6{
-	width: 145px;
-}
-
-.col7{
-	width: 91px;
-}
-
-.col8{
-	width: 88px;
-	font-family: 'alef', sans-serif;
-	font-weight: bold;
-}
-
-.col9{
-	width: 153px;
-}
-
-.col10{
-	width: 0.1px;
-}
-
