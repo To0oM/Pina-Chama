@@ -37,10 +37,12 @@ hr {
 
 header{
 	background: url(../img/logo.png);
+    background-size: 280px;
 	background-repeat: no-repeat;
 	background-position: right;	
 	margin-right: 2%; 
-	height: 190px;
+	height: 200px;
+    margin-top: -20px;
 }
 
 .navbar-nav {
@@ -155,7 +157,7 @@ nav{
 }
 
 .nav>li>a {
-	padding: 35px;
+	padding: 30px;
 }
 
 .navbar-nav>li>a {

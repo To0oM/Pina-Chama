@@ -1,0 +1,121 @@
+
+        <header>
+            <div class="ProjectTitle">Pina-Chama</div>
+            <div class="secondTitle">לזכר ד"ר שמואל גיליס וצחי ששון הי"ד</div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+				<div class="box">
+					<div class="col-lg-12">
+						<hr>
+						<h2 class="intro-text text-center">
+							<strong>טופס הרשמה</strong>
+						</h2>
+						<hr>
+						
+						<form name="userForm" id="manageRegisterForm" ng-submit="submitForm()">
+							<ul class="formRegister">
+								<li id='data1'>
+									<label> סוג משתמש
+									</label>
+									<select name = "UserType" class="UserType" id="UserType" ng-model="user.userType">
+										<option value = "manager"> אחראי </option>
+										<option value = "baker"> אופה עוגות </option>
+										<option value = "bakery"> מתנדב בחדר אפיה </option>
+										<option value = "volunteer">  מתנדב </option>
+										<option value = "guest"> אורח </option>
+									</select>
+								</li>
+
+								<li id='data2'>
+									<label id="name">שם פרטי <span class="required">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> שם משפחה <span class="required">*</span></label>
+									
+									<input type="text" name="firstName" class="firstName" id="firstName" ng-required ng-model="user.firstName"/>
+									
+									&nbsp;
+		
+									<input type="text" name="lastName" class="lastName" id="lastName" ng-required ng-model="user.lastName"/>
+								</li>
+								
+								<li id='data3'>
+									<label id="lblBirthday">תאריך לידה &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
+									
+									<label id="lblId">תעודת זהות<span class="required">*</span></label>
+		
+									<input id="birthday" name="birthday" class="birthday" type="date" min="1970-01-01" max="2018-01-01" ng-required ng-model="user.dateOfBirth"/>
+									
+									&nbsp;
+									
+									<input type="text" name="id" class="id" id="id" ng-required ng-model="user.id"/>
+								</li>
+								
+								<li id='data4'>
+									<label>טלפון<span class="required"> * </span>
+									</label>
+									<input type="text" name="phone" class="phone" id="phone" ng-model="user.phoneNumber"></input>
+								</li>
+								
+								<li id='data5'>
+									<label id="name">ישוב <span class="required">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									רח'<span class="required"> *</span>
+									</label>
+									
+									<input type="text" name="city" class="city" id="city" ng-required ng-model="user.addCity"/>
+									
+									&nbsp;
+		
+									<input type="text" name="street" class="street" id="street" ng-required ng-model="user.addStreet"/>
+								</li>
+						
+								<li id='data6'>
+									<label id="name">
+									מס' בית<span class="required">*</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; מיקוד
+									</label>
+									
+									<input type="text" name="apartment" class="apartment" id="apartment" ng-required ng-model="user.addApartment"/>
+									
+									&nbsp;
+		
+									<input type="text" name="postalCode" class="postalCode" id="postalCode" ng-model="user.addPostalCode"/>
+								</li>
+						
+								<li id='data7'>
+									<label>אימייל</label>
+									<input type="text" name="email" class="email" id="email" ng-model="user.email"></input>
+								</li>
+				
+								<li id='data8' ng-init="user.permanent='לא קבוע'">
+									<label>התחלת התנדבות</label>
+									
+									<input id="startVoluntary" name="startVoluntary" class="startVoluntary" type="date" min="1990-01-01" max="2018-01-01" ng-model="user.volunteerStartDate"/>
+									
+									&nbsp;
+									
+									<input type="radio" name="perminant" value="קבוע" ng-model="user.permanent"> קבוע &nbsp;
+									<input type="radio" name="perminant" value="לא קבוע" ng-model="user.permanent"> לא קבוע &nbsp;
+								</li>
+				
+								<li id='data9'>
+									<label>הערות</label>
+									<textarea type="text" name="Comments" class="Comments" id="Comments" maxlength="200" placeholder="פרטים נוספים " ng-model="user.comments"></textarea>
+								</li>
+				
+								<li id='data10'>
+									<label>קוד אימות<span class="required">*</span></label>
+									<input type="text" name="keyManager" class="keyManager" id="keyManager" maxlength="40" ng-required>
+								</li>
+				
+								</p>
+								</br>
+
+								<div id = "cmd" class="addRegister-container">
+									<button type="submit" id="addRegister">הירשם</button>
+								</div>
+							</ul>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+        </div>
