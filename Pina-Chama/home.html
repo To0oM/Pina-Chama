@@ -1,45 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <link rel = "shortcut icon" href = "img/logo.ico">
-	<title>Pina-Chama</title>
-	<link rel="stylesheet" type="text/css" href="../css/home.css" />
-</head>
+<html ng-app="myApp">
+	<head>
+		<link rel = "shortcut icon" href = "img/logo.ico">
+		<title>Pina-Chama</title>
+		<!-- third party javascript -->
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="google-signin-clientid" content="452394011478-fn3j4ah5jkf7evnq75f7v1iqvvg281uc" />
+		<meta name="google-signin-scope" content="https://www.googleapis.com/auth/userinfo.email" />
+		<meta name="google-signin-cookiepolicy" content="single_host_origin" />
+		<script src="https://apis.google.com/js/client:platform.js" async defer></script>
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		
+		<!-- Custom CSS -->
+		<link rel = "stylesheet" type = "text/css" href = "css/sweetalert.css"/>
+		<link rel="stylesheet" href="css/business-casual.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/home.css" type="text/css"/>
+		<link rel="stylesheet" href="css/register.css"/>
+		
+		<!-- Fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+	</head>
 	<body>
-	  <div id="main">
-		<div id="header"></div>
-		<div>
-			<center><h2>!ברוכים הבאים לפינה החמה</h2>
-			<div id="secondTitle">לזכר ד"ר שמואל גיליס וצחי ששון הי"ד</div></center>
-		</div>
-		<div id="site_content2">	
-			<div><center>
-				<img id= "imgLogo" src="../img/logo.png"></a>	
-			</center></div>
-			</br>
-			<br>
-			<div>
-			<center>	
-				<button id = "cmdSignUp">הירשם לאתרנו</button>
-				<button id = "cmdSignIn">התחבר לאתרנו</button>
-				</br></br></br></br>
-			</center></div>
-			
-		</div><!--close site_content-->  
-	  </div><!--close main-->
-	  
-	  <div id="footer">
-          <a class = "temp" href = "managers/managers.html">אחראים</a>
-          <span class = "temp"> | </span>
-          <a class = "temp" href="volunteers/volunteers.html">מתנדבים</a>
-          <span class = "temp"> | </span>
-          <a class = "temp" href="guests/guests.html">אורחים</a>
-          <span class = "temp"> | </span>
-          <a class = "temp" href="bakers/bakers.html">אופי עוגות</a>
-          </br> </br>
-		 <a href="contact">צור קשר</a> | <a href="terms">אודות</a> | <a href="https://www.facebook.com/pinahama2015/?fref=ts">פייסבוק</a>
-		  <br/> © Copyright 2016 Pina-Chama
-	  </div><!--close footer--> 	
-	  
+        <!-- scripts -->
+		<script src = "js/sweetalert.min.js"></script>
+		<script type="application/javascript" src="../js/angular.min.js"></script>
+        <script type="application/javascript" src="../js/angular-route.min.js"></script>
+        <script type="application/javascript" src="js/home.js"></script>
+		
+		<div ng-view class="container" id="main">
+            
+		</div><!--close main-->
+
+		<div id="footer" ng-controller="footerContreoller">
+			<a href="contact">צור קשר</a> | <a href="terms">אודות</a> | <a href="https://www.facebook.com/pinahama2015/?fref=ts">פייסבוק</a> | <a id = "googleLogout" ng-click="signOut()" href="">התנתק</a>
+			<br/> © Copyright 2016 Pina-Chama
+		</div><!--close footer-->
 	</body>
 </html>

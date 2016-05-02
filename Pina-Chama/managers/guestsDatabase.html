@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row" ng-controller="databaseController">
     <div class="box">
         <div class="col-lg-12">
             <hr>
             <h2 class="intro-text text-center">
-                <strong>מאגר אורחים</strong>
+                <strong>{{title}}</strong>
             </h2>
             <hr>
             
@@ -14,16 +14,14 @@
             <table id="volunteer">
                 <thead>
                     <tr>
-                        <th class="col10"></th>
-                        <th class="col9"><img src = "../img/mail.jpg"></img></th>
-                        <th class="col8">סטטוס</th>
-                        <th class="col7">כתובת</th>
-                        <th class="col6">טלפון</th>
-                        <th class="col5">סלולרי</th>
-                        <th class="col4">שם משפחה</th>
-                        <th class="col3">שם</th>
-                        <th class="col2">.ת.ז</th>
-                        <th class="col1"></th>
+                        <th id="head28" class="col28"><img src = "../img/mail.jpg"></img></th>
+                        <th id="head27" class="col27">הערות</th>
+                        <th id="head26" class="col26">תאריך ביקור</th>
+                        <th id="head25" class="col25">כתובת</th>
+                        <th id="head24" class="col24">טלפון</th>
+                        <th id="head23" class="col23">שם משפחה</th>
+                        <th id="head22" class="col22">שם פרטי</th>
+                        <th id="head21" class="col21">קבוצה</th>
                     </tr>
                 </thead>
 
@@ -32,44 +30,22 @@
                         <td>
                             <div class="scrollit">
                                 <table id="volunteer">
-                                    <tr>
-                                        <td class="col9"><a href="https://www.google.co.il">ahuvawe@gmail.com</a></td>
-                                        <td class="col8" id="inactive">לא פעיל</td>
-                                        <td class="col7">כרמי צור</td>
-                                        <td class="col6">02-5486725</td>
-                                        <td class="col5">059-3952677</td>
-                                        <td class="col4">ויינר</td>
-                                        <td class="col3">אהובה</td>
-                                        <td class="col2">024442778</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col9"><a href="https://www.google.co.il">eyallha@gmail.com</a></td>
-                                        <td class="col8" id="active">פעיל</td>
-                                        <td class="col7">כרמי צור</td>
-                                        <td class="col6">02-3894725</td>
-                                        <td class="col5">059-3971746</td>
-                                        <td class="col4">האוזמן</td>
-                                        <td class="col3">אייל</td>
-                                        <td class="col2">021362768</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="col9"><a href="https://www.google.co.il">almoggo@gmail.com</a></td>
-                                        <td class="col8" id="inactive">לא פעיל</td>
-                                        <td class="col7">כרמי צור</td>
-                                        <td class="col6">02-3894725</td>
-                                        <td class="col5">059-3975322</td>
-                                        <td class="col4">גולדמן</td>
-                                        <td class="col3">אלמוג</td>
-                                        <td class="col2">021248778</td>
+                                    <tr ng-repeat="user in usersList">
+                                        <td class="col28"><a href="https://www.google.co.il">{{user.email}}</a></td>
+                                        <td class="col27">{{user.comments}}</td>
+                                        <td class="col26">{{user.dateOfVisit | date : 'dd/MM/yyyy'}}</td>
+                                        <td class="col25">{{user.address}}</td>
+                                        <td class="col24">{{user.phoneNumber}}</td>
+                                        <td class="col23">{{user.lastName}}</td>
+                                        <td class="col22">{{user.firstName}}</td>
+                                        <td class="col21">{{user.team}}</td>
                                     </tr>
                                 </table>
                             </div>	
                         </td>		
                     </tr>		
                 </table>
-            </table>		
+            </table>
         </div>
     </div>
 </div>

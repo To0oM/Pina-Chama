@@ -2,7 +2,7 @@ var userInfo = {
 	fullName:''
 };
 
-var app = angular.module('volunteersApp', ['ngRoute']);
+var app = angular.module('bakeryApp', ['ngRoute']);
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
 	userInfo.fullName = JSON.parse(localStorage.getItem("userName"));
@@ -32,6 +32,14 @@ app.controller('navContreoller', ['$scope', '$http', function($scope, $http) {
 		$(".activeTab").prop('class','navTabs');
 		$("#navTab4").prop('class','activeTab');
 	});
+	$("#navTab5").click(function(){
+		$(".activeTab").prop('class','navTabs');
+		$("#navTab5").prop('class','activeTab');
+	});
+}]);﻿
+
+app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {
+	$("#cmdAdd").hide();
 }]);﻿
 
 app.controller('mainController', ['$scope', '$http', function($scope, $http) {
@@ -50,10 +58,6 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	
 }]);﻿
 
-app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {
-	$("#cmdAdd").hide();
-}]);﻿
-
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/guestBook', {
@@ -62,7 +66,7 @@ app.config(function ($routeProvider) {
 		controllerAs:'guestBook'
 	})
 		.when('/arrangement', {
-		templateUrl: 'voluntaryArrangement.html',
+		templateUrl: 'bakeryArrangement.html',
 		controller: 'arrangementController',
 		controllerAs:'arrangement'
 	})
@@ -77,7 +81,7 @@ app.config(function ($routeProvider) {
 		controllerAs: 'guides'
 	})
 		.when('/main', {
-		templateUrl: 'mainVolunteers.html',
+		templateUrl: 'mainBakery.html',
 		controller: 'mainController',
 		controllerAs: 'main'
 	})
