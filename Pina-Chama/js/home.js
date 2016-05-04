@@ -166,47 +166,47 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 			case 'manager':
 				$("#lblId").show();
 				$("#id").show();
-				$("#id").prop("ng-required", true);
+				$("#id").prop("required", true);
 				$("#data8").hide();
 				$("#data9").hide();
 				$("#data10").show();
-				$("#keyManager").prop("ng-required", true);
+				$("#keyManager").prop("required", true);
 				break;
 			case 'baker':
 				$("#lblId").hide();
 				$("#id").hide();
-				$("#id").prop("ng-required", false);
+				$("#id").prop("required", false);
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
-				$("#keyManager").prop("ng-required", false);
+				$("#keyManager").prop("required", false);
 				break;
 			case 'bakery':
 				$("#lblId").show();
 				$("#id").show();
-				$("#id").prop("ng-required", true);
+				$("#id").prop("required", true);
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
-				$("#keyManager").prop("ng-required", false);
+				$("#keyManager").prop("required", false);
 				break;
 			case 'volunteer':
 				$("#lblId").show();
 				$("#id").show();
-				$("#id").prop("ng-required", true);
+				$("#id").prop("required", true);
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
-				$("#keyManager").prop("ng-required", false);
+				$("#keyManager").prop("required", false);
 				break;
 			case 'guest':
 				$("#lblId").hide();
 				$("#id").hide();
-				$("#id").prop("ng-required", false);
+				$("#id").prop("required", false);
 				$("#data8").hide();
 				$("#data9").show();
 				$("#data10").hide();
-				$("#keyManager").prop("ng-required", false);
+				$("#keyManager").prop("required", false);
 				break;
 		}
 	};
