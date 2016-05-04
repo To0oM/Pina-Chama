@@ -5,5 +5,53 @@
                 <strong>חסרים במלאי</strong>
             </h2>
             <hr>
+			
+			<form name="stockForm" ng-submit="submitStockForm()">
+				<ul class="formStock">
+					<li>
+						<label>קטגוריה</label>
+						<select name = "category" class="category" id="category" ng-model="stock.category">
+							<option value = "basicProducts"> מוצרי יסוד </option>
+							<option value = "detergents"> חומרי ניקוי </option>
+							<option value = "disposableDishes">  כלים חד פעמי </option>
+							<option value = "bakingProducts"> מוצרי אפיה </option>
+							<option value = "falafel"> פלאפל </option>
+							<option value = "other"> שונות </option>
+						</select>
+					</li>
+
+					<li>
+						<label>מוצר</label>
+						<input type="text" name="product" class="product" id="product" ng-required ng-model="stock.product"/>
+					</li>
+					
+					<li>
+						<label>כמות</label>
+						<input type="text" name="quantity" class="quantity" id="quantity" ng-required ng-model="stock.quantity"/>
+					</li>
+					
+					<li>
+						<label>הערות</label>
+						<textarea type="text" name="comments" class="comments" id="comments" maxlength="200" placeholder="פרטים נוספים " ng-model="stock.comments"></textarea>
+					</li>
+					
+					<li>
+						<label>שם</label>
+						<input type="text" name="name" class="name" id="name" ng-required ng-model="stock.name"/>
+					</li>
+					
+					<li>
+						<label>טלפון</label>
+						<input type="text" name="phone" class="phone" id="phone" ng-model="stock.phoneNumber"/>
+					</li>
+	
+					</p>
+					</br>
+
+					<div id = "cmd" class="addStock-container">
+						<button type="submit" id="addStock">הוסף</button>
+					</div>
+				</ul>
+			</form>
     </div>
 </div>

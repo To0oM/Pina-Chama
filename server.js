@@ -42,9 +42,10 @@ fs.readdirSync(__dirname + '/models').forEach(function(filename) {
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + "/Pina-Chama/home.html"));
 });
+
 var Users = mongoose.model('users');
-
-
+//--------------------------------------------------------------------Out Of Stock-------------------------------------------------------------------------------//
+var OutOfStocks = mongoose.model('outofstocks');
 
 
 app.post('/register', function (req, res) {
@@ -159,6 +160,25 @@ app.put('/register/:id', function (req, res) {
 });
 
 
+//--------------------------------------------------------------------Out Of Stock-------------------------------------------------------------------------------//
+//save out of stock in db
+app.post('/stock', function (req, res) {
+	new OutOfStocks({
+		category: req.body.category,
+		product: req.body.product,
+		quantity: req.body.quantity,
+		comments: req.body.comments,
+		name: req.body.name,
+		phoneNumber: req.body.phoneNumber,
+		dateAndTime: req.body.dateAndTime
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+		   res.json('saved!');
+		}
+	});
+});
 
 //listen on port
 app.listen(port);

@@ -55,6 +55,18 @@ app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
 
 app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 	
+	$scope.submitStockForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.stockForm.$valid) {
+			$scope.addStock();
+		}
+	};
+	
+	$scope.addStock = function() {
+		$http.post('/stock', $scope.stock).success(function(response) {
+			
+		});
+	};
 }]);﻿
 
 app.controller('databaseController', ['$scope', '$http', function($scope, $http) {
