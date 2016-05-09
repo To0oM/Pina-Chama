@@ -53,7 +53,7 @@
 								<li id='data4'>
 									<label>טלפון<span class="required"> * </span>
 									</label>
-									<input type="text" name="phone" class="phone" id="phone" ng-model="user.phoneNumber" required></input>
+									<input type="text" name="phone" class="phone" id="phone" ng-model="user.phoneNumber"></input>
 								</li>
 								
 								<li id='data5'>
@@ -105,7 +105,19 @@
 									<label>קוד אימות<span class="required">*</span></label>
 									<input type="text" name="keyManager" class="keyManager" id="keyManager" maxlength="40" required>
 								</li>
-				
+								
+								<li id='data11'>
+									<label id="team">
+									קבוצה &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; תאריך ביקור
+									</label>
+									
+									<input type="text" name="team" class="team" id="team" ng-model="user.team"/>
+									
+									&nbsp;
+		
+									<input type="text" name="dateOfVisit" class="dateOfVisit" id="dateOfVisit" ng-model="user.dateOfVisit"/>
+								</li>
+								
 								</p>
 								</br>
 

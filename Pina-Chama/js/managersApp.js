@@ -54,7 +54,6 @@ app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('stockController', ['$scope', '$http', function($scope, $http) {
-	
 	$scope.submitStockForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.stockForm.$valid) {

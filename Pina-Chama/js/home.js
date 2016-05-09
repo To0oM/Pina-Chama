@@ -170,6 +170,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$("#data8").hide();
 				$("#data9").hide();
 				$("#data10").show();
+				$("#data11").hide();
 				$("#keyManager").prop("required", true);
 				break;
 			case 'baker':
@@ -179,6 +180,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
+				$("#data11").hide();
 				$("#keyManager").prop("required", false);
 				break;
 			case 'bakery':
@@ -188,6 +190,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
+				$("#data11").hide();
 				$("#keyManager").prop("required", false);
 				break;
 			case 'volunteer':
@@ -197,6 +200,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
+				$("#data11").hide();
 				$("#keyManager").prop("required", false);
 				break;
 			case 'guest':
@@ -206,6 +210,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$("#data8").hide();
 				$("#data9").show();
 				$("#data10").hide();
+				$("#data11").show();
 				$("#keyManager").prop("required", false);
 				break;
 		}

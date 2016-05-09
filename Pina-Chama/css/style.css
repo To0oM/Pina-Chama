@@ -72,26 +72,26 @@
 
 /*VolunteersDatabase*/
 .col1{width: 10%;}
-.col2{width: 9%;}
+.col2{width: 8.5%;}
 .col3{width: 9%;}
-.col4{width: 9%;}
-.col5{width: 11%;}
-.col6{width: 11%;}
-.col7{width: 9.5%;}
+.col4{width: 10%;}
+.col5{width: 10.5%;}
+.col6{width: 10.5%;}
+.col7{width: 10%;}
 .col8{width: 7%;}
-.col9{width: 6.5%;}
+.col9{width: 7%;}
 .col10{width: 18%;}
 
-#head1{text-indent: -2%; width: 12%;}
-#head2{width: 8.5%;}
-#head3{text-indent: 0.2%; width: 9.5%;}
-#head4{text-indent: 0.2%; width: 8.5%;}
-#head5{width: 10.5%;}
-#head6{width: 10.5%}
-#head7{width: 9.5%;}
-#head8{width: 6.5%}
-#head9{width: 6.5%;}
-#head10{text-indent: 1%; width: 18%;}
+#head1{text-indent: -4%; width: 11%}
+#head2{width: 8.5%}
+#head3{text-indent: 0.2%; width: 9.5%}
+#head4{text-indent: 0.2%; width: 9%}
+#head5{width: 10%}
+#head6{width: 10%}
+#head7{width: 9.5%}
+#head8{width: 7%}
+#head9{width: 6.5%}
+#head10{text-indent: 1%; width: 18.5%}
 
 /*BakersDatabase*/
 .col11{width: 14%;}

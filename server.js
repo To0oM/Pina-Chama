@@ -44,13 +44,12 @@ app.get('/', function(req, res) {
 });
 
 var Users = mongoose.model('users');
-//--------------------------------------------------------------------Out Of Stock-------------------------------------------------------------------------------//
 var OutOfStocks = mongoose.model('outofstocks');
-
 
 app.post('/register', function (req, res) {
 	var id = (req.body.id === undefined)? 0: req.body.id;
-	var comments = (req.body.id === undefined)? 'אין הערות': req.body.comments;
+	var comments = (req.body.comments === undefined)? 'אין הערות': req.body.comments;
+	var team = (req.body.team === undefined)? 'ללא קבוצה': req.body.team;
 	var address = req.body.addStreet + ' ' + req.body.addApartment + ', ' + req.body.addCity;
 	if (req.body.addPostalCode !== undefined){
 		address += '(' + req.body.addPostalCode + ')';
@@ -69,7 +68,9 @@ app.post('/register', function (req, res) {
 		volunteerStartDate: req.body.volunteerStartDate,
 		comments: comments,
 		active: 'פעיל',
-		permanent: req.body.permanent
+		permanent: req.body.permanent,
+		team: req.body.team,
+		dateOfVisit: req.body.dateOfVisit
 	}).save(function (err){
 		if (err){
 			console.log(err);
@@ -77,10 +78,6 @@ app.post('/register', function (req, res) {
 		   res.json('saved!');
 		}
 	});
-});
-
-app.get('/refresh', function(req, res) {
-	res.json('refresh');
 });
 
 app.get('/managerDB', function(req, res) {
@@ -159,8 +156,6 @@ app.put('/register/:id', function (req, res) {
 	})
 });
 
-
-//--------------------------------------------------------------------Out Of Stock-------------------------------------------------------------------------------//
 //save out of stock in db
 app.post('/stock', function (req, res) {
 	new OutOfStocks({
