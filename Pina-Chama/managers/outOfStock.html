@@ -6,65 +6,66 @@
             </h2>
             <hr>
 			
-			<form name="stockForm" ng-submit="submitStockForm()">
-				<ul class="formStock">
-					<li>
-						<label> סוג משתמש </label>
-						<select name = "groupType" class="groupType" id="groupType" ng-model="stock.groupType">
-							<option value = "manager"> אחראי </option>
-							<option value = "bakery"> מתנדב בחדר אפיה </option>
-							<option value = "volunteer">  מתנדב </option>
-						</select>
-					</li>
-				
-					<li>
-						<label>קטגוריה</label>
-						<select name = "category" class="category" id="category" ng-model="stock.category">
-							<option value = "basicProducts"> מוצרי יסוד </option>
-							<option value = "detergents"> חומרי ניקוי </option>
-							<option value = "disposableDishes">  כלים חד פעמי </option>
-							<option value = "bakingProducts"> מוצרי אפיה </option>
-							<option value = "falafel"> פלאפל </option>
-							<option value = "other"> שונות </option>
-						</select>
-					</li>
+			<br><br>
+			
+			<div id="container">
+				<form name="stockForm" ng-submit="submitStockForm()">
+					<ul class="formStock">
+						<span class = "inline">
+							<label id="GroupType"> סוג משתמש </label>
+							<select name = "groupType" class="groupType" id="groupType" ng-model="stock.groupType">
+								<option value = "manager"> אחראי </option>
+								<option value = "bakery"> מתנדב בחדר אפיה </option>
+								<option value = "volunteer">  מתנדב </option>
+							</select>
+						</span>
+					
+						<span class = "inline">
+							<label id="Category">קטגוריה</label>
+							<select name = "category" class="category" id="category" ng-model="stock.category">
+								<option value = "basicProducts"> מוצרי יסוד </option>
+								<option value = "detergents"> חומרי ניקוי </option>
+								<option value = "disposableDishes">  כלים חד פעמי </option>
+								<option value = "bakingProducts"> מוצרי אפיה </option>
+								<option value = "falafel"> פלאפל </option>
+								<option value = "other"> שונות </option>
+							</select>
+						</span>
 
-					<li>
-						<label>מוצר</label>
-						<input type="text" name="product" class="product" id="product" ng-required ng-model="stock.product"/>
-					</li>
-					
-					<li>
-						<label>כמות</label>
-						<input type="text" name="quantity" class="quantity" id="quantity" ng-required ng-model="stock.quantity"/>
-					</li>
-					
-					<li>
-						<label>הערות</label>
-						<textarea type="text" name="comments" class="comments" id="comments" maxlength="200" placeholder="פרטים נוספים " ng-model="stock.comments"></textarea>
-					</li>
-					
-					<li>
-						<label>שם</label>
-						<input type="text" name="name" class="name" id="name" ng-required ng-model="stock.name"/>
-					</li>
-					
-					<li>
-						<label>טלפון</label>
-						<input type="text" name="phone" class="phone" id="phone" ng-model="stock.phoneNumber"/>
-					</li>
-	
-					</p>
-					</br>
+						<span class = "inline">
+							<label id="Product">מוצר</label>
+							<input type="text" name="product" class="product" id="product" ng-required ng-model="stock.product"/>
+						</span>
+						
+						<span class = "inline">
+							<label id="Quantity">כמות</label>
+							<input type="text" name="quantity" class="quantity" id="quantity" ng-required ng-model="stock.quantity"/>
+						</span>
+						
+						
+						<span class = "inline">
+							<label id="Name">שם</label>
+							<input type="text" name="name" class="name" id="name" ng-required ng-model="stock.name"/>
+						</span>
+						
+						<span class = "inline">
+							<label id="Phone">טלפון</label>
+							<input type="text" name="phone" class="phone" id="phone" ng-model="stock.phoneNumber"/>
+						</span>
+		
+						<span class = "inline">
+							<label id="Comments">הערות</label>
+							<input type="text" name="comments" class="comments" id="comments" maxlength="200" placeholder="פרטים נוספים " ng-model="stock.comments"></input>
+						</span>
 
-					<div id = "cmd" class="addStock-container">
-						<button type="submit" id="addStock">הוסף</button>
-					</div>
-				</ul>
-			</form>
+						<div id = "cmd" class="addStock-container">
+							<button type="submit" id="addStock">הוסף</button>
+						</div>
+					</ul>
+				</form>
+			</div>
 			
-			
-			
+			<br><br>
 			
 			
 			
@@ -84,49 +85,49 @@
 				<div class="caption">פינה</div>
 				<tbody>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>5</td>
 						<td>קפה</td>
 						<td>מוצרי יסוד</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>23</td>
 						<td>שמן</td>
 						<td>מוצרי אפיה</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>2</td>
 						<td>אקונומיקה</td>
 						<td>חומרי ניקוי</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>5</td>
 						<td>צלחות</td>
 						<td>כלים חד פימיים</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>2</td>
 						<td>חלב</td>
 						<td>מוצרי יסוד</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>42</td>
 						<td>קמח</td>
 						<td>מוצרי אפיה</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>42</td>
 						<td>שמן</td>
@@ -139,49 +140,49 @@
 				<div class="caption">חדר אפיה</div>
 				<tbody>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>5</td>
 						<td>קפה</td>
 						<td>מוצרי יסוד</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>23</td>
 						<td>שמן</td>
 						<td>מוצרי אפיה</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>2</td>
 						<td>אקונומיקה</td>
 						<td>חומרי ניקוי</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>5</td>
 						<td>צלחות</td>
 						<td>כלים חד פימיים</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>2</td>
 						<td>חלב</td>
 						<td>מוצרי יסוד</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>42</td>
 						<td>קמח</td>
 						<td>מוצרי אפיה</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>42</td>
 						<td>שמן</td>
@@ -194,49 +195,49 @@
 				<div class="caption">פלאפל</div>
 				<tbody>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>5</td>
 						<td>קפה</td>
 						<td>מוצרי יסוד</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>23</td>
 						<td>שמן</td>
 						<td>מוצרי אפיה</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>2</td>
 						<td>אקונומיקה</td>
 						<td>חומרי ניקוי</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>5</td>
 						<td>צלחות</td>
 						<td>כלים חד פימיים</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>2</td>
 						<td>חלב</td>
 						<td>מוצרי יסוד</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>42</td>
 						<td>קמח</td>
 						<td>מוצרי אפיה</td>
 					</tr>
 					<tr>
-						<td>פרטים</td>
+						<td><button type="button" onclick="alert('תאריך, שעה, שם, טלפון')">פרטים</button></td>
 						<td>בלהבלהבלה</td>
 						<td>42</td>
 						<td>שמן</td>

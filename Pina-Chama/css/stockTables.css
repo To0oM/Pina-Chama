@@ -2,25 +2,77 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial; 
+
+/*Form*/
+.inline{
+	display:inline-block;
 }
 
-.wrapper {
-    padding: 3%;
+#container{
+	margin: auto;
+	width: 95%;
+	border-collapse: collapse;
+	border-style: groove;
+	
 }
 
+.formStock{
+	direction: rtl;
+}
+
+
+.formStock #GroupType, .formStock #Category, .formStock #Product, .formStock #Quantity, .formStock #Comments, .formStock #Name, .formStock #Phone, .formStock #cmd{
+	display: block;
+}
+.formStock #cmd{
+	display: inline;
+}
+#groupType{
+	width:110px;
+	height:30px;
+}
+#category{
+	width:110px;
+	height:30px;
+}
+#product{
+	width:100px;
+	height:30px;
+}
+#quantity{
+	width:60px;
+	height:30px;
+}
+#name{
+	width:110px;
+	height:30px;
+}
+#phone{
+	width:110px;
+	height:30px;
+}
+#comments{
+	width:250px;
+	height:30px;
+}
+/*Tables*/
+.fixed_headers  td,.fixed_headers  th,.fixed_headers  tr{
+	table-layout: fixed;
+    word-break: break-all;
+    word-wrap:break-word;
+}
 .fixed_headers {
 	margin: auto;
-	width: 90%;
-	/*table-layout: fixed;*/
+	width: 95%;
 	border-collapse: collapse;
+	word-break: break-all;
+	word-wrap:break-word;
 }
 
 .fixed_headers th,
 .fixed_headers td {
   padding: 5px;
-  text-align: right;
+  text-align: center;
   
 }
 
@@ -29,26 +81,26 @@ body {
 }
 .fixed_headers td:nth-child(1),
 .fixed_headers th:nth-child(1) {
- min-width: 280px;
+width: 100px;
 }
 .fixed_headers td:nth-child(2),
 .fixed_headers th:nth-child(2) {
-  min-width: 280px;
+ width:400px;
 }
 .fixed_headers td:nth-child(3),
 .fixed_headers th:nth-child(3) {
-  min-width: 100px;
+  width: 100px;
 }
 .fixed_headers td:nth-child(4),
 .fixed_headers th:nth-child(4) {
-  min-width: 150px;
+  width: 200px;
 }
 .fixed_headers td:nth-child(5),
 .fixed_headers th:nth-child(5) {
-  min-width: 150px;
+  width: 150px;
 }
 .fixed_headers thead {
-  background-color: #eb9494;
+  background-color: #BD3636;
   color: #FDFDFD;
 }
 .fixed_headers thead tr {
@@ -81,9 +133,24 @@ thead.caption ,.caption{
 	width: 90%;
 	background: #fbeaea;
 	height: 25px;
-	color: #efa9a9;
+	color: #e26969;
 	font-size: 130%;
 	font-weight: normal;
 	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
 	text-align: right;
+}
+::-webkit-scrollbar {
+    width: 3px;
+	height: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+	background: #eb9494;
 }
