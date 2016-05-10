@@ -154,6 +154,17 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 		email:userInfo.email
 	};
 	
+	$scope.required = {
+		firstName: true,
+		lastName: true,
+		id: true,
+		addCity: true,
+		addStreet: true,
+		addApartment: true,
+		email: true,
+		validationKey: true
+	};
+	
 	$scope.submitForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.userForm.$valid) {
@@ -166,52 +177,52 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 			case 'manager':
 				$("#lblId").show();
 				$("#id").show();
-				$("#id").prop("required", true);
+				$scope.required.id = true;
 				$("#data8").hide();
 				$("#data9").hide();
 				$("#data10").show();
 				$("#data11").hide();
-				$("#keyManager").prop("required", true);
+				$scope.required.validationKey = true;
 				break;
 			case 'baker':
 				$("#lblId").hide();
 				$("#id").hide();
-				$("#id").prop("required", false);
+				$scope.required.id = false;
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
 				$("#data11").hide();
-				$("#keyManager").prop("required", false);
+				$scope.required.validationKey = false;
 				break;
 			case 'bakery':
 				$("#lblId").show();
 				$("#id").show();
-				$("#id").prop("required", true);
+				$scope.required.id = true;
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
 				$("#data11").hide();
-				$("#keyManager").prop("required", false);
+				$scope.required.validationKey = false;
 				break;
 			case 'volunteer':
 				$("#lblId").show();
 				$("#id").show();
-				$("#id").prop("required", true);
+				$scope.required.id = true;
 				$("#data8").show();
 				$("#data9").show();
 				$("#data10").hide();
 				$("#data11").hide();
-				$("#keyManager").prop("required", false);
+				$scope.required.validationKey = false;
 				break;
 			case 'guest':
 				$("#lblId").hide();
 				$("#id").hide();
-				$("#id").prop("required", false);
+				$scope.required.id = false;
 				$("#data8").hide();
 				$("#data9").show();
 				$("#data10").hide();
 				$("#data11").show();
-				$("#keyManager").prop("required", false);
+				$scope.required.validationKey = false;
 				break;
 		}
 	};

@@ -76,7 +76,7 @@
 .col3{width: 9%;}
 .col4{width: 10%;}
 .col5{width: 10.5%;}
-.col6{width: 10.5%;}
+.col6{width: 10.5%;direction: rtl;}
 .col7{width: 10%;}
 .col8{width: 7%;}
 .col9{width: 7%;}
@@ -97,7 +97,7 @@
 .col11{width: 14%;}
 .col12{width: 14%;}
 .col13{width: 11%;}
-.col14{width: 17%;}
+.col14{width: 17%;direction: rtl;}
 .col15{width: 11%;}
 .col16{width: 11%;}
 .col17{width: 22%;}
@@ -115,7 +115,7 @@
 .col22{width: 11%;}
 .col23{width: 11%;}
 .col24{width: 11%;}
-.col25{width: 13%;}
+.col25{width: 13%;direction: rtl;}
 .col26{width: 11%;}
 .col27{width: 13%;}
 .col28{width: 19%;}

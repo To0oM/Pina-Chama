@@ -139,6 +139,16 @@ textarea {
 	height: 38px;
 }
 
+.formRegister .team{
+    width: 48.5%;
+	height: 38px;
+}
+
+.formRegister .dateOfVisit{
+    width: 48.5%;
+	height: 38px;
+}
+
 .formRegister .startVoluntary{
     width: 48.5%;
 	height: 38px;

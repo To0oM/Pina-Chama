@@ -52,7 +52,7 @@ app.post('/register', function (req, res) {
 	var team = (req.body.team === undefined)? 'ללא קבוצה': req.body.team;
 	var address = req.body.addStreet + ' ' + req.body.addApartment + ', ' + req.body.addCity;
 	if (req.body.addPostalCode !== undefined){
-		address += '(' + req.body.addPostalCode + ')';
+		address += ' (' + req.body.addPostalCode + ')';
 	}
 	
 	new Users({
@@ -69,7 +69,7 @@ app.post('/register', function (req, res) {
 		comments: comments,
 		active: 'פעיל',
 		permanent: req.body.permanent,
-		team: req.body.team,
+		team: team,
 		dateOfVisit: req.body.dateOfVisit
 	}).save(function (err){
 		if (err){
@@ -78,6 +78,10 @@ app.post('/register', function (req, res) {
 		   res.json('saved!');
 		}
 	});
+});
+
+app.get('/refresh', function(req, res) {
+	res.json('refresh');
 });
 
 app.get('/managerDB', function(req, res) {
