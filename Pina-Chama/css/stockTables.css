@@ -1,0 +1,89 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial; 
+}
+
+.wrapper {
+    padding: 3%;
+}
+
+.fixed_headers {
+	margin: auto;
+	width: 90%;
+	/*table-layout: fixed;*/
+	border-collapse: collapse;
+}
+
+.fixed_headers th,
+.fixed_headers td {
+  padding: 5px;
+  text-align: right;
+  
+}
+
+.fixed_headers td {
+	color: #595959;
+}
+.fixed_headers td:nth-child(1),
+.fixed_headers th:nth-child(1) {
+ min-width: 280px;
+}
+.fixed_headers td:nth-child(2),
+.fixed_headers th:nth-child(2) {
+  min-width: 280px;
+}
+.fixed_headers td:nth-child(3),
+.fixed_headers th:nth-child(3) {
+  min-width: 100px;
+}
+.fixed_headers td:nth-child(4),
+.fixed_headers th:nth-child(4) {
+  min-width: 150px;
+}
+.fixed_headers td:nth-child(5),
+.fixed_headers th:nth-child(5) {
+  min-width: 150px;
+}
+.fixed_headers thead {
+  background-color: #eb9494;
+  color: #FDFDFD;
+}
+.fixed_headers thead tr {
+  display: block;
+  position: relative;
+}
+.fixed_headers tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+  height: 100px;
+}
+.fixed_headers tbody tr:hover {
+  background-color: #DDD;
+}
+.old_ie_wrapper {
+  height: 300px;
+  width: 750px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.old_ie_wrapper tbody {
+  height: auto;
+}
+
+thead.caption ,.caption{
+	font-family: "Helvetica Neue", Helvetica, Arial; 
+	margin: auto;
+	padding-top: 5px;
+	width: 90%;
+	background: #fbeaea;
+	height: 25px;
+	color: #efa9a9;
+	font-size: 130%;
+	font-weight: normal;
+	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+	text-align: right;
+}

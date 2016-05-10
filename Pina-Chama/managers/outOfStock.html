@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-controller="stockController">
     <div class="box">
         <hr>
             <h2 class="intro-text text-center">פינת
@@ -8,6 +8,15 @@
 			
 			<form name="stockForm" ng-submit="submitStockForm()">
 				<ul class="formStock">
+					<li>
+						<label> סוג משתמש </label>
+						<select name = "groupType" class="groupType" id="groupType" ng-model="stock.groupType">
+							<option value = "manager"> אחראי </option>
+							<option value = "bakery"> מתנדב בחדר אפיה </option>
+							<option value = "volunteer">  מתנדב </option>
+						</select>
+					</li>
+				
 					<li>
 						<label>קטגוריה</label>
 						<select name = "category" class="category" id="category" ng-model="stock.category">
@@ -53,5 +62,187 @@
 					</div>
 				</ul>
 			</form>
+			
+			
+			
+			
+			
+			
+			<table class="fixed_headers">
+				<thead>
+					<tr>
+					  <th>פרטים</th>
+					  <th>הערות</th>
+					  <th>כמות</th>
+					  <th>מוצר</th>
+					  <th>קטגוריה</th>
+					</tr>
+				</thead>		
+			</table>
+			
+			<table class="fixed_headers">
+				<div class="caption">פינה</div>
+				<tbody>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>5</td>
+						<td>קפה</td>
+						<td>מוצרי יסוד</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>23</td>
+						<td>שמן</td>
+						<td>מוצרי אפיה</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>2</td>
+						<td>אקונומיקה</td>
+						<td>חומרי ניקוי</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>5</td>
+						<td>צלחות</td>
+						<td>כלים חד פימיים</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>2</td>
+						<td>חלב</td>
+						<td>מוצרי יסוד</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>42</td>
+						<td>קמח</td>
+						<td>מוצרי אפיה</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>42</td>
+						<td>שמן</td>
+						<td>פלאפל</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="fixed_headers">
+				<div class="caption">חדר אפיה</div>
+				<tbody>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>5</td>
+						<td>קפה</td>
+						<td>מוצרי יסוד</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>23</td>
+						<td>שמן</td>
+						<td>מוצרי אפיה</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>2</td>
+						<td>אקונומיקה</td>
+						<td>חומרי ניקוי</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>5</td>
+						<td>צלחות</td>
+						<td>כלים חד פימיים</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>2</td>
+						<td>חלב</td>
+						<td>מוצרי יסוד</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>42</td>
+						<td>קמח</td>
+						<td>מוצרי אפיה</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>42</td>
+						<td>שמן</td>
+						<td>פלאפל</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="fixed_headers">
+				<div class="caption">פלאפל</div>
+				<tbody>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>5</td>
+						<td>קפה</td>
+						<td>מוצרי יסוד</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>23</td>
+						<td>שמן</td>
+						<td>מוצרי אפיה</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>2</td>
+						<td>אקונומיקה</td>
+						<td>חומרי ניקוי</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>5</td>
+						<td>צלחות</td>
+						<td>כלים חד פימיים</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>2</td>
+						<td>חלב</td>
+						<td>מוצרי יסוד</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>42</td>
+						<td>קמח</td>
+						<td>מוצרי אפיה</td>
+					</tr>
+					<tr>
+						<td>פרטים</td>
+						<td>בלהבלהבלה</td>
+						<td>42</td>
+						<td>שמן</td>
+						<td>פלאפל</td>
+					</tr>
+				</tbody>
+			</table>
     </div>
 </div>
