@@ -45,6 +45,7 @@ app.get('/', function(req, res) {
 
 var Users = mongoose.model('users');
 var OutOfStocks = mongoose.model('outofstocks');
+var Messages = mongoose.model('messages');
 
 app.post('/register', function (req, res) {
 	var id = (req.body.id === undefined)? 0: req.body.id;
@@ -170,6 +171,26 @@ app.post('/stock', function (req, res) {
 		name: req.body.name,
 		phoneNumber: req.body.phoneNumber,
 		dateAndTime: req.body.dateAndTime
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+		   res.json('saved!');
+		}
+	});
+});
+
+//save messages in DB
+app.post('/message', function (req, res) {
+	new Messages({
+		content: req.body.content,
+		topic: req.body.topic,
+		messageToVolunteers: req.body.messageToVolunteers,
+		messageToBakers: req.body.messageToBakers,
+		messageToBakery: req.body.messageToBakery,
+		messageToGuests: req.body.messageToGuests,
+		category: req.body.category,
+		publicationDate: req.body.publicationDate
 	}).save(function (err){
 		if (err){
 			console.log(err);

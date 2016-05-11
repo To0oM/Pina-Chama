@@ -46,7 +46,56 @@ app.controller('navContreoller', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+	$scope.message = {
+		category:''
+	};
 	
+	$("#addMessageDiv").hide();
+	$("#fade").hide();
+	
+	$scope.newMessage = function(category){
+		var windowHeight = $(window).height();
+		$('.black_overlay').css('height', windowHeight);
+		
+		$("#addMessageDiv").fadeIn();
+		$("#fade").fadeIn();
+		$scope.message.category = category;
+		
+		if ($scope.message.category === 'message'){
+			$("#addMessageDiv").css("top", $("#messagesDiv").position());
+			$("#addMessTitle").html("הוספת הודעה לפינת ההודעות מהאחראים");
+		} else {
+			$("#addMessTitle").html("הוספת הודעה לפינת היום שהיה");
+			$("#addMessageDiv").css("top", $("#postsDiv").position());
+		}
+		
+		$scope.message.messageToVolunteers = false;
+		$scope.message.messageToBakers = false;
+		$scope.message.messageToBakery = false;
+		$scope.message.messageToGuests = false;
+		$scope.message.topic = '';
+		$scope.message.content = '';
+	};
+	
+	$scope.submitMessageForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.messageForm.$valid) {
+			$scope.addMessage();
+		}
+	};
+	
+	$scope.addMessage = function() {
+		$http.post('/message', $scope.message).success(function(response) {
+			$("#addMessageDiv").fadeOut();
+			$("#fade").fadeOut();
+			console.log($scope.message);
+		});
+	};
+	
+	$scope.close = function(){
+		$("#addMessageDiv").fadeOut();
+		$("#fade").fadeOut();
+	};
 }]);﻿
 
 app.controller('guidesController', ['$scope', '$http', function($scope, $http) {

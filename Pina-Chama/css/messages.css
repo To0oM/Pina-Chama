@@ -1,0 +1,132 @@
+.black_overlay{
+	display: none;
+	position: absolute;
+	top: 0%;
+	bottom: 0%;
+	left: 0%;
+	right: 0%;
+	width: 100%;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.7;
+	opacity:.70;
+	filter: alpha(opacity=70);
+}
+
+#addMessageDiv {
+	display: none;
+	position: absolute;
+	top: 40%;
+	left: 30%;
+	width: 50%;
+	height: 537px;
+	/*padding: 16px;*/
+	z-index:1002;
+	overflow: auto;
+	box-shadow:0 0 10px 0 #000;
+	direction: rtl;
+}
+
+#cmd {
+	text-align: center;
+}
+
+#addMessage {
+	background: #4f93ce;
+	border: 1px solid currentColor;
+	font-size: 1.1rem;
+	/*color: #4f93ce;*/
+	color: #fff;
+	padding: 0.75rem 3rem;
+	cursor: pointer;
+	-webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+	transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+	overflow: hidden;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+#addMessTitle{
+	padding-top: -60px;
+	text-align: center;
+}
+
+#close{
+	position:absolute;
+	background:black;
+	color:white;
+	right:-15px;
+	top:-15px;
+	border-radius:50%;
+	width:30px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	font-size:8px;
+	font-weight:bold;
+	font-family:'Arial Black', Arial, sans-serif;
+	cursor:pointer;
+	box-shadow:0 0 10px 0 #000;
+	z-index:1003;
+}
+
+#addMessageDiv label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:inline-block;
+	font-weight: bold;
+}
+
+#addMessageDiv input[type=text], 
+#addMessageDiv input[type=date],
+#addMessageDiv textarea{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border:1px solid #BEBEBE;
+	border-radius: 0px;
+    padding: 7px;
+    margin:0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;  
+	direction: rtl;
+}
+
+#addMessageDiv textarea {
+    resize: none;
+}
+
+#addMessageDiv input[type=text]:focus, 
+#addMessageDiv input[type=date]:focus,
+#addMessageDiv textarea:focus {
+	font: 15px 'Open Sans Hebrew', sans-serif;
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+	color: steelblue;
+}
+#addMessageDiv textarea:focus{
+	font-style: italic;
+}
+
+#topic{
+    width: 40%;
+	height: 38px;
+	font: 14px 'Open Sans Hebrew', sans-serif;
+}
+
+#content{
+    width: 70%;
+	height: 100px;
+	font: 14px 'Open Sans Hebrew', sans-serif;
+	font-style: italic;
+}
+
+.required{
+    color:red;
+	font-size: 12px;
+	position: relative; 
+	bottom: 3px;
+}
