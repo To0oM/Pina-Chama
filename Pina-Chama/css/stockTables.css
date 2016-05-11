@@ -2,6 +2,22 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
+input,
+select{
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 2px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+}
+input:focus,
+select:focus{
+    border-color: rgba(229, 103, 23, 0.8);
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+}
+button {
+  
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 3px rgba(229, 103, 23, 0.6);
+    outline: 0 none;
+}
 
 /*Form*/
 .inline{
@@ -12,48 +28,122 @@
 	margin: auto;
 	width: 95%;
 	border-collapse: collapse;
-	border-style: groove;
-	
+	border: 1px solid;
+    border-radius: 5px;
+	border-color: #BD3636;	
+	background-color: #DDD;
 }
 
 .formStock{
 	direction: rtl;
+	text-align: center;
+	margin-right: 5px;
 }
 
+.formStock label{
+    margin:0 0 3px 0;
+    padding:0px;
+    display:block;
+	font-weight: bold;
+	color: #BD3636;
+}
+.formStock select{
+    color: #595959;
+	padding: 5px;
+}
+.formStock input{
+	padding: 6px;
+}
 
 .formStock #GroupType, .formStock #Category, .formStock #Product, .formStock #Quantity, .formStock #Comments, .formStock #Name, .formStock #Phone, .formStock #cmd{
 	display: block;
+	border: none;
+	margin: none;
+	padding: none;
 }
 .formStock #cmd{
 	display: inline;
 }
+
+.addStock {
+	border-radius: 5px;
+    width: 70px;
+	height: 65px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 45px;
+    margin: 4px 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.addStock {
+	background-color: #d87474;
+    color: white;
+    border: 2px solid #c73838;
+}
+
+.addStock:hover {
+    background-color: white; 
+    color: #BD3636; 
+	border: 2px solid #BD3636;
+}
+
+.addStock:active {
+    background-color: white; 
+    color: #e39c9c;	
+	border: 2px solid #e39c9c;
+}
+
 #groupType{
-	width:110px;
-	height:30px;
+	width:130px;
+	
+	border: 20px solid;
+    border-radius: 5px;
+	border-color: black; 
 }
 #category{
 	width:110px;
-	height:30px;
+	
+	border: 2px solid;
+    border-radius: 5px;
+	border-color: white;
 }
 #product{
-	width:100px;
-	height:30px;
+	width:110px;
+	
+	border: 2px solid;
+    border-radius: 5px;
+	border-color: black;
 }
 #quantity{
-	width:60px;
-	height:30px;
+	width:50px;
+	
+	border: 2px solid;
+    border-radius: 5px;
+	border-color: white;
 }
 #name{
 	width:110px;
-	height:30px;
+	
+	border: 2px solid;
+    border-radius: 5px;
+	border-color: white;
 }
 #phone{
 	width:110px;
-	height:30px;
+	
+	border: 2px solid;
+    border-radius: 5px;
+	border-color: white;
 }
 #comments{
-	width:250px;
-	height:30px;
+	width:200px;
+	
+	border: 2px solid;
+    border-radius: 5px;
+	border-color: white;
 }
 /*Tables*/
 .fixed_headers  td,.fixed_headers  th,.fixed_headers  tr{
@@ -111,7 +201,7 @@ width: 100px;
   display: block;
   overflow: auto;
   width: 100%;
-  height: 100px;
+  height: 150px;
 }
 .fixed_headers tbody tr:hover {
   background-color: #DDD;
@@ -139,6 +229,38 @@ thead.caption ,.caption{
 	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
 	text-align: right;
 }
+
+
+.details {
+	border-radius: 2px;
+    width: 100px;
+	height: 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.details {
+	background-color: #f9ebeb;
+    color: #e77e7e;
+    border: 2px solid #e7e7e7;
+}
+
+.details:hover {
+    background-color: white; 
+	color: #e77e7e;
+}
+
+.details:active {
+    background-color: white; 
+    color: #e77e7e;	
+	border: 1px solid #e39c9c;
+}
+
 ::-webkit-scrollbar {
     width: 3px;
 	height: 5px;
