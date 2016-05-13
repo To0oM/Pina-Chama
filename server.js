@@ -163,14 +163,50 @@ app.put('/register/:id', function (req, res) {
 
 //save out of stock in db
 app.post('/stock', function (req, res) {
+	var comments = (req.body.comments === undefined)? 'אין הערות': req.body.comments;
+	
+	var d = new Date();
+	var date = d.getDate();
+	var month = d.getMonth() + 1;
+	var year = d.getFullYear();
+	var date = month + "/" + date + "/" + year;
+	var time = d.getHours() + ":" + d.getMinutes();
+	
+	var details = ':טלפון' + req.body.phoneNumber + "\n" +
+				  ':שם' + req.body.name + "\n" +
+				  ':תאריך' + date + "\n" +
+				  ':שעה' + time;
+				   
+	var category;
+	switch(req.body.category)
+	{
+		case 'basicProducts':
+			category = 'מוצרי יסוד';
+			break;
+		case 'detergents':
+			category = 'חומרי ניקוי';
+			break;
+		case 'disposableDishes':
+			category = 'כלים חד פעמיים';
+			break;
+		case 'bakingProducts':
+			category = 'מוצרי אפיה';
+			break;
+		case 'falafel':
+			category = 'פלאפל';
+			break;
+		case 'other':
+			category = 'שונות';
+			break;
+	}
+	
 	new OutOfStocks({
-		category: req.body.category,
+		category: category,
 		product: req.body.product,
 		quantity: req.body.quantity,
 		comments: req.body.comments,
-		name: req.body.name,
-		phoneNumber: req.body.phoneNumber,
-		dateAndTime: req.body.dateAndTime
+		details: details,
+		groupType: req.body.groupType
 	}).save(function (err){
 		if (err){
 			console.log(err);
@@ -180,23 +216,31 @@ app.post('/stock', function (req, res) {
 	});
 });
 
-//save messages in DB
-app.post('/message', function (req, res) {
-	new Messages({
-		content: req.body.content,
-		topic: req.body.topic,
-		messageToVolunteers: req.body.messageToVolunteers,
-		messageToBakers: req.body.messageToBakers,
-		messageToBakery: req.body.messageToBakery,
-		messageToGuests: req.body.messageToGuests,
-		category: req.body.category,
-		publicationDate: req.body.publicationDate
-	}).save(function (err){
-		if (err){
-			console.log(err);
-		}else{
-		   res.json('saved!');
-		}
+//find out of stock in db
+app.get('/stockPina', function(req, res) {
+	OutOfStocks.find({groupType : 'pina'}, function(err, stocks) {
+		if (err)
+			throw err;
+		console.log(OutOfStocks);
+		res.json(stocks);
+	});
+});
+
+app.get('/stockBakery', function(req, res) {
+	OutOfStocks.find({groupType : 'bakery'}, function(err, stocks) {
+		if (err)
+			throw err;
+		
+		res.json(stocks);
+	});
+});
+
+app.get('/stockFalafel', function(req, res) {
+	OutOfStocks.find({groupType : 'falafel'}, function(err, stocks) {
+		if (err)
+			throw err;
+		
+		res.json(stocks);
 	});
 });
 

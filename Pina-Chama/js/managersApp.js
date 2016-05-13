@@ -4,6 +4,9 @@ var userInfo = {
 
 var title = '';
 var usersList;
+var stocksPinaList;
+var stocksBakeryList;
+var stocksFalafelList;
 
 var app = angular.module('managersApp', ['ngRoute']);
 
@@ -103,18 +106,66 @@ app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('stockController', ['$scope', '$http', function($scope, $http) {
+	
+	//save stock on db
 	$scope.submitStockForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.stockForm.$valid) {
+
 			$scope.addStock();
 		}
 	};
 	
+	//add stock to db
 	$scope.addStock = function() {
 		$http.post('/stock', $scope.stock).success(function(response) {
-			
+			$scope.loadStockDB();
 		});
 	};
+	
+	//load the data of out of stock to tables
+	$scope.loadStocks = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.stocksPinaList = stocksPinaList;
+			$scope.stocksBakeryList = stocksBakeryList;
+			$scope.stocksFalafelList = stocksFalafelList;
+		});
+	};
+	
+	//initial load
+	$scope.loadStocks();
+	
+	$scope.loadStockDB = function() {
+		$scope.loadManagersList();
+		$scope.loadVolunteersList();
+		$scope.loadBakeryList();
+		$scope.loadStocks();
+	};
+	
+	$scope.loadManagersList = function() {
+		$http.get('/stockPina').success(function(response) {
+			$scope.stocksPinaList = response;
+			
+			stocksPinaList = $scope.stocksPinaList;
+		});
+	};
+	
+	$scope.loadVolunteersList = function() {
+		$http.get('/stockBakery').success(function(response) {
+			$scope.stocksBakeryList = response;
+			
+			stocksBakeryList = $scope.stocksBakeryList;
+		});
+	};
+	
+	$scope.loadBakeryList = function() {
+		$http.get('/stockFalafel').success(function(response) {
+			$scope.stocksFalafelList = response;
+			
+			stocksFalafelList = $scope.stocksFalafelList;
+		});
+	};
+	
 }]);﻿
 
 app.controller('databaseController', ['$scope', '$http', function($scope, $http) {

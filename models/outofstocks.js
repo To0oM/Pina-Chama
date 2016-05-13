@@ -6,9 +6,9 @@ var outofstocksSchema = new Schema({
 	product: String,
 	quantity: Number,
 	comments: String,
-	name: String,
-	phoneNumber: String,
-	dateAndTime: Date,
+	details: String,
+	groupType: String
 });
 
 mongoose.model('outofstocks', outofstocksSchema);
+
