@@ -5,8 +5,8 @@
                 <strong>חסרים במלאי</strong>
             </h2>
             <hr>
-			
-			<br><br>
+			<br>
+			<h3 id="title" class="intro-text text-center"> הכניסו מוצר </h3>
 			
 			<div id="container">
 				<form name="stockForm" ng-submit="submitStockForm()">
@@ -54,7 +54,7 @@
 						
 						<span class = "inline">
 							<label id="Comments">הערות</label>
-							<textarea type="text" name="comments" class="comments" id="comments" maxlength="200" placeholder="פרטים נוספים " ng-model="stock.comments"></textarea>
+							<input type="text" name="comments" class="comments" id="comments" maxlength="200" placeholder="פרטים נוספים " ng-model="stock.comments"></input>
 						</span>
 
 						<span id = "cmd" class="addStock-container">
@@ -64,18 +64,20 @@
 				</form>	
 			</div>
 			
-			<br><br>
-			
+			<br><br><br>
+			<h3 id="title" class="intro-text text-center"> רשימת מוצרים חסרים </h3>
 			
 			
 			<table class="fixed_headers">
 				<thead>
 					<tr>
-					  <th>פרטים</th>
-					  <th>הערות</th>
-					  <th>כמות</th>
-					  <th>מוצר</th>
-					  <th>קטגוריה</th>
+						<th></th>
+						<th></th>
+						<th>הערות</th>
+						<th>כמות</th>
+						<th>מוצר</th>
+						<th>קטגוריה</th>
+						<th></th>
 					</tr>
 				</thead>		
 			</table>
@@ -84,11 +86,13 @@
 				<div class="caption">פינה</div>
 				<tbody>
 					<tr ng-repeat="stock in stocksPinaList">
-						<td><button type="button" class="details" onclick="alert('תאריך, שעה, שם, טלפון')">{{stock.details}}</button></td>
+						<td><input type="image" class="delete" id="delete" src="../img/delete.png"></td>
+						<td><button type="button" class="details" onclick="alert({{stock.details}})">פרטים נוספים</button></td>
 						<td>{{stock.comments}}</td>
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -97,11 +101,13 @@
 				<div class="caption">חדר אפיה</div>
 				<tbody>
 					<tr ng-repeat="stock in stocksBakeryList">
-						<td><button type="button" class="details" onclick="alert('תאריך, שעה, שם, טלפון')">{{stock.details}}</button></td>
+						<td><input type="image" class="delete" id="delete" src="../img/delete.png"></td>
+						<td><button type="button" class="details" onclick="alert({{stock.details}})">פרטים נוספים</button></td>
 						<td>{{stock.comments}}</td>
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -110,11 +116,13 @@
 				<div class="caption">פלאפל</div>
 				<tbody>
 					<tr ng-repeat="stock in stocksFalafelList">
-						<td><button type="button" class="details" onclick="alert('תאריך, שעה, שם, טלפון')">{{stock.details}}</button></td>
+						<td><input type="image" class="delete" id="delete" src="../img/delete.png"></td>
+						<td><button type="button" class="details" onclick="alert({{stock.details}})">פרטים נוספים</button></td>
 						<td>{{stock.comments}}</td>
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased"></td>
 					</tr>
 				</tbody>
 			</table>
