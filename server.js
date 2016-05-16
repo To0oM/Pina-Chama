@@ -163,19 +163,24 @@ app.put('/register/:id', function (req, res) {
 
 //save out of stock in db
 app.post('/stock', function (req, res) {
-	var comments = (req.body.comments === undefined)? 'אין הערות': req.body.comments;
+	var comments = (req.body.comments === undefined || req.body.comments === '')? 'אין הערות': req.body.comments;
 	
 	var d = new Date();
 	var date = d.getDate();
 	var month = d.getMonth() + 1;
 	var year = d.getFullYear();
-	var date = month + "/" + date + "/" + year;
-	var time = d.getHours() + ":" + d.getMinutes();
+	var date = date + "/" + month + "/" + year;
+	var minutes = d.getMinutes();
+	if(minutes < 10)
+		minutes = '0'+minutes;
+	var time = d.getHours()+3 + ":" + minutes + ":" + d.getSeconds(); 
 	
-	var details = ':טלפון' + req.body.phoneNumber + "\n" +
-				  ':שם' + req.body.name + "\n" +
-				  ':תאריך' + date + "\n" +
-				  ':שעה' + time;
+	var phoneNumber = (req.body.phoneNumber === undefined)? '' : ('טלפון: ' + req.body.phoneNumber + "\n") ;
+	var name = (req.body.name === undefined)? '' : ('שם: ' + req.body.name + "\n") ;
+	var details = phoneNumber +
+				  name +
+				  'תאריך: ' + date + "\n" +
+				  'שעה: ' + time;
 				   
 	var category;
 	switch(req.body.category)
@@ -204,9 +209,12 @@ app.post('/stock', function (req, res) {
 		category: category,
 		product: req.body.product,
 		quantity: req.body.quantity,
-		comments: req.body.comments,
+		comments: comments,
 		details: details,
-		groupType: req.body.groupType
+		groupType: req.body.groupType,
+		isBought: false,
+		name: req.body.name,
+		phoneNumber: req.body.phoneNumber
 	}).save(function (err){
 		if (err){
 			console.log(err);
@@ -334,6 +342,85 @@ app.get('/stockFalafel', function(req, res) {
 	});
 });
 
+//for edit item from db 
+app.delete('/stock/:id', function(req, res) {
+	var id = req.params.id;
+	OutOfStocks.remove({_id: id}, function (err, stocks) {
+		res.json(stocks);
+	});
+});
+
+//for edit item
+app.get('/stock/:id', function(req, res) {
+	var id = req.params.id;
+	OutOfStocks.findOne({_id: id}, function (err, stocks) {
+		res.json(stocks);
+	});
+});
+
+app.put('/stock/:id', function(req, res) {
+	var id = req.params.id;
+	
+	var comments = (req.body.comments === undefined || req.body.comments === '')? 'אין הערות': req.body.comments;
+	
+	var d = new Date();
+	var date = d.getDate();
+	var month = d.getMonth() + 1;
+	var year = d.getFullYear();
+	var date = date + "/" + month + "/" + year;
+	var minutes = d.getMinutes();
+	if(minutes < 10)
+		minutes = '0'+minutes;
+	var time = d.getHours()+3 + ":" + minutes + ":" + d.getSeconds(); 
+	
+	var phoneNumber = (req.body.phoneNumber === undefined)? '' : ('טלפון: ' + req.body.phoneNumber + "\n") ;
+	var name = (req.body.name === undefined)? '' : ('שם: ' + req.body.name + "\n") ;
+	var details = phoneNumber +
+				  name +
+				  'תאריך: ' + date + "\n" +
+				  'שעה: ' + time;
+				   
+	var category;
+	switch(req.body.category)
+	{
+		case 'basicProducts':
+			category = 'מוצרי יסוד';
+			break;
+		case 'detergents':
+			category = 'חומרי ניקוי';
+			break;
+		case 'disposableDishes':
+			category = 'כלים חד פעמיים';
+			break;
+		case 'bakingProducts':
+			category = 'מוצרי אפיה';
+			break;
+		case 'falafel':
+			category = 'פלאפל';
+			break;
+		case 'other':
+			category = 'שונות';
+			break;
+	}
+	
+	OutOfStocks.findOneAndUpdate({_id: id},
+		{$set: {category: category, product: req.body.product, quantity: req.body.quantity, comments: comments, details: details,
+		groupType: req.body.groupType, isBought: false, name: req.body.name, phoneNumber: req.body.phoneNumber}},
+		{new: true} , function(err, stocks) {
+			res.json(stocks);
+		});
+});
+
+app.put('/stock/:id/:value', function(req, res) {
+	var id = req.params.id;
+	var value = req.params.value;
+	
+	OutOfStocks.findOneAndUpdate({_id: id},
+		{$set: {isBought: value}}, function(err, stocks) {
+			res.json(stocks);
+		});
+});
+
 //save messages in DB
 app.post('/message', function (req, res) {
 	new Messages({
@@ -354,6 +441,7 @@ app.post('/message', function (req, res) {
 		}
 	});
 });
+
 //delete messages in DB
 app.delete('/message/:id', function(req, res) {
 	var id = req.params.id;

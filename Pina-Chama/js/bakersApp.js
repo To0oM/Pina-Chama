@@ -73,7 +73,7 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/guestBook', {
-		templateUrl: '../guests/guestBook.html',
+		templateUrl: '../general/guestBook.html',
 		controller: 'guestBookController',
 		controllerAs:'guestBook'
 	})

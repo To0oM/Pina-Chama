@@ -7,7 +7,10 @@ var outofstocksSchema = new Schema({
 	quantity: Number,
 	comments: String,
 	details: String,
-	groupType: String
+	groupType: String,
+	isBought: Boolean,
+	name: String,
+	phoneNumber: String
 });
 
 mongoose.model('outofstocks', outofstocksSchema);

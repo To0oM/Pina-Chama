@@ -10,6 +10,7 @@
 		<link rel = "stylesheet" href="../css/business-casual.css" />
 		<link rel = "stylesheet" href="../css/style.css" />
 		<link rel = "stylesheet" href="../css/messages.css" />
+		<link rel = "stylesheet" href="../css/messages.css" />
 		<link rel = "stylesheet" type = "text/css" href = "../css/sweetalert.css" />
 
         <!-- Fonts -->
@@ -56,8 +57,8 @@
                         <li>
                             <a id = "navTab4" class = "navTabs" href = "#/arrangement">סידור התנדבות</a>
                         </li>
-                        <li>
-                            <a id = "navTab3" class = "navTabs" href = "#/stock">חסרים במלאי</a>
+                        <li ng-controller="stockController">
+                            <a id = "navTab3" class = "navTabs" href = "#/stock" ng-click="loadStockDB()">חסרים במלאי</a>
                         </li>
                         <li>
                             <a id = "navTab2" class = "navTabs" href = "#/guides">מדריכים</a>

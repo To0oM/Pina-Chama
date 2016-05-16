@@ -14,7 +14,7 @@
 						<span class = "inline">
 							<label id="GroupType"> תחום </label>
 							<select name = "groupType" class="groupType" id="groupType" ng-model="stock.groupType">
-								<option value = "pina"> פינה </option>
+								<option value = "pina" selected> פינה </option>
 								<option value = "bakery"> חדר אפיה </option>
 								<option value = "falafel">  פלאפל </option>
 							</select>
@@ -23,7 +23,7 @@
 						<span class = "inline">
 							<label id="Category">קטגוריה</label>
 							<select name = "category" class="category" id="category" ng-model="stock.category">
-								<option value = "basicProducts"> מוצרי יסוד </option>
+								<option value = "basicProducts" selected> מוצרי יסוד </option>
 								<option value = "detergents"> חומרי ניקוי </option>
 								<option value = "disposableDishes">  כלים חד פעמיים </option>
 								<option value = "bakingProducts"> מוצרי אפיה </option>
@@ -34,17 +34,17 @@
 
 						<span class = "inline">
 							<label id="Product">מוצר</label>
-							<input type="text" name="product" class="product" id="product" ng-required ng-model="stock.product"/>
+							<input type="text" name="product" class="product" id="product" ng-required="required.product" ng-model="stock.product"/>
 						</span>
 						
 						<span class = "inline">
 							<label id="Quantity">כמות</label>
-							<input type="text" name="quantity" class="quantity" id="quantity" ng-required ng-model="stock.quantity"/>
+							<input type="text" pattern="\d*" maxlength="5" name="quantity" class="quantity" id="quantity" ng-required="required.quantity" ng-model="stock.quantity"/>
 						</span>
 						
 						<span class = "inline">
 							<label id="Name">שם</label>
-							<input type="text" name="name" class="name" id="name" ng-required ng-model="stock.name"/>
+							<input type="text" name="name" class="name" id="name" ng-model="stock.name"/>
 						</span>
 						
 						<span class = "inline">
@@ -60,6 +60,11 @@
 						<span id = "cmd" class="addStock-container">
 							<button type="submit" id="addStock" class="addStock">+</button>
 						</span>
+						
+						<span>
+							<button type="button" id="updateStock" class="updateStock" ng-disabled="isDisabledUpdate" ng-click="update()">עדכן</button>
+						</span>
+						
 					</ul>
 				</form>	
 			</div>
@@ -86,13 +91,16 @@
 				<div class="caption">פינה</div>
 				<tbody>
 					<tr ng-repeat="stock in stocksPinaList">
-						<td><input type="image" class="delete" id="delete" src="../img/delete.png"></td>
-						<td><button type="button" class="details" onclick="alert({{stock.details}})">פרטים נוספים</button></td>
+						<td>
+							<input type="image" class="edit" id="edit" src="../img/edit.png" title="ערוך מוצר" ng-click="edit(stock._id)">
+							<input type="image" class="delete" id="delete" src="../img/delete.png" title="מחק מוצר" ng-click="remove(stock._id)">
+						</td>
+						<td><button type="button" class="details" ng-click="showDetails(stock.details)">פרטים נוספים</button></td>
 						<td>{{stock.comments}}</td>
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
-						<td><input type="checkbox" name="purchased" class="purchased" value="purchased"></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="updateBought(stock._id, stock.isBought)"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -101,13 +109,16 @@
 				<div class="caption">חדר אפיה</div>
 				<tbody>
 					<tr ng-repeat="stock in stocksBakeryList">
-						<td><input type="image" class="delete" id="delete" src="../img/delete.png"></td>
-						<td><button type="button" class="details" onclick="alert({{stock.details}})">פרטים נוספים</button></td>
+						<td>
+							<input type="image" class="edit" id="edit" src="../img/edit.png" title="ערוך מוצר" ng-click="edit(stock._id)">
+							<input type="image" class="delete" id="delete" src="../img/delete.png" title="מחק מוצר" ng-click="remove(stock._id)">
+						</td>
+						<td><button type="button" class="details" ng-click="showDetails(stock.details)">פרטים נוספים</button></td>
 						<td>{{stock.comments}}</td>
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
-						<td><input type="checkbox" name="purchased" class="purchased" value="purchased"></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="isBought(stock._id)"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -116,13 +127,16 @@
 				<div class="caption">פלאפל</div>
 				<tbody>
 					<tr ng-repeat="stock in stocksFalafelList">
-						<td><input type="image" class="delete" id="delete" src="../img/delete.png"></td>
-						<td><button type="button" class="details" onclick="alert({{stock.details}})">פרטים נוספים</button></td>
+						<td>
+							<input type="image" class="edit" id="edit" src="../img/edit.png" title="ערוך מוצר" ng-click="edit(stock._id)">
+							<input type="image" class="delete" id="delete" src="../img/delete.png" title="מחק מוצר" ng-click="remove(stock._id)">
+						</td>
+						<td><button type="button" class="details" ng-click="showDetails(stock.details)">פרטים נוספים</button></td>
 						<td>{{stock.comments}}</td>
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
-						<td><input type="checkbox" name="purchased" class="purchased" value="purchased"></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="isBought(stock._id)"></td>
 					</tr>
 				</tbody>
 			</table>

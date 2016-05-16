@@ -73,7 +73,7 @@ app.controller('donationsController', ['$scope', '$http', function($scope, $http
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/guestBook', {
-		templateUrl: 'guestBook.html',
+		templateUrl: '../general/guestBook.html',
 		controller: 'guestBookController',
 		controllerAs:'guestBook'
 	})
