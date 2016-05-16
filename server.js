@@ -354,6 +354,13 @@ app.post('/message', function (req, res) {
 		}
 	});
 });
+//delete messages in DB
+app.delete('/message/:id', function(req, res) {
+	var id = req.params.id;
+	Messages.remove({_id: id}, function (err, message) {
+		res.json(message);
+	});
+});
 
 //listen on port
 app.listen(port);

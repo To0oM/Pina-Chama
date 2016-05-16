@@ -65,7 +65,7 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 	
 	$("#addMessageDiv").hide();
 	$("#fade").hide();
-
+	
 	//load the messages from the database.
 	$scope.refresh = function () {
 		$http.get('/refresh').success(function(response) {
@@ -164,6 +164,13 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 		$scope.message.publicationDate = new Date();
 
 		$http.post('/message', $scope.message).success(function(response) {
+			$scope.loadMessagesDB();
+		});
+	};
+	
+	//delete message form the DB
+	$scope.remove = function(id) {
+		$http.delete('/message/' + id).success(function(response) {
 			$scope.loadMessagesDB();
 		});
 	};
