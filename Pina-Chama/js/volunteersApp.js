@@ -2,6 +2,9 @@ var userInfo = {
 	fullName:''
 };
 
+var messages;
+var posts;
+
 var app = angular.module('volunteersApp', ['ngRoute']);
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
@@ -35,7 +38,32 @@ app.controller('navContreoller', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+	//load the messages from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.messages = messages;
+			$scope.posts = posts;
+		});
+	};
 	
+	$scope.loadMessagesDB = function() {
+		$http.get('/volunteersMessages').success(function(response) {
+			$scope.messages = response;
+			
+			messages = $scope.messages;
+		});
+
+		$http.get('/volunteersPosts').success(function(response) {
+			$scope.posts = response;
+			
+			posts = $scope.posts;
+		});
+
+		$scope.refresh();
+	};
+
+	//initial load
+	$scope.loadMessagesDB();
 }]);﻿
 
 app.controller('guidesController', ['$scope', '$http', function($scope, $http) {

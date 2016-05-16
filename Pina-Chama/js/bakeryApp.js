@@ -2,6 +2,9 @@ var userInfo = {
 	fullName:''
 };
 
+var messages;
+var posts;
+
 var app = angular.module('bakeryApp', ['ngRoute']);
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
@@ -43,7 +46,32 @@ app.controller('guestBookController', ['$scope', '$http', function($scope, $http
 }]);﻿
 
 app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+	//load the messages from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.messages = messages;
+			$scope.posts = posts;
+		});
+	};
 	
+	$scope.loadMessagesDB = function() {
+		$http.get('/bakeryMessages').success(function(response) {
+			$scope.messages = response;
+			
+			messages = $scope.messages;
+		});
+
+		$http.get('/bakeryPosts').success(function(response) {
+			$scope.posts = response;
+			
+			posts = $scope.posts;
+		});
+
+		$scope.refresh();
+	};
+
+	//initial load
+	$scope.loadMessagesDB();
 }]);﻿
 
 app.controller('guidesController', ['$scope', '$http', function($scope, $http) {

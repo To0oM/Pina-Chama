@@ -8,6 +8,7 @@ var messagesSchema = new Schema({
 	messageToBakers: Boolean,
 	messageToBakery: Boolean,
 	messageToGuests: Boolean,
+	messageToString: String,
 	category: String,
 	publicationDate: Date
 });

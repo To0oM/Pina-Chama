@@ -8,23 +8,28 @@
 	width: 100%;
 	background-color: black;
 	z-index:1001;
-	-moz-opacity: 0.7;
-	opacity:.70;
-	filter: alpha(opacity=70);
+	-moz-opacity: 0.6;
+	opacity:.60;
+	filter: alpha(opacity=60);
 }
 
 #addMessageDiv {
+	background: rgba(255,255,255,0.95);
 	display: none;
 	position: absolute;
 	top: 40%;
-	left: 30%;
+	left: 25%;
 	width: 50%;
-	height: 537px;
+	height: 555px;
 	/*padding: 16px;*/
 	z-index:1002;
-	overflow: auto;
 	box-shadow:0 0 10px 0 #000;
 	direction: rtl;
+}
+
+#addMessageSpan {
+	padding-right: 100px;
+	display: block;
 }
 
 #cmd {
@@ -44,8 +49,10 @@
 	overflow: hidden;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+
 #addMessTitle{
 	padding-top: -60px;
+	padding-right: -100px;
 	text-align: center;
 }
 
@@ -53,14 +60,15 @@
 	position:absolute;
 	background:black;
 	color:white;
-	right:-15px;
-	top:-15px;
+	right:-20px;
+	top:-20px;
 	border-radius:50%;
-	width:30px;
-	height:30px;
+	width:40px;
+	height:40px;
+	padding-top: 6px;
 	line-height:30px;
 	text-align:center;
-	font-size:8px;
+	font-size:16px;
 	font-weight:bold;
 	font-family:'Arial Black', Arial, sans-serif;
 	cursor:pointer;
@@ -69,42 +77,46 @@
 }
 
 #addMessageDiv label{
-    margin:0 0 3px 0;
-    padding:0px;
-    display:inline-block;
+	margin:0 0 3px 10px;
+	padding:0px;
+	display:inline-block;
 	font-weight: bold;
+}
+
+#addMessageDiv #lblContent{
+	vertical-align: top;
 }
 
 #addMessageDiv input[type=text], 
 #addMessageDiv input[type=date],
 #addMessageDiv textarea{
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    border:1px solid #BEBEBE;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
 	border-radius: 0px;
-    padding: 7px;
-    margin:0px;
-    -webkit-transition: all 0.30s ease-in-out;
-    -moz-transition: all 0.30s ease-in-out;
-    -ms-transition: all 0.30s ease-in-out;
-    -o-transition: all 0.30s ease-in-out;
-    outline: none;  
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;  
 	direction: rtl;
 }
 
 #addMessageDiv textarea {
-    resize: none;
+	resize: none;
 }
 
 #addMessageDiv input[type=text]:focus, 
 #addMessageDiv input[type=date]:focus,
 #addMessageDiv textarea:focus {
 	font: 15px 'Open Sans Hebrew', sans-serif;
-    -moz-box-shadow: 0 0 8px #88D5E9;
-    -webkit-box-shadow: 0 0 8px #88D5E9;
-    box-shadow: 0 0 8px #88D5E9;
-    border: 1px solid #88D5E9;
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
 	color: steelblue;
 }
 #addMessageDiv textarea:focus{
@@ -112,21 +124,120 @@
 }
 
 #topic{
-    width: 40%;
+	width: 40%;
 	height: 38px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
 }
 
 #content{
-    width: 70%;
+	width: 70%;
 	height: 100px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
 	font-style: italic;
 }
 
 .required{
-    color:red;
+	color:red;
 	font-size: 12px;
 	position: relative; 
 	bottom: 3px;
+}
+
+/*-------- add message button --------*/
+.button_add {
+	outline: 0 none;
+	background-color: #d87474;
+	color: white;
+	border: 2px solid #c73838;
+	border-radius: 5px;
+	width: 48px;
+	height: 45px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 35px;
+	margin: 4px 12px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-box-shadow: 5px 9px 5px #a6a6a6;
+	-moz-box-shadow: 5px 9px 5px #a6a6a6;
+	box-shadow: 5px 5px 5px #a6a6a6;
+}
+
+.button_add:hover {
+	background-color: #d26060;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	-webkit-box-shadow: 5px 9px 5px #999999;
+	-moz-box-shadow: 5px 9px 5px #999999;
+	box-shadow: 5px 5px 5px #999999;
+}
+
+.button_add:active {
+	background-color: white; 
+	color: #e39c9c;	
+	border: 2px solid #e39c9c;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	-webkit-box-shadow: 3px 6px 3px #999999;
+	-moz-box-shadow: 3px 6px 3px #999999;
+	box-shadow: 3px 3px 3px #999999;
+	position:relative;
+	top:3px;
+}
+
+#addButtonDiv{
+	text-align: center;
+}
+
+/*-------- the appearance of every single message/post --------*/
+.message{
+	direction: rtl;
+	display: block;
+}
+
+.message h3{
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.message h5{
+	font-style: italic;
+	color: #A3A3A3;
+	width: 30%;
+	padding-left: 3%;
+	text-align: left;
+	float: left;
+}
+
+.message h6{
+	padding-top: 0px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	font-style: italic;
+	color: #BEBEBE;
+	display: block;
+}
+
+.messageContent{
+	font: 16px 'Open Sans Hebrew', sans-serif;
+}
+
+.delete{
+	display: inline;
+	float: left;
+}
+
+.message hr{
+	width: 90%;
+	padding: 0px;
+	margin-bottom: 10px;
+	max-width: 1140px;
+	border-color: rgb(229, 229, 229);
+	display: block;
 }

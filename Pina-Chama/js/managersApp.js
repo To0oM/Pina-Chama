@@ -4,6 +4,10 @@ var userInfo = {
 
 var title = '';
 var usersList;
+
+var messages;
+var posts;
+
 var stocksPinaList;
 var stocksBakeryList;
 var stocksFalafelList;
@@ -52,9 +56,42 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 	$scope.message = {
 		category:''
 	};
+
+	$scope.required = {
+		topic: true,
+		content: true,
+		messageTo: true
+	};
 	
 	$("#addMessageDiv").hide();
 	$("#fade").hide();
+
+	//load the messages from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.messages = messages;
+			$scope.posts = posts;
+		});
+	};
+	
+	$scope.loadMessagesDB = function() {
+		$http.get('/messages').success(function(response) {
+			$scope.messages = response;
+			
+			messages = $scope.messages;
+		});
+
+		$http.get('/posts').success(function(response) {
+			$scope.posts = response;
+			
+			posts = $scope.posts;
+		});
+
+		$scope.refresh();
+	};
+
+	//initial load
+	$scope.loadMessagesDB();
 	
 	$scope.newMessage = function(category){
 		var windowHeight = $(window).height();
@@ -62,16 +99,19 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 		
 		$("#addMessageDiv").fadeIn();
 		$("#fade").fadeIn();
+
 		$scope.message.category = category;
 		
 		if ($scope.message.category === 'message'){
-			$("#addMessageDiv").css("top", $("#messagesDiv").position());
+			var divLocation = $("#messagesDiv").position();
+			$("#addMessageDiv").css('top', divLocation.top);
 			$("#addMessTitle").html("הוספת הודעה לפינת ההודעות מהאחראים");
 		} else {
+			var divLocation = $("#postsDiv").position();
+			$("#addMessageDiv").css('top', divLocation.top);
 			$("#addMessTitle").html("הוספת הודעה לפינת היום שהיה");
-			$("#addMessageDiv").css("top", $("#postsDiv").position());
 		}
-		
+
 		$scope.message.messageToVolunteers = false;
 		$scope.message.messageToBakers = false;
 		$scope.message.messageToBakery = false;
@@ -79,25 +119,61 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 		$scope.message.topic = '';
 		$scope.message.content = '';
 	};
+
+	$scope.close = function(){
+		$("#addMessageDiv").fadeOut();
+		$("#fade").fadeOut();
+	};
+
+	$scope.addMessage = function() {
+		var messageToCount = 0;
+		$scope.message.messageToString = '';
+
+		if ($scope.message.messageToVolunteers){
+			$scope.message.messageToString += 'מתנדבים';
+			messageToCount++;
+		}
+
+		if ($scope.message.messageToBakers){
+			if (messageToCount !== 0){
+				$scope.message.messageToString += ', ';
+			}
+
+			$scope.message.messageToString += 'אופי עוגות';
+			messageToCount++;
+		}
+
+		if ($scope.message.messageToBakery){
+			if (messageToCount !== 0){
+				$scope.message.messageToString += ', ';
+			}
+
+			$scope.message.messageToString += 'חדר אפיה';
+			messageToCount++;
+		}
+
+		if ($scope.message.messageToGuests){
+			if (messageToCount !== 0){
+				$scope.message.messageToString += ', ';
+			}
+
+			$scope.message.messageToString += 'אורחים';
+			messageToCount++;
+		}
+
+		$scope.message.publicationDate = new Date();
+
+		$http.post('/message', $scope.message).success(function(response) {
+			$scope.loadMessagesDB();
+		});
+	};
 	
 	$scope.submitMessageForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.messageForm.$valid) {
 			$scope.addMessage();
+			$scope.close();
 		}
-	};
-	
-	$scope.addMessage = function() {
-		$http.post('/message', $scope.message).success(function(response) {
-			$("#addMessageDiv").fadeOut();
-			$("#fade").fadeOut();
-			console.log($scope.message);
-		});
-	};
-	
-	$scope.close = function(){
-		$("#addMessageDiv").fadeOut();
-		$("#fade").fadeOut();
 	};
 }]);﻿
 
@@ -106,12 +182,10 @@ app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('stockController', ['$scope', '$http', function($scope, $http) {
-	
 	//save stock on db
 	$scope.submitStockForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.stockForm.$valid) {
-
 			$scope.addStock();
 		}
 	};
@@ -165,7 +239,6 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 			stocksFalafelList = $scope.stocksFalafelList;
 		});
 	};
-	
 }]);﻿
 
 app.controller('databaseController', ['$scope', '$http', function($scope, $http) {
@@ -224,58 +297,6 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 	};
 }]);﻿
 
-app.controller('databaseManage', ['$scope', '$http', function($scope, $http) {
-	/*
-	$scope.loadManagerDB = function() {
-		$http.get('/managerDB').success(function(response) {
-			$scope.usersList = response;
-			$scope.title = 'מאגר אחראים';
-		});
-	};
-	*/
-	/*
-	$scope.loadVolunteersDB = function() {
-		$http.get('/volunteersDB').success(function(response) {
-			$scope.usersList = response;
-			$scope.title = 'מאגר מתנדבים';
-			
-			title = $scope.title;
-			usersList = $scope.usersList;
-		});
-	};
-	
-	$scope.loadGuestsDB = function() {
-		$http.get('/guestsDB').success(function(response) {
-			$scope.usersList = response;
-			$scope.title = 'מאגר אורחים';
-			
-			title = $scope.title;
-			usersList = $scope.usersList;
-		});
-	};
-	
-	$scope.loadBakeryDB = function() {
-		$http.get('/bakeryDB').success(function(response) {
-			$scope.usersList = response;
-			$scope.title = 'מאגר חדר אפיה';
-			
-			title = $scope.title;
-			usersList = $scope.usersList;
-		});
-	};
-	
-	$scope.loadBakersDB = function() {
-		$http.get('/bakersDB').success(function(response) {
-			$scope.usersList = response;
-			$scope.title = 'מאגר אופי עוגות';
-			
-			title = $scope.title;
-			usersList = $scope.usersList;
-		});
-	};*/
-	
-}]);﻿
-
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
 	
 }]);﻿
@@ -295,12 +316,7 @@ app.config(function ($routeProvider) {
 		templateUrl: 'voluntaryArrangement.html',
 		controller: 'arrangementController',
 		controllerAs:'arrangement'
-	})/*
-		.when('/database', {
-		templateUrl: 'database.html',
-		controller: 'databaseManage',
-		controllerAs:'databaseM'
-	})*/
+	})
 		.when('/volunteersDB', {
 		templateUrl: 'volunteersDatabase.html',
 		controller: 'databaseController',

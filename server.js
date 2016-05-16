@@ -216,6 +216,96 @@ app.post('/stock', function (req, res) {
 	});
 });
 
+//get all messages in db.
+app.get('/messages', function(req, res) {
+	Messages.find({category : 'message'}, function(err, messages) {
+		if (err)
+			throw err;
+		res.json(messages);
+	});
+});
+
+//get all posts in db.
+app.get('/posts', function(req, res) {
+	Messages.find({category : 'posts'}, function(err, posts) {
+		if (err)
+			throw err;
+		res.json(posts);
+	});
+});
+
+//get all bakers's messages in db.
+app.get('/bakersMessages', function(req, res) {
+	Messages.find({category : 'message', messageToBakers : true}, function(err, messages) {
+		if (err)
+			throw err;
+		res.json(messages);
+	});
+});
+
+//get all bakers's posts in db.
+app.get('/bakersPosts', function(req, res) {
+	Messages.find({category : 'posts', messageToBakers : true}, function(err, posts) {
+		if (err)
+			throw err;
+		res.json(posts);
+	});
+});
+
+//get all bakery's messages in db.
+app.get('/bakeryMessages', function(req, res) {
+	Messages.find({category : 'message', messageToBakery : true}, function(err, messages) {
+		if (err)
+			throw err;
+		res.json(messages);
+	});
+});
+
+//get all bakery's posts in db.
+app.get('/bakeryPosts', function(req, res) {
+	Messages.find({category : 'posts', messageToBakery : true}, function(err, posts) {
+		if (err)
+			throw err;
+		res.json(posts);
+	});
+});
+
+//get all guests's messages in db.
+app.get('/guestsMessages', function(req, res) {
+	Messages.find({category : 'message', messageToGuests : true}, function(err, messages) {
+		if (err)
+			throw err;
+		res.json(messages);
+	});
+});
+
+//get all guests's posts in db.
+app.get('/guestsPosts', function(req, res) {
+	Messages.find({category : 'posts', messageToGuests : true}, function(err, posts) {
+		if (err)
+			throw err;
+		res.json(posts);
+	});
+});
+
+//get all volunteers's messages in db.
+app.get('/volunteersMessages', function(req, res) {
+	Messages.find({category : 'message', messageToVolunteers : true}, function(err, messages) {
+		if (err)
+			throw err;
+		res.json(messages);
+	});
+});
+
+//get all volunteers's posts in db.
+app.get('/volunteersPosts', function(req, res) {
+	Messages.find({category : 'posts', messageToVolunteers : true}, function(err, posts) {
+		if (err)
+			throw err;
+		res.json(posts);
+	});
+});
+
 //find out of stock in db
 app.get('/stockPina', function(req, res) {
 	OutOfStocks.find({groupType : 'pina'}, function(err, stocks) {
@@ -241,6 +331,27 @@ app.get('/stockFalafel', function(req, res) {
 			throw err;
 		
 		res.json(stocks);
+	});
+});
+
+//save messages in DB
+app.post('/message', function (req, res) {
+	new Messages({
+		content: req.body.content,
+		topic: req.body.topic,
+		messageToVolunteers: req.body.messageToVolunteers,
+		messageToBakers: req.body.messageToBakers,
+		messageToBakery: req.body.messageToBakery,
+		messageToGuests: req.body.messageToGuests,
+		messageToString: req.body.messageToString,
+		category: req.body.category,
+		publicationDate: req.body.publicationDate
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+		   res.json('saved!');
+		}
 	});
 });
 

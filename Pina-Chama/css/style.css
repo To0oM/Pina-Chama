@@ -12,8 +12,8 @@
 }
 
 .scrollit {
-    overflow:scroll;
-    height:295px;
+	overflow:scroll;
+	height:295px;
 }
 
 #volunteer {
@@ -28,8 +28,8 @@
 	text-align: center;
 	padding: 8px;
 	table-layout: fixed;
-    word-break: break-all;
-    word-wrap:break-word;
+	word-break: break-all;
+	word-wrap:break-word;
 }
 
 #volunteer td: {
@@ -149,4 +149,20 @@
 
 .connection a:hover { 
 	text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+	height: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+	background: #eb9494;
 }
