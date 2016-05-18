@@ -170,8 +170,22 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 	
 	//delete message form the DB
 	$scope.remove = function(id) {
-		$http.delete('/message/' + id).success(function(response) {
-			$scope.loadMessagesDB();
+		swal({
+			title: "מחיקת הודעה",
+			text: "האם אתה בטוח שברצונך למחוק הודעה זו?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "כן, מחק!",
+			closeOnConfirm: false,
+			html: false
+		}, function(){
+			$http.delete('/message/' + id).success(function(response) {
+				$scope.loadMessagesDB();
+			});
+			swal("נמחק!",
+			"הודעה זו הוסרה מרשימת ההודעות",
+			"success");
 		});
 	};
 	
