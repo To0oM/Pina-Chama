@@ -289,9 +289,24 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 		swal("פרטים", details);
 	};
 	
+	//delete message form the DB
 	$scope.remove = function(id) {
-		$http.delete('/stock/' + id).success(function(response) {
-			$scope.loadStockDB();
+		swal({
+			title: "מחיקת מוצר",
+			text: "האם אתה בטוח שברצונך למחוק מוצר זה?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "כן, מחק!",
+			closeOnConfirm: false,
+			html: false
+		}, function(){
+			$http.delete('/stock/' + id).success(function(response) {
+				$scope.loadStockDB();
+			});
+			swal("נמחק!",
+			"מוצר זה הוסר מרשימת החסרים במלאי",
+			"success");
 		});
 	};
 	
