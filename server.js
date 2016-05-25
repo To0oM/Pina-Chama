@@ -85,7 +85,7 @@ app.get('/refresh', function(req, res) {
 	res.json('refresh');
 });
 
-app.get('/managerDB', function(req, res) {
+app.get('/managersDB', function(req, res) {
 	Users.find({userType : 'manager'}, function(err, users) {
 		if (err)
 			throw err;
@@ -177,8 +177,8 @@ app.post('/stock', function (req, res) {
 	
 	var phoneNumber = (req.body.phoneNumber === undefined)? '' : ('טלפון: ' + req.body.phoneNumber + "\n") ;
 	var name = (req.body.name === undefined)? '' : ('שם: ' + req.body.name + "\n") ;
-	var details = phoneNumber +
-				  name +
+	var details =  name +
+				   phoneNumber +
 				  'תאריך: ' + date + "\n" +
 				  'שעה: ' + time;
 				   
@@ -375,8 +375,8 @@ app.put('/stock/:id', function(req, res) {
 	
 	var phoneNumber = (req.body.phoneNumber === undefined)? '' : ('טלפון: ' + req.body.phoneNumber + "\n") ;
 	var name = (req.body.name === undefined)? '' : ('שם: ' + req.body.name + "\n") ;
-	var details = phoneNumber +
-				  name +
+	var details =  name +
+				   phoneNumber +
 				  'תאריך: ' + date + "\n" +
 				  'שעה: ' + time;
 				   

@@ -246,6 +246,7 @@
 	border: 1px solid;
 	border-radius: 5px;
 	border-color: white;
+	direction: rtl;
 }
 
 /*Tables*/
@@ -353,6 +354,10 @@ thead.caption ,
 	font-weight: normal;
 	text-shadow: 1px 1px 1px rgba(0,0,0,.3);
 	text-align: right;
+}
+
+.comment{
+	direction: rtl;
 }
 
 .details {

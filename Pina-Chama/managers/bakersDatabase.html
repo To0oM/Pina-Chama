@@ -14,11 +14,12 @@
             <table id="volunteer">
                 <thead>
                     <tr>
+						<th class="headDetails"></th>
                         <th id="head17" class="col17"><img src = "../img/mail.jpg"></img></th>
                         <th id="head16" class="col16">סטטוס</th>
-                        <th id="head15" class="col15">קביעות</th>
-                        <th id="head14" class="col14">כתובת</th>
-                        <th id="head13" class="col13">טלפון</th>
+                        <th id="head15" class="col15">כתובת</th>
+                        <th id="head14" class="col14">טלפון</th>
+						<th id="head13" class="col13">ת.לידה</th>
                         <th id="head12" class="col12">שם משפחה</th>
                         <th id="head11" class="col11">שם פרטי</th>
                     </tr>
@@ -30,11 +31,12 @@
                             <div class="scrollit">
                                 <table id="volunteer">
                                     <tr ng-repeat="user in usersList">
+										<td><button type="button" class="colDetails" onclick="alert({{user.permanent + user.comments}})">הערות</button></td>
                                         <td class="col17"><a href="https://www.google.co.il">{{user.email}}</a></td>
                                         <td class="col16" id="active">{{user.active}}</td>
-                                        <td class="col15">{{user.permanent}}</td>
-                                        <td class="col14">{{user.address}}</td>
-                                        <td class="col13">{{user.phoneNumber}}</td>
+                                        <td class="col15">{{user.address}}</td>
+                                        <td class="col14">{{user.phoneNumber}}</td>
+										<td class="col13">{{user.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
                                         <td class="col12">{{user.lastName}}</td>
                                         <td class="col11">{{user.firstName}}</td>
                                     </tr>

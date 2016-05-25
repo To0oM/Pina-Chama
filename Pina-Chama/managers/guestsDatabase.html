@@ -14,11 +14,11 @@
             <table id="volunteer">
                 <thead>
                     <tr>
-                        <th id="head28" class="col28"><img src = "../img/mail.jpg"></img></th>
-                        <th id="head27" class="col27">הערות</th>
-                        <th id="head26" class="col26">תאריך ביקור</th>
-                        <th id="head25" class="col25">כתובת</th>
-                        <th id="head24" class="col24">טלפון</th>
+						<th class="headDetails"></th>
+                        <th id="head27" class="col27"><img src = "../img/mail.jpg"></img></th>
+                        <th id="head26" class="col26">כתובת</th>
+                        <th id="head25" class="col25">טלפון</th>
+						<th id="head24" class="col24">ת.לידה</th>
                         <th id="head23" class="col23">שם משפחה</th>
                         <th id="head22" class="col22">שם פרטי</th>
                         <th id="head21" class="col21">קבוצה</th>
@@ -31,11 +31,11 @@
                             <div class="scrollit">
                                 <table id="volunteer">
                                     <tr ng-repeat="user in usersList">
-                                        <td class="col28"><a href="https://www.google.co.il">{{user.email}}</a></td>
-                                        <td class="col27">{{user.comments}}</td>
-                                        <td class="col26">{{user.dateOfVisit | date : 'dd/MM/yyyy'}}</td>
-                                        <td class="col25">{{user.address}}</td>
-                                        <td class="col24">{{user.phoneNumber}}</td>
+										<td><button type="button" class="colDetails" onclick="alert({{user.dateOfVisit | date : 'dd/MM/yyyy'}})">הערות</button></td>
+                                        <td class="col27"><a href="https://www.google.co.il">{{user.email}}</a></td>
+                                        <td class="col26">{{user.address}}</td>
+                                        <td class="col25">{{user.phoneNumber}}</td>
+										<td class="col24">{{user.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
                                         <td class="col23">{{user.lastName}}</td>
                                         <td class="col22">{{user.firstName}}</td>
                                         <td class="col21">{{user.team}}</td>

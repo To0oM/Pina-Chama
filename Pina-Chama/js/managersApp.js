@@ -370,6 +370,17 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 	//initial load
 	$scope.loadData();
 	
+	$scope.loadManagrsDB = function() {
+		$http.get('/managersDB').success(function(response) {
+			$scope.usersList = response;
+			$scope.title = 'מאגר אחראים';
+			
+			title = $scope.title;
+			usersList = $scope.usersList;
+		});
+		$scope.loadData();
+	};
+	
 	$scope.loadVolunteersDB = function() {
 		$http.get('/volunteersDB').success(function(response) {
 			$scope.usersList = response;
@@ -413,6 +424,17 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 		});
 		$scope.loadData();
 	};
+	
+	$scope.showTableDetails = function(index) {
+		console.log("index: " + index);
+		var volunteerStartDate = ($scope.usersList[index].volunteerStartDate === null)? 'לא צויין': $scope.usersList[index].volunteerStartDate;
+		
+		var tableDetails = 'הערות: ' + $scope.usersList[index].comments + "\n" +
+					'תאריך הצטרפות: ' + volunteerStartDate + "\n" +
+					'קביעות: ' + $scope.usersList[index].permanent;
+		
+		swal("פרטים", tableDetails);
+	};
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
@@ -437,6 +459,11 @@ app.config(function ($routeProvider) {
 	})
 		.when('/volunteersDB', {
 		templateUrl: 'volunteersDatabase.html',
+		controller: 'databaseController',
+		controllerAs:'database'
+	})
+		.when('/managersDB', {
+		templateUrl: 'managersDatabase.html',
 		controller: 'databaseController',
 		controllerAs:'database'
 	})

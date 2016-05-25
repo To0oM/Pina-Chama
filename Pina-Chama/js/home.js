@@ -161,6 +161,8 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 		addCity: true,
 		addStreet: true,
 		addApartment: true,
+		phoneNumber: true,
+		dateOfBirth: true,
 		email: true,
 		validationKey: true
 	};
@@ -190,6 +192,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$scope.required.id = false;
 				$("#data8").show();
 				$("#data9").show();
+				$("#Comments").prop("placeholder", "במידה והינך מתנדב קבוע נא לציין את תאריך ההתנדבות.");
 				$("#data10").hide();
 				$("#data11").hide();
 				$scope.required.validationKey = false;
@@ -200,6 +203,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$scope.required.id = true;
 				$("#data8").show();
 				$("#data9").show();
+				$("#Comments").prop("placeholder", "נא למלא בשדה זה את תפקידך בקבוצת האפיה.");
 				$("#data10").hide();
 				$("#data11").hide();
 				$scope.required.validationKey = false;
@@ -220,6 +224,7 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$scope.required.id = false;
 				$("#data8").hide();
 				$("#data9").show();
+				$("#Comments").prop("placeholder", "נא למלא בשדה זה:\nמהיכן הקבוצה, איש קשר\\מדריך, מס' משתתפים, גילאים ומטרת הביקור.");
 				$("#data10").hide();
 				$("#data11").show();
 				$scope.required.validationKey = false;
@@ -263,7 +268,7 @@ myApp.config(function ($routeProvider) {
 //check the user info and direct to the right page(managers/bakers/volunteer...)
 function redirection(userType){
 	var path = '/';
-	console.log(userType);
+	
 	switch(userType){
 		case "manager":
 			path += 'managers/managers.html';
