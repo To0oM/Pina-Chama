@@ -12,6 +12,9 @@ var stocksPinaList;
 var stocksBakeryList;
 var stocksFalafelList;
 
+var shifts;
+var shiftRequests;
+
 var app = angular.module('managersApp', ['ngRoute']);
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
@@ -438,7 +441,32 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
+	//load the shifts and shiftRequests from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.shifts = shifts;
+			$scope.shiftRequests = shiftRequests;
+		});
+	};
 	
+	$scope.loadShiftsDB = function() {
+		$http.get('/volunteersShifts').success(function(response) {
+			$scope.shifts = response;
+			
+			shifts = $scope.shifts;
+		});
+
+		$http.get('/managersShiftsRequests').success(function(response) {
+			$scope.shiftRequests = response;
+			
+			shiftRequests = $scope.shiftRequests;
+		});
+
+		$scope.refresh();
+	};
+
+	//initial load
+	$scope.loadShiftsDB();
 }]);﻿
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {

@@ -1,4 +1,4 @@
-.formRegister {
+.formRegister, .formRequest {
     margin:10px auto;
     max-width: 40%;
     padding: 0px 12px 10px 20px;
@@ -6,21 +6,21 @@
 	color: #000033;
 	direction: rtl;
 }
-.formRegister li {
+.formRegister li, .formRequest li{
     padding: 0;
     display: block;
     list-style: none;
     margin: 4px 0 0 0;
 	
 }
-.formRegister label{
+.formRegister label, .formRequest label {
     margin:0 0 3px 0;
     padding:0px;
     display:block;
 	font-weight: bold;
 }
-.formRegister input[type=text], 
-.formRegister input[type=date],
+.formRegister input[type=text], .formRequest[type=text], 
+.formRegister input[type=date], .formRequest[type=date], 
 textarea, 
 select{
     box-sizing: border-box;
@@ -42,10 +42,10 @@ textarea {
     resize: none;
 }
 
-.formRegister input[type=text]:focus, 
-.formRegister input[type=date]:focus,
-.formRegister textarea:focus, 
-.formRegister select:focus{
+.formRegister input[type=text]:focus, .formRequest input[type=text]:focus, 
+.formRegister input[type=date]:focus, .formRequest input[type=date]:focus,
+.formRegister textarea:focus, .formRequest textarea:focus, 
+.formRegister select:focus, .formRequest select:focus{
 	font: 15px 'Open Sans Hebrew', sans-serif;
     -moz-box-shadow: 0 0 8px #88D5E9;
     -webkit-box-shadow: 0 0 8px #88D5E9;
@@ -53,135 +53,137 @@ textarea {
     border: 1px solid #88D5E9;
 	color: steelblue;
 }
-.formRegister textarea:focus{
+.formRegister textarea:focus, .formRequest textarea:focus {
 	font-style: italic;
 }
 
-.formRegister .phone{
+.formRegister .phone {
     width: 100%;
 	height: 38px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
 }
 
-.formRegister .email{
+.formRegister .email {
     width: 100%;
 	height: 38px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
 }
 
-.formRegister .address{
+.formRegister .address {
     width: 100%;
 	height: 80px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
 	font-style: italic;
 }
 
-.formRegister .UserType{
+.formRegister .UserType {
     width: 100%;
 	font-size: 15px;
 	color: #303030 ;
 	height: 35px;
 	margin-bottom: 5px;
 }
-.formRegister .FormPayment{
-    width: 100%;
+
+.formRequest .shiftDay, .formRequest .shiftTime {
+	direction: rtl;
+    width: 40%;
 	font-size: 15px;
 	color: #303030 ;
 	height: 35px;
+	margin-bottom: 5px;
 }
 
-.formRegister .field-textarea{
-    height: 100px;
-}
-.formRegister .firstName{
+.formRegister .firstName {
     width: 48.5%;
 	height: 38px;
 }
-.formRegister .lastName{
-    width: 48.5%;
-	height: 38px;
-}
-
-.formRegister .id{
+.formRegister .lastName {
     width: 48.5%;
 	height: 38px;
 }
 
-.formRegister #lblBirthday{
+.formRegister .id {
+    width: 48.5%;
+	height: 38px;
+}
+
+.formRegister #lblBirthday {
 	display: inline;
 }
 
-.formRegister #lblId{
+.formRegister #lblId {
 	display: inline;
 }
 
-.formRegister .birthday{
+.formRegister .birthday {
     width: 48.5%;
 	height: 38px;
 	color: gray;
 }
 
-.formRegister .city{
+.formRegister .city {
     width: 48.5%;
 	height: 38px;
 }
-.formRegister .street{
-    width: 48.5%;
-	height: 38px;
-}
-
-.formRegister .apartment{
-    width: 48.5%;
-	height: 38px;
-}
-.formRegister .postalCode{
+.formRegister .street {
     width: 48.5%;
 	height: 38px;
 }
 
-.formRegister .team{
+.formRegister .apartment {
+    width: 48.5%;
+	height: 38px;
+}
+.formRegister .postalCode {
     width: 48.5%;
 	height: 38px;
 }
 
-.formRegister .dateOfVisit{
+.formRegister .team {
     width: 48.5%;
 	height: 38px;
 }
 
-.formRegister .startVoluntary{
+.formRegister .dateOfVisit {
+    width: 48.5%;
+	height: 38px;
+}
+
+.formRegister .startVoluntary {
     width: 48.5%;
 	height: 38px;
 	color: gray;
 }
 
-.formRegister .Comments{
+.formRegister .Comments, .formRequest .Comments {
     width: 100%;
 	height: 80px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
 	font-style: italic;
 }
 
-.formRegister .keyManager
-{
+.formRegister .keyManager {
     width: 48.5%;
 	height: 38px;
 }
 
 /*button add register*/
+#addRegister, #addRequest {
+	background: #4f93ce;
+	border: 1px solid currentColor;
+	font-size: 1.1rem;
+	/*color: #4f93ce;*/
+	color: #fff;
+	padding: 0.75rem 3rem;
+	cursor: pointer;
+	-webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+	transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+	overflow: hidden;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
 #addRegister {
-  margin-right: 31%;	
-  background: #4f93ce;
-  border: 1px solid currentColor;
-  font-size: 1.1rem;
-  /*color: #4f93ce;*/
-    color: #fff;
-  padding: 0.75rem 3rem;
-  cursor: pointer;
-  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-  overflow: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	margin-right: 31%;
 }
 /*
 #addRegister span {
@@ -191,16 +193,16 @@ textarea {
 }
 */
 #addRegister:hover {
-  color: #337ab7;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+	color: #337ab7;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
 
 #addRegister:focus {
-  outline: none;
+	outline: none;
 }
 
 .required{
-    color:red;
+	color:red;
 	font-size: 10px;
 	position: relative; 
 	bottom: 4px;

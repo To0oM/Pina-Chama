@@ -9,6 +9,8 @@ var stocksPinaList;
 var stocksBakeryList;
 var stocksFalafelList;
 
+var shifts;
+
 var app = angular.module('volunteersApp', ['ngRoute']);
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
@@ -232,7 +234,45 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
+	$scope.shiftRequest = {
+	};
 	
+	//load the shifts from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.shifts = shifts;
+		});
+	};
+	
+	$scope.loadShiftsDB = function() {
+		$http.get('/volunteersShifts').success(function(response) {
+			$scope.shifts = response;
+			
+			shifts = $scope.shifts;
+		});
+		
+		$scope.refresh();
+	};
+	
+	//initial load
+	$scope.loadShiftsDB();
+	
+	$scope.addRequest = function() {
+		$scope.shiftRequest.requestDate = new Date();
+		
+		$scope.shiftRequest.applicantName = userInfo.fullName;
+
+		$http.post('/volunteersShiftRequest', $scope.shiftRequest).success(function(response) {
+			$scope.loadShiftsDB();
+		});
+	};
+	
+	$scope.submitForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.requestForm.$valid) {
+			$scope.addRequest();
+		}
+	};
 }]);﻿
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {

@@ -46,6 +46,8 @@ app.get('/', function(req, res) {
 var Users = mongoose.model('users');
 var OutOfStocks = mongoose.model('outofstocks');
 var Messages = mongoose.model('messages');
+var ShiftRequests = mongoose.model('shiftRequests');
+var Shifts = mongoose.model('shifts');
 
 app.post('/register', function (req, res) {
 	var id = (req.body.id === undefined)? 0: req.body.id;
@@ -447,6 +449,42 @@ app.delete('/message/:id', function(req, res) {
 	var id = req.params.id;
 	Messages.remove({_id: id}, function (err, message) {
 		res.json(message);
+	});
+});
+
+//save shift request in DB
+app.post('/volunteersShiftRequest', function (req, res) {
+	new ShiftRequests({
+		shiftDay: req.body.shiftDay,
+		shiftTime: req.body.shiftTime,
+		comments: req.body.comments,
+		applicantName: req.body.applicantName,
+		applicantPhoneNumber: req.body.applicantPhoneNumber,
+		requestDate: req.body.requestDate
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+		   res.json('saved!');
+		}
+	});
+});
+
+//get all volunteers's shifts in db.
+app.get('/volunteersShifts', function(req, res) {
+	Shifts.find(function(err, shifts) {
+		if (err)
+			throw err;
+		res.json(shifts);
+	});
+});
+
+//get all shifts requests in db.
+app.get('/managersShiftsRequests', function(req, res) {
+	ShiftRequests.find(function(err, shiftRequests) {
+		if (err)
+			throw err;
+		res.json(shiftRequests);
 	});
 });
 
