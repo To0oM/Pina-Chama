@@ -107,10 +107,6 @@ textarea {
 	height: 38px;
 }
 
-.formRegister #lblBirthday {
-	display: inline;
-}
-
 .formRegister #lblId {
 	display: inline;
 }
@@ -185,13 +181,7 @@ textarea {
 #addRegister {
 	margin-right: 31%;
 }
-/*
-#addRegister span {
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-*/
+
 #addRegister:hover {
 	color: #337ab7;
 	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
@@ -201,12 +191,36 @@ textarea {
 	outline: none;
 }
 
+/*button update personal details*/
+#updatePersonalsDetails {
+	background: #4f93ce;
+	border: 1px solid currentColor;
+	font-size: 1.1rem;
+	color: #fff;
+	padding: 0.75rem 3rem;
+	cursor: pointer;
+	-webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+	transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+	overflow: hidden;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+#updatePersonalsDetails {
+	margin-right: 31%;
+}
+
+#updatePersonalsDetails:hover {
+	color: #337ab7;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+#updatePersonalsDetails:focus {
+	outline: none;
+}
+
 .required{
 	color:red;
 	font-size: 10px;
 	position: relative; 
 	bottom: 4px;
 }
-/*::-webkit-input-placeholder {
-   color: gray;
-}*/

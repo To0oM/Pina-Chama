@@ -31,7 +31,7 @@
                             <div class="scrollit">
                                 <table id="volunteer">
                                     <tr ng-repeat="user in usersList">
-										<td><button type="button" class="colDetails" onclick="alert({{user.permanent + user.comments}})">הערות</button></td>
+										<td><button type="button" class="colDetails" ng-click="showBakersDetails($index)">הערות</button></td>
                                         <td class="col17"><a href="https://www.google.co.il">{{user.email}}</a></td>
                                         <td class="col16" id="active">{{user.active}}</td>
                                         <td class="col15">{{user.address}}</td>

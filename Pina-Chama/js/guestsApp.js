@@ -5,7 +5,24 @@ var userInfo = {
 var messages;
 var posts;
 
+var user;
+
 var app = angular.module('guestsApp', ['ngRoute']);
+
+function getCookie(cname) {
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0)==' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length,c.length);
+		}
+	}
+	return "";
+}
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
 	userInfo.fullName = JSON.parse(localStorage.getItem("userName"));
@@ -16,6 +33,87 @@ app.controller('connectionContreoller', ['$scope', '$http', function($scope, $ht
 		localStorage.removeItem("userName");
 		document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://pina-chama.azurewebsites.net/";
 	};
+}]);﻿
+
+app.controller('personalDetailsContreoller', ['$scope', '$http', function($scope, $http) {
+	$scope.required = {
+		firstName: true,
+		lastName: true,
+		id: true,
+		addCity: true,
+		addStreet: true,
+		addApartment: true,
+		phoneNumber: true,
+		dateOfBirth: true,
+		email: true,
+	};
+	
+	var chooseUserType = function() {
+		$("#lblId").hide();
+		$("#id").hide();
+		$scope.required.id = false;
+		$("#data8").hide();
+		$("#data9").show();
+		$("#Comments").prop("placeholder", "נא למלא בשדה זה:\nמהיכן הקבוצה, איש קשר\\מדריך, מס' משתתפים, גילאים ומטרת הביקור.");
+		$("#data10").hide();
+		$("#data11").show();
+	};
+	
+	chooseUserType();
+	
+	$scope.updateForm = function() {
+		var id = getCookie("user_id");
+		$http.get('/pesonalDetails/' + id).success(function(response) {
+			user = response;
+			
+			var dateOfBirth = '';
+			var volunteerStartDate = '';
+			var dateOfVisit = '';
+			
+			if(response.dateOfBirth != null)
+				dateOfBirth = new Date(response.dateOfBirth);
+			if(response.volunteerStartDate != null)
+				volunteerStartDate = new Date(response.volunteerStartDate);
+			if(response.dateOfVisit != null)
+				dateOfVisit = new Date(response.dateOfVisit);
+			
+			chooseUserType();
+			
+			$http.get('/refresh').success(function(response) {
+				user.dateOfBirth = dateOfBirth;
+				user.volunteerStartDate = volunteerStartDate;
+				user.dateOfVisit = dateOfVisit;
+				
+				$scope.user = user;
+			});
+		});
+	};
+	
+	$scope.updateForm();
+	
+	$scope.submitForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.userForm.$valid) {
+			swal({
+				title: "עריכת פרטים אישיים",
+				text: "האם אתה בטוח שברצונך לעדכן את הפרטים האישיים?",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "כן, עדכן!",
+				closeOnConfirm: false,
+				html: false
+			}, function(){
+				
+				$http.put('/pesonalDetails/' + $scope.user._id , $scope.user).success(function(response) {
+					swal("עודכן!",
+					"הפרטים האישיים עודכנו בהצלחה",
+					"success");
+				});
+				
+			});
+		}
+	};	
 }]);﻿
 
 app.controller('navContreoller', ['$scope', '$http', function($scope, $http) {
@@ -86,6 +184,11 @@ app.config(function ($routeProvider) {
 		templateUrl: 'mainGuests.html',
 		controller: 'mainController',
 		controllerAs: 'main'
+	})
+		.when('/personalDetails', {
+		templateUrl: '../general/personalDetails.html',
+		controller: 'personalDetailsContreoller',
+		controllerAs: 'personalDetails'
 	})
 		.otherwise({
 		redirectTo: '/main'

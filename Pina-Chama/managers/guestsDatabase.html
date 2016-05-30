@@ -31,7 +31,7 @@
                             <div class="scrollit">
                                 <table id="volunteer">
                                     <tr ng-repeat="user in usersList">
-										<td><button type="button" class="colDetails" onclick="alert({{user.dateOfVisit | date : 'dd/MM/yyyy'}})">הערות</button></td>
+										<td><button type="button" class="colDetails" ng-click="showGuestDetails($index)">הערות</button></td>
                                         <td class="col27"><a href="https://www.google.co.il">{{user.email}}</a></td>
                                         <td class="col26">{{user.address}}</td>
                                         <td class="col25">{{user.phoneNumber}}</td>

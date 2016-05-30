@@ -120,6 +120,7 @@ footer p {
 	font-weight: 700;
 	line-height: normal;
 	color: #fff;
+	margin-top: -15px;
 }
 
 .top-divider {
@@ -143,6 +144,7 @@ footer p {
 	letter-spacing: 3px;
 	font-family: 'Open Sans Hebrew', sans-serif;
 	color: #fff;
+	margin-top: -15px;
 }
 
 nav {

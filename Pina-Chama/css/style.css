@@ -323,6 +323,28 @@
 	text-decoration: underline;
 }
 
+/*-------------------------for the personal ditails-------------------------*/
+.personalDetails {
+	font-size: 15px;
+	width: 960px;
+	height: 20px;
+	margin-top: 10px;
+	padding-top: 20px;
+	text-align: left; 
+	background: transparent;
+	color: white;
+}
+
+.personalDetails a, .personalDetails a:hover { 
+	color: white;
+	text-decoration: none;
+	padding-bottom: 20px;
+}
+
+.personalDetails a:hover { 
+	text-decoration: underline;
+}
+
 /*-------------------------for scrollbar----------------------------*/
 ::-webkit-scrollbar {
     width: 3px;
@@ -597,4 +619,20 @@ a:hover, a:focus {
 	padding-left:15px;
 	float:left;
 	width:16.66666666%;
+}
+
+/*-----------------------------------------------------------------------------------------*/
+ul.bullet {
+	list-style: none;
+    list-style-image: url('../img/red_arrow.png');
+    margin: 0 0 0 0;
+}
+
+ul.bullet li {
+    margin: 1.00em 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.donations {
+	direction: rtl;
 }

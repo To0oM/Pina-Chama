@@ -21,6 +21,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 					request.execute(function(resp) {
 						userInfo.email = resp.emails[0].value;
 						userInfo.userId = resp.id;
+						document.cookie = "user_id="+resp.id;
 						
 						$.ajax({
 							url:'/',
@@ -79,6 +80,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 					request.execute(function(resp) {
 						userInfo.email = resp.emails[0].value;
 						userInfo.userId = resp.id;
+						document.cookie = "user_id="+resp.id;
 						
 						$.ajax({
 							url:'/',

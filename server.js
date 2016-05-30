@@ -67,6 +67,10 @@ app.post('/register', function (req, res) {
 		dateOfBirth: req.body.dateOfBirth,
 		phoneNumber: req.body.phoneNumber,
 		address: address,
+		addStreet: req.body.addStreet,
+		addApartment: req.body.addApartment,
+		addCity: req.body.addCity,
+		addPostalCode: req.body.addPostalCode,
 		email: req.body.email,
 		volunteerStartDate: req.body.volunteerStartDate,
 		comments: comments,
@@ -316,6 +320,8 @@ app.get('/volunteersPosts', function(req, res) {
 	});
 });
 
+/*---------------------------------------------------------Out of Stock----------------------------------------------------*/
+
 //find out of stock in db
 app.get('/stockPina', function(req, res) {
 	OutOfStocks.find({groupType : 'pina'}, function(err, stocks) {
@@ -360,6 +366,7 @@ app.get('/stock/:id', function(req, res) {
 	});
 });
 
+//for update item
 app.put('/stock/:id', function(req, res) {
 	var id = req.params.id;
 	
@@ -423,6 +430,8 @@ app.put('/stock/:id/:value', function(req, res) {
 		});
 });
 
+/*---------------------------------------------------------Messages----------------------------------------------------*/
+
 //save messages in DB
 app.post('/message', function (req, res) {
 	new Messages({
@@ -451,6 +460,8 @@ app.delete('/message/:id', function(req, res) {
 		res.json(message);
 	});
 });
+
+/*---------------------------------------------------------Shift Request----------------------------------------------------*/
 
 //save shift request in DB
 app.post('/volunteersShiftRequest', function (req, res) {
@@ -486,6 +497,37 @@ app.get('/managersShiftsRequests', function(req, res) {
 			throw err;
 		res.json(shiftRequests);
 	});
+});
+
+/*---------------------------------------------------------Personal Details----------------------------------------------------*/
+//for edit item
+app.get('/pesonalDetails/:id', function(req, res) {
+	var id = req.params.id;
+	Users.findOne({googleId: id}, function (err, user) {
+		res.json(user);
+	});
+});
+
+//for edit item
+app.put('/pesonalDetails/:id', function(req, res) {
+	var userId = req.params.id;
+	
+	var id = (req.body.id === undefined)? 0: req.body.id;
+	var comments = (req.body.comments === undefined)? 'אין הערות': req.body.comments;
+	var team = (req.body.team === undefined)? 'ללא קבוצה': req.body.team;
+	var address = req.body.addStreet + ' ' + req.body.addApartment + ', ' + req.body.addCity;
+	if (req.body.addPostalCode !== undefined){
+		address += ' (' + req.body.addPostalCode + ')';
+	}
+	
+	Users.findOneAndUpdate({_id: userId},
+		{$set: {id: id, firstName: req.body.firstName, lastName: req.body.lastName, userType: req.body.userType, dateOfBirth: req.body.dateOfBirth,
+				phoneNumber: req.body.phoneNumber, address: address, addStreet: req.body.addStreet, addApartment: req.body.addApartment, 
+				addCity: req.body.addCity, addPostalCode: req.body.addPostalCode, email: req.body.email, volunteerStartDate: req.body.volunteerStartDate,
+				comments: comments, active: 'פעיל', permanent: req.body.permanent, team: team, dateOfVisit: req.body.dateOfVisit}},
+		{new: true} , function(err, user) {
+			res.json(user);
+		});
 });
 
 //listen on port
