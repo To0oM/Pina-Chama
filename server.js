@@ -48,6 +48,8 @@ var OutOfStocks = mongoose.model('outofstocks');
 var Messages = mongoose.model('messages');
 var ShiftRequests = mongoose.model('shiftRequests');
 var Shifts = mongoose.model('shifts');
+var CakeRequests = mongoose.model('cakeRequests');
+var Cakes = mongoose.model('cakes');
 var Posts = mongoose.model('posts');
 
 app.post('/register', function (req, res) {
@@ -431,7 +433,7 @@ app.put('/stock/:id/:value', function(req, res) {
 });
 
 /*---------------------------------------------------------Messages----------------------------------------------------*/
-//save messages in DB
+//save messages in DB.
 app.post('/message', function (req, res) {
 	new Messages({
 		content: req.body.content,
@@ -452,7 +454,7 @@ app.post('/message', function (req, res) {
 	});
 });
 
-//delete messages in DB
+//delete messages in DB.
 app.delete('/message/:id', function(req, res) {
 	var id = req.params.id;
 	Messages.remove({_id: id}, function (err, message) {
@@ -461,10 +463,10 @@ app.delete('/message/:id', function(req, res) {
 });
 
 /*---------------------------------------------------------Shift Request----------------------------------------------------*/
-//save shift request in DB
+//save shift request in DB.
 app.post('/volunteersShiftRequest', function (req, res) {
 	new ShiftRequests({
-		shiftDay: req.body.shiftDay,
+		shiftDate: req.body.shiftDate,
 		shiftTime: req.body.shiftTime,
 		comments: req.body.comments,
 		applicantName: req.body.applicantName,
@@ -494,6 +496,43 @@ app.get('/managersShiftsRequests', function(req, res) {
 		if (err)
 			throw err;
 		res.json(shiftRequests);
+	});
+});
+
+/*-------------------------------------------------------cake Request--------------------------------------------------*/
+//save cake request in DB.
+app.post('/bakersCakeRequest', function (req, res) {
+	new CakeRequests({
+		cakeDate: req.body.cakeDate,
+		cake: req.body.cake,
+		comments: req.body.comments,
+		applicantName: req.body.applicantName,
+		applicantPhoneNumber: req.body.applicantPhoneNumber,
+		requestDate: req.body.requestDate
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+		   res.json('saved!');
+		}
+	});
+});
+
+//get all bakers's cakes arrangement in db.
+app.get('/bakersCakes', function(req, res) {
+	Cakes.find(function(err, cakes) {
+		if (err)
+			throw err;
+		res.json(cakes);
+	});
+});
+
+//get all cakes requests in db.
+app.get('/managersCakesRequests', function(req, res) {
+	CakeRequests.find(function(err, cakeRequests) {
+		if (err)
+			throw err;
+		res.json(cakeRequests);
 	});
 });
 

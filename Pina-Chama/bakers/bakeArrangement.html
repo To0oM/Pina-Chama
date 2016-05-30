@@ -1,9 +1,101 @@
 <div class="row">
-    <div class="box">
-        <hr>
-            <h2 class="intro-text text-center">פינת
-                <strong>סידור אופי עוגות</strong>
-            </h2>
-            <hr>
+	<div class="box">
+		<hr>
+		<h2 class="intro-text text-center">פינת
+			<strong>סידור אופי עוגות</strong>
+		</h2>
+		<hr>
+		
+		<div class="row">
+			<section>
+				<div class="tabs tabs-style-linemove">
+					<nav>
+						<ul>
+							<li><a id = "mainTab" href="#section-linemove-1"><span>הצגת צורך בעוגות</span></a></li>
+							<li><a href="#section-linemove-2"><span>הגשת בקשה לאפיית עוגה</span></a></li>
+						</ul>
+					</nav>
+					<div class="content-wrap">
+						<section id="section-linemove-1">
+							<div class = "arrangementDiv">
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-days">חמישי</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-days">רביעי</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-days">שלישי</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-days">שני</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-days">ראשון</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-danger col-sm-7">אין צורך</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-success col-sm-7">יש צורך</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-success col-sm-7">יש צורך</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-danger col-sm-7">אין צורך</div>
+								</div>
+								<div class="col-md-4 col-sm-6">
+									<div class="shift shift-success col-sm-7">יש צורך</div>
+								</div>
+							</div>
+						</section>
+						<section id="section-linemove-2">
+							<div class = "requestsDiv">
+								<form name="requestForm" id="cakeRequestForm" ng-submit="submitForm()">
+									<ul class="formRequest">
+										<h2>בקשה לאפיית עוגה</h2>
+										<li id='data1'>
+											<label id="lblCakeDate">תאריך להבאת העוגה<span class="required">*</span></label>
+											<input id="cakeDate" name="cakeDate" class="cakeDate" type="date" min="2016-01-01" ng-required="required.cakeDate" ng-model="cakeRequest.cakeDate"/>
+										</li>
+
+										<li id='data2'>
+											<label id="lblCake">מה ברצונך להביא<span class="required">*</span></label>
+											<input type="text" name="cake" class="cake" id="cake" ng-required="required.cake" ng-model="cakeRequest.cake"/>
+										</li>
+										
+										<li id='data3'>
+											<label>הערות</label>
+											<textarea type="text" name="Comments" class="Comments" id="Comments" maxlength="200" placeholder="פרטים נוספים " ng-model="cakeRequest.comments"></textarea>
+										</li>
+										
+										<li id='data4'>
+											<label>טלפון<span class="required">*</span></label>
+											<input type="text" name="phoneNumber" class="phoneNumber" id="phoneNumber" ng-required="required.phoneNumber" placeholder="עדיף נייד" ng-model="cakeRequest.applicantPhoneNumber"></input>
+										</li>
+										
+										</p>
+										</br>
+
+										<div id = "cmd" class="addRegister-container">
+											<button type="submit" id="addRequest">שלח בקשה</button>
+										</div>
+									</ul>
+								</form>
+							</div>
+						</section>
+					</div><!-- /content -->
+				</div><!-- /tabs -->
+			</section>
+			<script src="../js/cbpFWTabs.js"></script>
+			<script>
+				(function() {
+					[].slice.call(document.querySelectorAll('.tabs')).forEach(function(el){
+						new CBPFWTabs(el);
+					});
+				})();
+			</script>
+		</div>
     </div>
 </div>

@@ -19,8 +19,8 @@
     display:block;
 	font-weight: bold;
 }
-.formRegister input[type=text], .formRequest[type=text], 
-.formRegister input[type=date], .formRequest[type=date], 
+.formRegister input[type=text], .formRequest input[type=text], 
+.formRegister input[type=date], .formRequest input[type=date], 
 textarea, 
 select{
     box-sizing: border-box;
@@ -84,13 +84,19 @@ textarea {
 	margin-bottom: 5px;
 }
 
-.formRequest .shiftDay, .formRequest .shiftTime {
+.formRequest .shiftDate, .formRequest .shiftTime, .formRequest .cakeDate, .cake, .phoneNumber {
 	direction: rtl;
+	vertical-align: middle;
     width: 40%;
 	font-size: 15px;
 	color: #303030 ;
 	height: 35px;
 	margin-bottom: 5px;
+}
+
+.formRequest .shiftDate::-webkit-inner-spin-button, .formRequest .cakeDate::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .formRegister .firstName {
@@ -105,6 +111,10 @@ textarea {
 .formRegister .id {
     width: 48.5%;
 	height: 38px;
+}
+
+.formRegister #lblBirthday , .formRequest .shiftDate{
+	display: inline;
 }
 
 .formRegister #lblId {
@@ -181,7 +191,13 @@ textarea {
 #addRegister {
 	margin-right: 31%;
 }
-
+/*
+#addRegister span {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+*/
 #addRegister:hover {
 	color: #337ab7;
 	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);

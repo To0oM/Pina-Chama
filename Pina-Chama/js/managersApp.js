@@ -17,6 +17,8 @@ var stocksFalafelList;
 
 var shifts;
 var shiftRequests;
+var cakes;
+var cakeRequests;
 
 var user;
 
@@ -538,6 +540,7 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 		
 		swal("פרטים", tableDetails);
 	};
+	
 	//show details of bakers
 	$scope.showBakersDetails = function(index) {
 		var tableDetails = 'קביעות: ' + $scope.usersList[index].permanent + "\n" +
@@ -557,11 +560,13 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
-	//load the shifts and shiftRequests from the database.
+	//load the shifts, cakes, cakeRequests and shiftRequests from the database.
 	$scope.refresh = function () {
 		$http.get('/refresh').success(function(response) {
 			$scope.shifts = shifts;
 			$scope.shiftRequests = shiftRequests;
+			$scope.cakes = cakes;
+			$scope.cakeRequests = cakeRequests;
 		});
 	};
 	
@@ -580,9 +585,26 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 
 		$scope.refresh();
 	};
-
+	
+	$scope.loadCakesDB = function() {
+		$http.get('/bakersCakes').success(function(response) {
+			$scope.cakes = response;
+			
+			cakes = $scope.cakes;
+		});
+		
+		$http.get('/managersCakesRequests').success(function(response) {
+			$scope.cakeRequests = response;
+			
+			cakeRequests = $scope.cakeRequests;
+		});
+		
+		$scope.refresh();
+	};
+	
 	//initial load
 	$scope.loadShiftsDB();
+	$scope.loadCakesDB();
 }]);﻿
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {

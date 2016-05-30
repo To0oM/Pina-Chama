@@ -10,6 +10,8 @@ var pagesNum;
 
 var user;
 
+var cakes;
+
 var app = angular.module('bakersApp', ['ngRoute']);
 
 function getCookie(cname) {
@@ -236,7 +238,62 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
+	$scope.required = {
+		cakeDate: true,
+		phoneNumber: true,
+		cake: true
+	};
 	
+	$scope.cakeRequest = {
+	};
+	
+	//load the cakes arrangement from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.cakes = cakes;
+		});
+	};
+	
+	$scope.loadCakesDB = function() {
+		$http.get('/bakersCakes').success(function(response) {
+			$scope.cakes = response;
+			
+			cakes = $scope.cakes;
+		});
+		
+		$scope.refresh();
+	};
+	
+	$scope.resetsFields = function() {
+		$scope.cakeRequest.cakeDate = '';
+		$scope.cakeRequest.cake = '';
+		$scope.cakeRequest.comments = '';
+		$scope.cakeRequest.applicantName = '';
+		$scope.cakeRequest.applicantPhoneNumber = '';
+		$scope.cakeRequest.requestDate = '';
+	};
+	
+	//initial load
+	$scope.loadCakesDB();
+	
+	$scope.addRequest = function() {
+		$scope.cakeRequest.requestDate = new Date();
+		
+		$scope.cakeRequest.applicantName = userInfo.fullName;
+
+		$http.post('/bakersCakeRequest', $scope.cakeRequest).success(function(response) {
+			$scope.loadCakesDB();
+			$scope.resetsFields();
+			$('#mainTab')[0].click();
+		});
+	};
+	
+	$scope.submitForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.requestForm.$valid) {
+			$scope.addRequest();
+		}
+	};
 }]);﻿
 
 app.config(function ($routeProvider) {

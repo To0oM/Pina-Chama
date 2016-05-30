@@ -210,11 +210,13 @@
 }
 
 .postTitle {
+	direction: rtl;
 	font: 23px 'Open Sans Hebrew', sans-serif;
 	text-align: center;
 }
  
 .postDateAndName {
+	direction: rtl;
 	font-style: italic;
 	text-align: left;
 	padding-left: 25px;

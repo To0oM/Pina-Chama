@@ -148,6 +148,7 @@ footer p {
 nav {
 	border-radius: 0;
 	min-height: 0;
+	z-index: 2;
 }
 
 nav{

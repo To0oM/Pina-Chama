@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var shiftRequestsSchema = new Schema({
-	shiftDate: Date,
-	shiftTime: String,
+var cakeRequestsSchema = new Schema({
+	cakeDate: Date,
+	cake: String,
 	comments: String,
 	applicantName: String,
 	applicantPhoneNumber: String,
 	requestDate: Date
 });
 
-mongoose.model('shiftRequests', shiftRequestsSchema);
+mongoose.model('cakeRequests', cakeRequestsSchema);

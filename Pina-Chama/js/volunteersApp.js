@@ -334,6 +334,11 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
+	$scope.required = {
+		shiftDate: true,
+		phoneNumber: true
+	};
+	
 	$scope.shiftRequest = {
 	};
 	
@@ -354,6 +359,15 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 		$scope.refresh();
 	};
 	
+	$scope.resetsFields = function() {
+		$scope.shiftRequest.shiftDate = '';
+		$scope.shiftRequest.shiftTime = '';
+		$scope.shiftRequest.comments = '';
+		$scope.shiftRequest.applicantName = '';
+		$scope.shiftRequest.applicantPhoneNumber = '';
+		$scope.shiftRequest.requestDate = '';
+	};
+	
 	//initial load
 	$scope.loadShiftsDB();
 	
@@ -364,6 +378,8 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 
 		$http.post('/volunteersShiftRequest', $scope.shiftRequest).success(function(response) {
 			$scope.loadShiftsDB();
+			$scope.resetsFields();
+			$('#mainTab')[0].click();
 		});
 	};
 	
