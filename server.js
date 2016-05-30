@@ -48,6 +48,7 @@ var OutOfStocks = mongoose.model('outofstocks');
 var Messages = mongoose.model('messages');
 var ShiftRequests = mongoose.model('shiftRequests');
 var Shifts = mongoose.model('shifts');
+var Posts = mongoose.model('posts');
 
 app.post('/register', function (req, res) {
 	var id = (req.body.id === undefined)? 0: req.body.id;
@@ -321,7 +322,6 @@ app.get('/volunteersPosts', function(req, res) {
 });
 
 /*---------------------------------------------------------Out of Stock----------------------------------------------------*/
-
 //find out of stock in db
 app.get('/stockPina', function(req, res) {
 	OutOfStocks.find({groupType : 'pina'}, function(err, stocks) {
@@ -431,7 +431,6 @@ app.put('/stock/:id/:value', function(req, res) {
 });
 
 /*---------------------------------------------------------Messages----------------------------------------------------*/
-
 //save messages in DB
 app.post('/message', function (req, res) {
 	new Messages({
@@ -462,7 +461,6 @@ app.delete('/message/:id', function(req, res) {
 });
 
 /*---------------------------------------------------------Shift Request----------------------------------------------------*/
-
 //save shift request in DB
 app.post('/volunteersShiftRequest', function (req, res) {
 	new ShiftRequests({
@@ -528,6 +526,42 @@ app.put('/pesonalDetails/:id', function(req, res) {
 		{new: true} , function(err, user) {
 			res.json(user);
 		});
+});
+
+/*-------------------------------------------------------Guests Book Posts--------------------------------------------------*/
+//save posts in DB
+app.post('/guestPost', function (req, res) {
+	new Posts({
+		content: req.body.content,
+		topic: req.body.topic,
+		publicationDate: req.body.publicationDate,
+		publishName: req.body.publishName,
+		pageNum: req.body.pageNum
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+		   res.json('saved!');
+		}
+	});
+});
+
+//get all guestsBook's posts in db.
+app.get('/guestBookPosts', function(req, res) {
+	Posts.find(function(err, posts) {
+		if (err)
+			throw err;
+		res.json(posts);
+	});
+});
+
+//get Last Insertion guestsBook's posts in db.
+app.get('/getLastInsertion', function(req, res) {
+	Posts.findOne({}, {}, {sort: {'publicationDate' : -1}}, function(err, posts){
+		if (err)
+			throw err;
+		res.json(posts);
+	});
 });
 
 //listen on port

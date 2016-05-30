@@ -8,6 +8,9 @@ var usersList;
 var messages;
 var posts;
 
+var guestPosts;
+var pagesNum; 
+
 var stocksPinaList;
 var stocksBakeryList;
 var stocksFalafelList;
@@ -584,6 +587,74 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {
 	$("#cmdAdd").hide();
+	$scope.currentPage = 0;
+	
+	$scope.getLastInsertion = function () {
+		$http.get('/getLastInsertion').success(function(response) {
+			if (response){
+				pagesNum = response.pageNum;
+			} else {
+				pagesNum = -1;
+			}
+			$scope.updatePage();
+		});
+	};
+	
+	$scope.updatePage = function () {
+		if ($scope.currentPage === 0){
+			$("#prev").prop("disabled", true);
+			$("#prev").css("cursor", "default");
+			$("#prev").prop("title", "תחילת הספר");
+		} else {
+			$("#prev").prop("disabled", false);
+			$("#prev").css("cursor", "pointer"); 
+			$("#prev").prop("title", "עמוד קודם");
+		}
+
+		if (($scope.currentPage === pagesNum) || ($scope.currentPage === (pagesNum-1)) || (pagesNum === -1)){
+			$("#next").prop("disabled", true);
+			$("#next").css("cursor", "default"); 
+			$("#next").prop("title", "סוף הספר");
+		} else {
+			$("#next").prop("disabled", false);
+			$("#next").css("cursor", "pointer");
+			$("#next").prop("title", "עמוד הבא");
+		}
+	};
+	
+	//load the posts from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.guestPosts = guestPosts;
+		});
+	};
+	
+	$scope.loadGuestPostsDB = function() {
+		$scope.getLastInsertion();
+		
+		$http.get('/guestBookPosts').success(function(response) {
+			$scope.guestPosts = response;
+			
+			guestPosts = $scope.guestPosts;
+		});
+
+		$scope.refresh();
+	};
+
+	//initial load
+	$scope.loadGuestPostsDB();
+	
+	$scope.nextPage = function(){
+		$scope.currentPage = $scope.currentPage+2;
+		$scope.updatePage();
+		$scope.loadGuestPostsDB();
+	};
+	
+	$scope.prevPage = function(){
+		$scope.currentPage = $scope.currentPage-2;
+		$scope.updatePage();
+		$scope.loadGuestPostsDB();
+	};
 }]);﻿
 
 app.config(function ($routeProvider) {
@@ -633,15 +704,15 @@ app.config(function ($routeProvider) {
 		controller: 'guidesController',
 		controllerAs: 'guides'
 	})
-		.when('/main', {
-		templateUrl: 'mainManagers.html',
-		controller: 'mainController',
-		controllerAs: 'main'
-	})
 		.when('/personalDetails', {
 		templateUrl: '../general/personalDetails.html',
 		controller: 'personalDetailsContreoller',
 		controllerAs: 'personalDetails'
+	})
+		.when('/main', {
+		templateUrl: 'mainManagers.html',
+		controller: 'mainController',
+		controllerAs: 'main'
 	})
 		.otherwise({
 		redirectTo: '/main'

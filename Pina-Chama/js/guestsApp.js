@@ -5,6 +5,9 @@ var userInfo = {
 var messages;
 var posts;
 
+var guestPosts;
+var pagesNum; 
+
 var user;
 
 var app = angular.module('guestsApp', ['ngRoute']);
@@ -161,7 +164,128 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {
+	$scope.required = {
+		content: true,
+		topic: true
+	};
 	
+	$scope.guestPost = {
+		topic: '',
+		content: ''
+	};
+	
+	$scope.currentPage = 0;
+	
+	$scope.getLastInsertion = function () {
+		$http.get('/getLastInsertion').success(function(response) {
+			if (response){
+				pagesNum = response.pageNum;
+			} else {
+				pagesNum = -1;
+			}
+			$scope.updatePage();
+		});
+	};
+	
+	$scope.updatePage = function () {
+		if ($scope.currentPage === 0){
+			$("#prev").prop("disabled", true);
+			$("#prev").css("cursor", "default");
+			$("#prev").prop("title", "תחילת הספר");
+		} else {
+			$("#prev").prop("disabled", false);
+			$("#prev").css("cursor", "pointer"); 
+			$("#prev").prop("title", "עמוד קודם");
+		}
+
+		if (($scope.currentPage === pagesNum) || ($scope.currentPage === (pagesNum-1)) || (pagesNum === -1)){
+			$("#next").prop("disabled", true);
+			$("#next").css("cursor", "default"); 
+			$("#next").prop("title", "סוף הספר");
+		} else {
+			$("#next").prop("disabled", false);
+			$("#next").css("cursor", "pointer");
+			$("#next").prop("title", "עמוד הבא");
+		}
+	};
+	
+	$("#addGuestPostDiv").hide();
+	$("#fade").hide();
+	
+	//load the posts from the database.
+	$scope.refresh = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.guestPosts = guestPosts;
+		});
+	};
+	
+	$scope.loadGuestPostsDB = function() {
+		$scope.getLastInsertion();
+		
+		$http.get('/guestBookPosts').success(function(response) {
+			$scope.guestPosts = response;
+			
+			guestPosts = $scope.guestPosts;
+		});
+
+		$scope.refresh();
+	};
+
+	//initial load
+	$scope.loadGuestPostsDB();
+	
+	$scope.newGuestPost = function(){
+		var windowHeight = $(document).height();
+		$('.black_overlay').css('height', windowHeight);
+		
+		$("#addGuestPostDiv").fadeIn();
+		$("#fade").fadeIn();
+
+		$scope.guestPost.topic = '';
+		$scope.guestPost.content = '';
+	};
+
+	$scope.close = function(){
+		$("#addGuestPostDiv").fadeOut();
+		$("#fade").fadeOut();
+	};
+
+	$scope.addGuestPost = function() {
+		$scope.guestPost.publicationDate = new Date();
+		
+		$scope.getLastInsertion();
+		pagesNum++;
+		$scope.guestPost.pageNum = pagesNum;
+		
+		if (pagesNum%2 === 0){
+			$scope.currentPage = pagesNum;
+		} else {
+			$scope.currentPage = pagesNum-1;
+		}
+		$http.post('/guestPost', $scope.guestPost).success(function(response) {
+			$scope.loadGuestPostsDB();
+		});
+	};
+	
+	$scope.submitGuestPostForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.guestPostForm.$valid) {
+			$scope.addGuestPost();
+			$scope.close();
+		}
+	};
+	
+	$scope.nextPage = function(){
+		$scope.currentPage = $scope.currentPage+2;
+		$scope.updatePage();
+		$scope.loadGuestPostsDB();
+	};
+	
+	$scope.prevPage = function(){
+		$scope.currentPage = $scope.currentPage-2;
+		$scope.updatePage();
+		$scope.loadGuestPostsDB();
+	};
 }]);﻿
 
 app.controller('donationsController', ['$scope', '$http', function($scope, $http) {
@@ -180,15 +304,15 @@ app.config(function ($routeProvider) {
 		controller: 'donationsController',
 		controllerAs: 'donations'
 	})
-		.when('/main', {
-		templateUrl: 'mainGuests.html',
-		controller: 'mainController',
-		controllerAs: 'main'
-	})
 		.when('/personalDetails', {
 		templateUrl: '../general/personalDetails.html',
 		controller: 'personalDetailsContreoller',
 		controllerAs: 'personalDetails'
+	})
+		.when('/main', {
+		templateUrl: 'mainGuests.html',
+		controller: 'mainController',
+		controllerAs: 'main'
 	})
 		.otherwise({
 		redirectTo: '/main'

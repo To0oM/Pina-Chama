@@ -9,8 +9,23 @@
         </div>
         
         <div class = "guestBookDiv">
+			
             <div class = "guestBookPage" id = "rightPage">
+				<div class = "guestPost" ng-repeat="post in guestPosts" ng-if="currentPage===post.pageNum">
+					
+					<div class = "postTitle"><h3>{{post.topic}}</h3></div>
+					
+					<div class = "postContent">
+						{{post.content}}
+					</div>
+					
+					<div class = "postDateAndName"><h6>{{post.publishName}}</h6>
+					<h6>{{post.publicationDate | date : 'dd/MM/yyyy HH:mm'}}</h6></div>
+					<!-- <h5>({{message.messageToString}})</h5> -->
+				</div>
+			<!------------------------------------------------------------------------------------- 
                 <ul class="GuestsWords" dir="RTL">
+					
                     <li>לדודות היקרות!<br>
                         תודה רבה על הפנים המחייכות והעוגות הטעימות
                     </li>
@@ -21,32 +36,81 @@
                     וכמובן קפה עם עוגה<br>
                     ברד צונן ביום חמסין<br>
                     מרק חם כשבחוץ סגריר.<br>
-                    </li>
+                    </li>	
                 </ul>
+			--------------------------------------------------------------------------------------> 
             </div>
             
             <div class = "guestBookPage" id = "leftPage">
+				<div class = "guestPost" ng-repeat="post in guestPosts" ng-if="currentPage+1===post.pageNum">
+					
+					<div class = "postTitle"><h3>{{post.topic}}</h3></div>
+					
+					<div class = "postContent">
+						{{post.content}}
+					</div>
+					
+					<div class = "postDateAndName"><h6>{{post.publishName}}</h6>
+					<h6>{{post.publicationDate | date : 'dd/MM/yyyy HH:mm'}}</h6></div>
+					<!-- <h5>({{message.messageToString}})</h5> -->
+				</div>
+				<!-------------------------------------------------------------------------------------
                 <ul class="GuestsWords" dir="RTL">
+					 
                     <li>מזה שנים אנחנו מבקרים בפינה החמה,<br>
                         היחס החם והאוהב תמיד מתגבר,<br>
                         כל פעם מחדש שאנו עוברים שם מעלה לנו חיוך ענק על הפנים...
-                    </li>
+                    </li>	
                 </ul>
+				-------------------------------------------------------------------------------------->
             </div>
             
+			
+			
             <div id = "cmdDiv">
                 <span id = "cmdNext">
-                    <img id = "next" src = "../img/next.png">
+                    <input type = "image" id = "prev" ng-click = "prevPage()" src = "../img/prev.png"/>
                 </span>
 
                 <span id = "cmdAdd">
-                    <img id = "add" src = "../img/add.png">
+                    <input type = "image" id = "addNewPost" title = "הוסף" ng-click = "newGuestPost()" src = "../img/add.png"/>
                 </span>
 
                 <span id = "cmdPrev">
-                    <img id = "prev" src = "../img/prev.png">
+                    <input type = "image" id = "next" ng-click = "nextPage()" src = "../img/next.png"/>
                 </span>
             </div>
         </div>
     </div>
 </div>
+
+<div id = "addGuestPostDiv" class = "box">
+	<div id = "close" ng-click = "close()">X</div>
+	<form name="guestPostForm" ng-submit="submitGuestPostForm()">
+		<h2 id = "addGuestPostTitle">הוספת פרסום לספר האורחים והחיילים</h2>
+		<h5>ביקרתם בפינה החמה? רוצים לספר חוויות מהמקום? בואו ושתפו איתנו...</h5>
+		<span id = "addGuestPostSpan">
+			<label class = "lblPost">נושא:<span class="required">*</span></label>
+			<input type="text" id="topic" maxlength="40" ng-required="required.topic" ng-model="guestPost.topic"/>
+    		</br></br>
+    		<label id = "lblContent" class = "lblPost">תוכן:<span class="required">*</span></label>
+    		<textarea type="text" id="content" ng-required="required.content" ng-model="guestPost.content"></textarea>
+			</br></br>
+			<label class = "lblPost">שם פרטי/שם קבוצה:</label>
+			<input type="text" id="publishName" maxlength="30" ng-model="guestPost.publishName"/>
+			</br>
+			<div id = "postComment">
+				<label class = "lblComment">*השדה שם פרטי/קבוצה<span class = "optional"> אינו </span>שדה חובה</label>
+				</br>
+				<label class = "lblComment">*שדות החובה מסומנים ב-<span class="required"> * </span></label>
+				</br>
+			</div>
+		</span>
+		</br>
+		<div id = "cmd" class="addGuestPost-container">
+			<button type="submit" id="addGuestPost">הוסף</button>
+		</div>
+	</form>
+</div>
+
+<div id="fade" class="black_overlay"></div>

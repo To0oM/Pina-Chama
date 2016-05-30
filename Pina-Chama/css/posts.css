@@ -13,7 +13,7 @@
 	filter: alpha(opacity=60);
 }
 
-#addMessageDiv {
+#addMessageDiv, #addGuestPostDiv {
 	background: rgba(255,255,255,0.95);
 	display: none;
 	position: absolute;
@@ -27,7 +27,7 @@
 	direction: rtl;
 }
 
-#addMessageSpan {
+#addMessageSpan, #addGuestPostSpan {
 	padding-right: 100px;
 	display: block;
 }
@@ -36,7 +36,7 @@
 	text-align: center;
 }
 
-#addMessage {
+#addMessage, #addGuestPost{
 	background: #4f93ce;
 	border: 1px solid currentColor;
 	font-size: 1.1rem;
@@ -50,7 +50,7 @@
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-#addMessTitle{
+#addMessTitle, #addGuestPostTitle{
 	padding-top: -60px;
 	padding-right: -100px;
 	text-align: center;
@@ -76,20 +76,24 @@
 	z-index:1003;
 }
 
-#addMessageDiv label{
+#addGuestPostDiv h5{
+	padding-right: 90px;
+}
+
+#addMessageDiv label, #addGuestPostDiv  label{
 	margin:0 0 3px 10px;
 	padding:0px;
 	display:inline-block;
 	font-weight: bold;
 }
 
-#addMessageDiv #lblContent{
+#addMessageDiv #lblContent, #addGuestPostDiv #lblContent{
 	vertical-align: top;
 }
 
-#addMessageDiv input[type=text], 
-#addMessageDiv input[type=date],
-#addMessageDiv textarea{
+#addMessageDiv input[type=text], #addGuestPostDiv input[type=text]
+#addMessageDiv input[type=date], #addGuestPostDiv input[type=date]
+#addMessageDiv textarea, #addGuestPostDiv textarea{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -105,13 +109,13 @@
 	direction: rtl;
 }
 
-#addMessageDiv textarea {
+#addMessageDiv textarea, #addGuestPostDiv textarea{
 	resize: none;
 }
 
-#addMessageDiv input[type=text]:focus, 
-#addMessageDiv input[type=date]:focus,
-#addMessageDiv textarea:focus {
+#addMessageDiv input[type=text]:focus, #addGuestPostDiv input[type=text]:focus, 
+#addMessageDiv input[type=date]:focus, #addGuestPostDiv input[type=date]:focus, 
+#addMessageDiv textarea:focus, #addGuestPostDiv textarea:focus{
 	font: 15px 'Open Sans Hebrew', sans-serif;
 	-moz-box-shadow: 0 0 8px #88D5E9;
 	-webkit-box-shadow: 0 0 8px #88D5E9;
@@ -119,11 +123,11 @@
 	border: 1px solid #88D5E9;
 	color: steelblue;
 }
-#addMessageDiv textarea:focus{
+#addMessageDiv textarea:focus, #addGuestPostDiv  textarea:focus{
 	font-style: italic;
 }
 
-#topic{
+#topic, #publishName{
 	width: 40%;
 	height: 38px;
 	font: 14px 'Open Sans Hebrew', sans-serif;
@@ -194,7 +198,6 @@
 #addButtonDiv{
 	text-align: center;
 }
-
 /*-------- the appearance of every single message/post --------*/
 .message{
 	direction: rtl;
@@ -204,6 +207,22 @@
 .message h3{
 	padding-bottom: 0px;
 	margin-bottom: 0px;
+}
+
+.postTitle {
+	font: 23px 'Open Sans Hebrew', sans-serif;
+	text-align: center;
+}
+ 
+.postDateAndName {
+	font-style: italic;
+	text-align: left;
+	padding-left: 25px;
+}
+
+.guestBookPage h6 {
+	margin-bottom: 0px;
+	margin-top: 8px;
 }
 
 .message h5{
@@ -226,6 +245,34 @@
 
 .messageContent{
 	font: 16px 'Open Sans Hebrew', sans-serif;
+}
+
+.postContent {
+	font: 18px 'Open Sans Hebrew', sans-serif;
+	padding-right: 30px;
+	padding-left: 30px;
+	padding-bottom: 10px;
+	direction: rtl;
+}
+
+.lblPost {
+	font: 16px 'Open Sans Hebrew', sans-serif;
+}
+
+.lblComment {
+	font: 14px 'Open Sans Hebrew', sans-serif;
+	font-style: italic;
+} 
+
+#postComment {
+	padding-top: 17px;
+}
+
+.optional {
+	color: green;
+	font: 15px 'Open Sans Hebrew', sans-serif;
+	font-weight: bold;
+	font-style: italic;
 }
 
 .delete{
