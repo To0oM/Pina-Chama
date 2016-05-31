@@ -183,7 +183,8 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 				$("#id").show();
 				$scope.required.id = true;
 				$("#data8").hide();
-				$("#data9").hide();
+				$("#data9").show();
+				$("#Comments").prop("placeholder", "");
 				$("#data10").show();
 				$("#data11").hide();
 				$scope.required.validationKey = true;

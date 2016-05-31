@@ -75,12 +75,12 @@ app.post('/register', function (req, res) {
 		addCity: req.body.addCity,
 		addPostalCode: req.body.addPostalCode,
 		email: req.body.email,
-		volunteerStartDate: req.body.volunteerStartDate,
+		volunteerStartDate: volunteerStartDate,
 		comments: comments,
 		active: 'פעיל',
 		permanent: req.body.permanent,
 		team: team,
-		dateOfVisit: req.body.dateOfVisit
+		dateOfVisit: dateOfVisit
 	}).save(function (err){
 		if (err){
 			console.log(err);

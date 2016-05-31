@@ -225,16 +225,6 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 		});
 	};
 	
-	//initial load
-	$scope.loadStocks();
-	
-	$scope.loadStockDB = function() {
-		$scope.loadManagersList();
-		$scope.loadVolunteersList();
-		$scope.loadBakeryList();
-		$scope.loadStocks();
-	};
-	
 	$scope.loadManagersList = function() {
 		$http.get('/stockPina').success(function(response) {
 			$scope.stocksPinaList = response;
@@ -258,6 +248,16 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 			stocksFalafelList = $scope.stocksFalafelList;
 		});
 	};
+	
+	$scope.loadStockDB = function() {
+		$scope.loadManagersList();
+		$scope.loadVolunteersList();
+		$scope.loadBakeryList();
+		$scope.loadStocks();
+	};
+	
+	//initial load
+	$scope.loadStockDB();
 	
 	$scope.showDetails = function(details) {
 		swal("פרטים", details);

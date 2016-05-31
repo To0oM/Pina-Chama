@@ -325,23 +325,27 @@
 
 /*-------------------------for the personal ditails-------------------------*/
 .personalDetails {
+	margin-top: 23px;
+}
+
+#personalDetailsTitle {
 	font-size: 15px;
 	width: 960px;
 	height: 20px;
 	margin-top: 10px;
-	padding-top: 20px;
+	padding-top: -20px;
 	text-align: left; 
 	background: transparent;
 	color: white;
 }
 
-.personalDetails a, .personalDetails a:hover { 
+#personalDetailsTitle a, #personalDetailsTitle a:hover { 
 	color: white;
 	text-decoration: none;
 	padding-bottom: 20px;
 }
 
-.personalDetails a:hover { 
+#personalDetailsTitle a:hover { 
 	text-decoration: underline;
 }
 

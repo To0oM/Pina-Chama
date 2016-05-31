@@ -68,7 +68,8 @@ app.controller('personalDetailsContreoller', ['$scope', '$http', function($scope
 		$("#id").show();
 		$scope.required.id = true;
 		$("#data8").hide();
-		$("#data9").hide();
+		$("#data9").show();
+		$("#Comments").prop("placeholder", "");
 		$("#data10").show();
 		$("#data11").hide();
 	};
@@ -356,16 +357,6 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 		});
 	};
 	
-	//initial load
-	$scope.loadStocks();
-	
-	$scope.loadStockDB = function() {
-		$scope.loadManagersList();
-		$scope.loadVolunteersList();
-		$scope.loadBakeryList();
-		$scope.loadStocks();
-	};
-	
 	$scope.loadManagersList = function() {
 		$http.get('/stockPina').success(function(response) {
 			$scope.stocksPinaList = response;
@@ -389,6 +380,16 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 			stocksFalafelList = $scope.stocksFalafelList;
 		});
 	};
+	
+	$scope.loadStockDB = function() {
+		$scope.loadManagersList();
+		$scope.loadVolunteersList();
+		$scope.loadBakeryList();
+		$scope.loadStocks();
+	};
+	
+	//initial load
+	$scope.loadStockDB();
 	
 	$scope.showDetails = function(details) {
 		swal("פרטים", details);
@@ -472,9 +473,6 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 		});
 	};
 	
-	//initial load
-	$scope.loadData();
-	
 	$scope.loadManagrsDB = function() {
 		$http.get('/managersDB').success(function(response) {
 			$scope.usersList = response;
@@ -530,30 +528,76 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 		$scope.loadData();
 	};
 	
-	//show details of managers, volunteers and volunteers at bakery
+	//initial load
+	$scope.loadData();
+	
+	//show details of volunteers and volunteers at bakery
 	$scope.showTableDetails = function(index) {
-		var volunteerStartDate = ($scope.usersList[index].volunteerStartDate === null)? 'לא צויין': $scope.usersList[index].volunteerStartDate;
+		var volunteerStartDate;
+		if($scope.usersList[index].volunteerStartDate === null)
+		{
+			volunteerStartDate = 'לא צויין';
+		}
+		else
+		{
+			var date = new Date($scope.usersList[index].volunteerStartDate);
+			volunteerStartDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();	
+		}
+		var comments = ($scope.usersList[index].comments === null)?  'אין הערות': $scope.usersList[index].comments;
 		
 		var tableDetails = 'תאריך הצטרפות: ' + volunteerStartDate + "\n" +
 					'קביעות: ' + $scope.usersList[index].permanent + "\n" +
-					'הערות: ' + $scope.usersList[index].comments;
+					'הערות: ' + comments;
+		
+		swal("פרטים", tableDetails);
+	};
+	
+	//show details of managers
+	$scope.showManagerDetails = function(index) {
+		var comments = ($scope.usersList[index].comments === null)?  'אין הערות': $scope.usersList[index].comments;
+		
+		var tableDetails = 'הערות: ' + comments;
 		
 		swal("פרטים", tableDetails);
 	};
 	
 	//show details of bakers
 	$scope.showBakersDetails = function(index) {
-		var tableDetails = 'קביעות: ' + $scope.usersList[index].permanent + "\n" +
-					'הערות: ' + $scope.usersList[index].comments;
+		var volunteerStartDate;
+		if($scope.usersList[index].volunteerStartDate === null)
+		{
+			volunteerStartDate = 'לא צויין';
+		}
+		else
+		{
+			var date = new Date($scope.usersList[index].volunteerStartDate);
+			volunteerStartDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();	
+		}
+		var comments = ($scope.usersList[index].comments === null)?  'אין הערות': $scope.usersList[index].comments;
+		
+		var tableDetails = 'תאריך הצטרפות: ' + volunteerStartDate + "\n" +
+					'קביעות: ' + $scope.usersList[index].permanent + "\n" +
+					'הערות: ' + comments;
 		
 		swal("פרטים", tableDetails);
 	};
+	
 	//show details of guests
 	$scope.showGuestDetails = function(index) {
-		var dateOfVisit = ($scope.usersList[index].dateOfVisit === null)? 'לא צויין': $scope.usersList[index].dateOfVisit;
+		var dateOfVisit;
+		if($scope.usersList[index].dateOfVisit === null)
+		{
+			dateOfVisit = 'לא צויין';
+		}
+		else
+		{
+			var date = new Date($scope.usersList[index].dateOfVisit);
+			dateOfVisit = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();	
+		}
+		var comments = ($scope.usersList[index].comments === null)?  'אין הערות': $scope.usersList[index].comments;
 		
 		var tableDetails = 'תאריך ביקור: ' + dateOfVisit + "\n" +
-					'הערות: ' + $scope.usersList[index].comments;
+					'הערות: ' + comments;
 		
 		swal("פרטים", tableDetails);
 	};

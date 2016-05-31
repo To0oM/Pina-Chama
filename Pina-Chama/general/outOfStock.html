@@ -118,7 +118,7 @@
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
-						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="isBought(stock._id)"></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="updateBought(stock._id, stock.isBought)"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -136,7 +136,7 @@
 						<td>{{stock.quantity}}</td>
 						<td>{{stock.product}}</td>
 						<td>{{stock.category}}</a></td>
-						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="isBought(stock._id)"></td>
+						<td><input type="checkbox" name="purchased" class="purchased" value="purchased" ng-model="stock.isBought" ng-change="updateBought(stock._id, stock.isBought)"></td>
 					</tr>
 				</tbody>
 			</table>
