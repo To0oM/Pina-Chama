@@ -225,6 +225,7 @@ nav{
 #next{
 	width: 100%;
 	cursor: pointer;
+	outline: 0 none;
 }
 
 #cmdPrev{
@@ -237,6 +238,7 @@ nav{
 #prev{
 	width: 100%;
 	cursor: pointer;
+	outline: 0 none;
 }
 
 #cmdAdd{
@@ -251,6 +253,7 @@ nav{
 #addNewPost{
 	width: 7.6%;
 	cursor: pointer;
+	outline: 0 none;
 }
 
 #next:active, #prev:active, #addNewPost:active{
