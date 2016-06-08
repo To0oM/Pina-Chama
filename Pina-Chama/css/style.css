@@ -920,7 +920,7 @@ a:hover, a:focus {
 	height: 150px;
 }
 
-/*-----------------------------------------------------------------------------------------*/
+/*------------------------------------for donations---------------------------------------------------*/
 ul.bullet {
 	list-style: none;
     list-style-image: url('../img/red_arrow.png');
@@ -934,4 +934,71 @@ ul.bullet li {
 
 .donations {
 	direction: rtl;
+}
+
+/*-----------------------------------------for about page------------------------------------------------*/
+#imageAbout {
+	width: 45%;
+	height: 250px;
+}
+
+.about {
+	direction: rtl;
+}
+
+.button_home {
+	margin-top: -20px;
+	width: 60px;
+	height: 60px;
+	float: left;
+	/*background-image: url("../img/homeButton.png");*/
+}
+
+.button_home:hover {
+	-moz-opacity: 0.6;
+	opacity:.60;
+	filter: alpha(opacity=60);
+}
+
+.button_home:active {
+	margin-top: -18px;
+}
+
+/*-----------------------------------------for contactUs page------------------------------------------------*/
+ul.cEmailAdress {
+	list-style: none;
+    list-style-image: url('../img/mailIcon.png');
+    margin: 0 0 0 0;
+}
+
+ul.cEmailAdress li {
+    margin: 1.00em 0 0 0;
+    padding: 0 0 0 0;
+}
+
+ul.cPhone {
+	list-style: none;
+    list-style-image: url('../img/phoneIcon.png');
+    margin: 0 0 0 0;
+}
+
+ul.cPhone li {
+    margin: 1.00em 0 0 0;
+    padding: 0 0 0 0;
+}
+
+ul.cHome {
+	list-style: none;
+    list-style-image: url('../img/homeIcon.png');
+    margin: 0 0 0 0;
+}
+
+ul.cHome li {
+    margin: 1.00em 0 0 0;
+    padding: 0 0 0 0;
+}
+
+.contactUs {
+	direction: rtl;
+	padding-right: 20px;
 }

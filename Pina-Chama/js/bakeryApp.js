@@ -140,10 +140,6 @@ app.controller('navContreoller', ['$scope', '$http', function($scope, $http) {
 		$(".activeTab").prop('class','navTabs');
 		$("#navTab4").prop('class','activeTab');
 	});
-	$("#navTab5").click(function(){
-		$(".activeTab").prop('class','navTabs');
-		$("#navTab5").prop('class','activeTab');
-	});
 }]);﻿
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {
@@ -408,21 +404,12 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 	}
 }]);﻿
 
-app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {
-	
-}]);﻿
-
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/guestBook', {
 		templateUrl: '../general/guestBook.html',
 		controller: 'guestBookController',
 		controllerAs:'guestBook'
-	})
-		.when('/arrangement', {
-		templateUrl: 'bakeryArrangement.html',
-		controller: 'arrangementController',
-		controllerAs:'arrangement'
 	})
 		.when('/stock', {
 		templateUrl: '../general/outOfStock.html',

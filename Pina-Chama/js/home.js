@@ -250,6 +250,18 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 	};
 }]);﻿
 
+myApp.controller('aboutCotroller', ['$scope', '$http', function($scope, $http) {
+	$scope.gotoHomePage = function() {
+		
+	};
+}]);
+
+myApp.controller('contactUsCotroller', ['$scope', '$http', function($scope, $http) {
+	$scope.gotoHomePage = function() {
+		
+	};
+}]);
+
 myApp.config(function ($routeProvider) {
 	$routeProvider
 		.when('/register', {
@@ -261,6 +273,16 @@ myApp.config(function ($routeProvider) {
 		templateUrl: 'mainHome.html',
 		controller: 'AppCtrl',
 		controllerAs: 'AppCtrl'
+	})
+		.when('/contactUs', {
+		templateUrl: 'contactUs.html',
+		controller: 'contactUsCotroller',
+		controllerAs:'contactUs'
+	})
+		.when('/about', {
+		templateUrl: 'about.html',
+		controller: 'aboutCotroller',
+		controllerAs:'about'
 	})
 		.otherwise({
 		redirectTo: '/main'
