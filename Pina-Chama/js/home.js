@@ -5,6 +5,8 @@ var userInfo = {
 	userType:''
 };
 
+var state = '';
+
 var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
@@ -19,6 +21,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 					});
 
 					request.execute(function(resp) {
+						state = 'signin';
 						userInfo.email = resp.emails[0].value;
 						userInfo.userId = resp.id;
 						document.cookie = "user_id="+resp.id;
@@ -29,20 +32,22 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 							dataType:'text',
 							data:{email:userInfo.email},
 							success:function(data, status, xhr) {
-								$http.put('/register/' + userInfo.userId, userInfo).success(function(response) {
-									if(response === null){
-										swal({
-											title: 'לא ניתן להתחבר',
-											text:
-												'המשתמש אינו רשום במערכת, יש להירשם תחילה',
-											showCloseButton: true,
-										})
-										//swal("לא ניתן להתחבר", "המשתמש אינו רשום במערכת, יש להירשם תחילה:\n", "error");
-									}else{
-										userInfo.fullName = response.firstName + ' ' + response.lastName;
-										redirection(response.userType);
-									}
-								});
+								if(state === 'signin'){
+									$http.put('/register/' + userInfo.userId, userInfo).success(function(response) {
+										if(response === null){
+											swal({
+												title: 'לא ניתן להתחבר',
+												text:
+													'המשתמש אינו רשום במערכת, יש להירשם תחילה',
+												showCloseButton: true
+											});
+											//swal("לא ניתן להתחבר", "המשתמש אינו רשום במערכת, יש להירשם תחילה:\n", "error");
+										}else{
+											userInfo.fullName = response.firstName + ' ' + response.lastName;
+											redirection(response.userType);
+										}
+									});
+								}
 							},
 							error:function(xhr, status, error) {
 								swal({
@@ -78,6 +83,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 					});
 
 					request.execute(function(resp) {
+						state = 'signup';
 						userInfo.email = resp.emails[0].value;
 						userInfo.userId = resp.id;
 						document.cookie = "user_id="+resp.id;
@@ -88,20 +94,22 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
 							dataType:'text',
 							data:{email:userInfo.email},
 							success:function(data, status, xhr) {
-								$http.put('/register/' + userInfo.userId + '/' + userInfo.email, userInfo).success(function(response) {
-									if(response === null){
-										window.location.href = "#/register";
-									}else{
-										swal({
-											title: 'לא ניתן להירשם',
-											text:
-												'אתה כבר רשום עם המשתמש הזה עם השם:\n' +
-												response.firstName + ' ' + response.lastName,
-											showCloseButton: true,
-										});
-										//swal("לא ניתן להירשם", "אתה כבר רשום עם המשתמש הזה עם השם:\n" + response.firstName + " " + response.lastName, "error");
-									}
-								});
+								if(state === 'signup'){
+									$http.put('/register/' + userInfo.userId + '/' + userInfo.email, userInfo).success(function(response) {
+										if(response === null){
+											window.location.replace("#/register");
+										}else{
+											swal({
+												title: 'לא ניתן להירשם',
+												text:
+													'אתה כבר רשום עם המשתמש הזה עם השם:\n' +
+													response.firstName + ' ' + response.lastName,
+												showCloseButton: true
+											});
+											//swal("לא ניתן להירשם", "אתה כבר רשום עם המשתמש הזה עם השם:\n" + response.firstName + " " + response.lastName, "error");
+										}
+									});
+								}
 							},
 							error:function(xhr, status, error) {
 								swal({

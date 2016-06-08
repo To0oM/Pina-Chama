@@ -171,6 +171,29 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 	
 	$("#addMessageDiv").hide();
 	$("#fade").hide();
+	$("#mainBody").hide();
+	
+	$scope.redirection = function () {
+		var path = '/home.html';
+		
+		window.location.replace(path);
+	}
+	
+	$scope.loadPage = function () {
+		var info = {
+			userType: 'manager'
+		};
+		
+		$http.post('/loadPage', info).success(function(response) {
+			if(response === 'approved'){
+				$("#mainBody").show();
+			}else{
+				$scope.redirection();
+			}
+		});
+	};
+	
+	$scope.loadPage();
 	
 	//load the messages from the database.
 	$scope.refresh = function () {

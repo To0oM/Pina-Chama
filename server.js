@@ -3,6 +3,8 @@ var path = require('path');       //to get the absolute path
 var mongoose = require('mongoose');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 
 var app = express();              //init the server
 
@@ -12,6 +14,12 @@ var port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/Pina-Chama'));
 app.use(bodyParser.json());
+
+app.use(cookieParser('P1N4S3C3E7'));
+app.use(cookieSession({
+	key: 'app.sess',
+	secret: 'P1N4S3C3E7'
+}));
 
 app.use('/bakers', express.static('Pina-Chama/bakers'));
 app.use('/bakery', express.static('Pina-Chama/bakery'));
@@ -75,23 +83,36 @@ app.post('/register', function (req, res) {
 		addCity: req.body.addCity,
 		addPostalCode: req.body.addPostalCode,
 		email: req.body.email,
-		volunteerStartDate: volunteerStartDate,
+		volunteerStartDate:  req.body.volunteerStartDate,
 		comments: comments,
 		active: 'פעיל',
 		permanent: req.body.permanent,
 		team: team,
-		dateOfVisit: dateOfVisit
+		dateOfVisit:  req.body.dateOfVisit
 	}).save(function (err){
 		if (err){
 			console.log(err);
 		}else{
-		   res.json('saved!');
+			req.session.googleId = req.body.googleId;
+			req.session.name = req.body.firstName + ' ' + req.body.lastName;
+			req.session.userType = req.body.userType;
+			req.session.phoneNumber = req.body.phoneNumber;
+			
+			res.json('saved!');
 		}
 	});
 });
 
 app.get('/refresh', function(req, res) {
 	res.json('refresh');
+});
+
+app.post('/loadPage', function(req, res) {
+	if(req.session.userType === req.body.userType){
+		res.json('approved');
+	}else{
+		res.json('denied');
+	}
 });
 
 app.get('/managersDB', function(req, res) {
@@ -159,12 +180,16 @@ app.put('/register/:id/:email', function (req, res) {
 app.put('/register/:id', function (req, res) {
 	var id = req.params.id;
 	
-	console.log("body.id: " + req.body.userId);
-	console.log("params.id: " + id);
-	
-	Users.findOne({ 'googleId': id }, 'firstName lastName userType', function (err, users) {
+	Users.findOne({ 'googleId': id }, 'firstName lastName userType phoneNumber', function (err, users) {
 		if (err)
 			return handleError(err);
+		
+		if (users){
+			req.session.googleId = id;
+			req.session.name = users.firstName + ' ' + users.lastName;
+			req.session.userType = users.userType;
+			req.session.phoneNumber = users.phoneNumber;
+		}
 		
 		res.json(users);
 	})

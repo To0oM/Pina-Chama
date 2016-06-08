@@ -144,6 +144,30 @@ app.controller('navContreoller', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('mainController', ['$scope', '$http', function($scope, $http) {
+	$("#mainBody").hide();
+	
+	$scope.redirection = function () {
+		var path = '/home.html';
+		
+		window.location.replace(path);
+	}
+	
+	$scope.loadPage = function () {
+		var info = {
+			userType: 'volunteer'
+		};
+		
+		$http.post('/loadPage', info).success(function(response) {
+			if(response === 'approved'){
+				$("#mainBody").show();
+			}else{
+				$scope.redirection();
+			}
+		});
+	};
+	
+	$scope.loadPage();
+	
 	//load the messages from the database.
 	$scope.refresh = function () {
 		$http.get('/refresh').success(function(response) {

@@ -410,8 +410,8 @@ nav{
 }
 .carousel-indicators li{
 	display:inline-block;
-	width:13px;
-	height:13px;
+	width:11px;
+	height:11px;
 	margin:1px;
 	text-indent:-999px;
 	cursor:pointer;
@@ -421,8 +421,8 @@ nav{
 	border-radius:10px
 }
 .carousel-indicators .active{
-	width:15px;
-	height:15px;
+	width:13px;
+	height:13px;
 	margin:0;
 	background-color:#fff
 }
