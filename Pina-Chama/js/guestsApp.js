@@ -354,6 +354,16 @@ app.config(function ($routeProvider) {
 		controller: 'mainController',
 		controllerAs: 'main'
 	})
+		.when('/contactUs', {
+		templateUrl: '../contactUs.html',
+		controller: 'contactUsCotroller',
+		controllerAs:'contactUs'
+	})
+		.when('/about', {
+		templateUrl: '../about.html',
+		controller: 'aboutCotroller',
+		controllerAs:'about'
+	})
 		.otherwise({
 		redirectTo: '/main'
 	});

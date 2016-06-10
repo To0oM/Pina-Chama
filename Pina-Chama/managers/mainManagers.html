@@ -71,9 +71,7 @@
 			<div id = "addButtonDiv">
 				<button class = "button_add" id = "addNewMPost" title = "הוסף הודעה" ng-click = "newMessage('posts')">+</button>
 			</div>
-			
-			<img class="img-responsive img-border img-left" src="../img/intro-pic.jpg" alt="">
-			
+	
 			<div class = "message" ng-repeat="post in posts">
 				<hr ng-if="($index)!==0">
 				<input type="image" class="delete" title = "מחק הודעה" src="../img/delete.png" ng-click="remove(post._id)">

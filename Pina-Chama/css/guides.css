@@ -1,0 +1,13 @@
+#allVideos { 
+	max-width: 550px; 
+	margin: 30px auto;
+}
+#vidForm{
+	margin-top: 50px;
+	direction: rtl;
+	text-align: center;
+}
+.videoName{
+	direction: rtl;
+	text-align: center;
+}
