@@ -7,7 +7,7 @@ function addVideo() {
 	var vidName = "<p id='" + numOfVid + "' class='videoName'></p>";
 	
 	$("#allVideos").append(vidName);
-	document.getElementById(numOfVid).innerHTML = $('#vidName').val();
+	document.getElementById(numOfVid).innerHTML = $('#name').val();
 	
 	var vid = "<video class='video-js vjs-default-skin' width='550px' height='250px' controls preload='none'>"+
 				"<source src='" + numOfVid + ".mp4' type='video/mp4' />"+

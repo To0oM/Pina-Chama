@@ -7,14 +7,32 @@
         <hr>
 		
 		
-		<form id="vidForm">&nbsp;
-				שם הסרטון:
+		<form id="vidForm">
+		
+			<ul class="formGuide">	
+					<!--שם הסרטון:
 				<input  id="vidName" type="text" >
 				שם הקובץ:
-				<input  id="vidFile" type="text" >
-				<br><br>
+				<input  id="vidFile" type="text" >-->
+				
+				<span class = "inline">
+					<label id="Name">שם הסרטון</label>
+					<input type="text" name="name" class="name" id="name"/>
+				</span>
+				
+				<span class = "inline">
+					<label id="File">שם הקובץ</label>
+					<input type="text" name="file" class="file" id="file"/>
+				</span>
+				
+				<span id = "cmd">
+					<button type="button" id="addNewVid" class="addNewVid" onclick="addVideo()">+</button>
+				</span>
+				
+				<!--<br><br>
 				<button type="button" id="newVid" onclick="addVideo()">הוסף סרטון</button>
-				<br><br>
+				<br><br>-->
+			</ul>
 		</form>
 		<div id="allVideos">
 		</div>

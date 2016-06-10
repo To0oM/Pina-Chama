@@ -1,3 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+
 #allVideos { 
 	max-width: 550px; 
 	margin: 30px auto;
@@ -7,7 +12,118 @@
 	direction: rtl;
 	text-align: center;
 }
-.videoName{
+
+.name, 
+.file{
+	box-shadow: 0 1px 1px #f9ebeb inset, 0 0 0.5px #c73838;
+	outline: 0 none;
+}
+
+.name:focus, 
+.file:focus{
+	border-color: rgba(229, 103, 23, 0.8);
+	box-shadow: 0 1px 1px #f9ebeb inset, 0 0 2px #c73838;
+	outline: 0 none;
+}
+
+.addNewVid{
+	outline: 0 none;
+}
+
+/*Form*/
+.inline{
+	display:inline-block;
+}
+
+.formGuide{
+	direction: rtl;
+	text-align: center;
+	margin-right: 5px;
+}
+
+.formGuide label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+	font-weight: bold;
+	color: #BD3636;
+}
+
+.formGuide input{
+	padding: 6px;
+}
+ 
+.formGuide #Name, 
+.formGuide #File, 
+.formGuide #cmd{
+	display: block;
+	border: none;
+	margin: none;
+	padding: none;
+}
+
+.formGuide #cmd{
+	display: inline;
+}
+
+.addNewVid {
+	background-color: #d87474;
+	color: white;
+	border: 2px solid #c73838;
+	border-radius: 5px;
+	width: 50px;
+	height: 45px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 30px;
+	margin: 4px 12px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-box-shadow: 5px 9px 5px #a6a6a6;
+	-moz-box-shadow: 5px 9px 5px #a6a6a6;
+	box-shadow: 5px 5px 5px #a6a6a6;
+}
+
+.addNewVid:hover {
+	background-color: #d26060;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	-webkit-box-shadow: 5px 9px 5px #999999;
+	-moz-box-shadow: 5px 9px 5px #999999;
+	box-shadow: 5px 5px 5px #999999;
+}
+
+.addNewVid:active {
+	background-color: white; 
+	color: #e39c9c;	
+	border: 2px solid #e39c9c;
+	-webkit-transition: all 0.1s;
+	-moz-transition: all 0.1s;
+	transition: all 0.1s;
+	-webkit-box-shadow: 3px 6px 3px #999999;
+	-moz-box-shadow: 3px 6px 3px #999999;
+	box-shadow: 3px 3px 3px #999999;
+	position:relative;
+	top:3px;
+}
+
+#name{
+	width:200px;
+	border: 0px;
+	border-radius: 5px;
+	direction: rtl;
+	text-align: center;
+}
+
+#file{
+	width:200px;
+	border: 0px;
+	border-radius: 5px;
 	direction: rtl;
 	text-align: center;
 }
