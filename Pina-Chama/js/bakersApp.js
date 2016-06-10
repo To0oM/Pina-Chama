@@ -153,20 +153,32 @@ app.controller('guestBookController', ['$scope', '$http', function($scope, $http
 	
 	$scope.updatePage = function () {
 		if ($scope.currentPage === 0){
+			$("#prev").css("-moz-opacity", "0.4");
+			$("#prev").css("opacity", ".40");
+			$("#prev").css("filter", "alpha(opacity=40)");
 			$("#prev").prop("disabled", true);
 			$("#prev").css("cursor", "default");
 			$("#prev").prop("title", "תחילת הספר");
 		} else {
+			$("#prev").css("-moz-opacity", "1");
+			$("#prev").css("opacity", "1");
+			$("#prev").css("filter", "alpha(opacity=100)");
 			$("#prev").prop("disabled", false);
 			$("#prev").css("cursor", "pointer"); 
 			$("#prev").prop("title", "עמוד קודם");
 		}
 
 		if (($scope.currentPage === pagesNum) || ($scope.currentPage === (pagesNum-1)) || (pagesNum === -1)){
+			$("#next").css("-moz-opacity", "0.4");
+			$("#next").css("opacity", ".40");
+			$("#next").css("filter", "alpha(opacity=40)");
 			$("#next").prop("disabled", true);
 			$("#next").css("cursor", "default"); 
 			$("#next").prop("title", "סוף הספר");
 		} else {
+			$("#next").css("-moz-opacity", "1");
+			$("#next").css("opacity", "1");
+			$("#next").css("filter", "alpha(opacity=100)");
 			$("#next").prop("disabled", false);
 			$("#next").css("cursor", "pointer");
 			$("#next").prop("title", "עמוד הבא");
