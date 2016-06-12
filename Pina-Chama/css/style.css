@@ -1002,3 +1002,19 @@ ul.cHome li {
 	direction: rtl;
 	padding-right: 20px;
 }
+
+/*-----------------------------------------------for export to excel----------------------------------------------*/
+.button_export {
+	margin-top: -20px;
+	margin-left: 40%;
+}
+
+.button_export:hover {
+	-moz-opacity: 0.6;
+	opacity:.60;
+	filter: alpha(opacity=60);
+}
+
+.button_export:active {
+	margin-top: -18px;
+}

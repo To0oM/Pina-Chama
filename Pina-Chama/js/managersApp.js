@@ -493,6 +493,10 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 		$http.get('/refresh').success(function(response) {
 			$scope.usersList = usersList;
 			$scope.title = title;
+			
+			if($scope.usersList === undefined) {
+				$(".exportButton").hide();
+			}
 		});
 	};
 	
@@ -503,6 +507,10 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			
 			title = $scope.title;
 			usersList = $scope.usersList;
+			
+			if($scope.usersList.length === 0) {
+				$(".exportButton").hide();
+			}
 		});
 		$scope.loadData();
 	};
@@ -514,6 +522,10 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			
 			title = $scope.title;
 			usersList = $scope.usersList;
+			
+			if($scope.usersList.length === 0) {
+				$(".exportButton").hide();
+			}
 		});
 		$scope.loadData();
 	};
@@ -525,6 +537,10 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			
 			title = $scope.title;
 			usersList = $scope.usersList;
+			
+			if($scope.usersList.length === 0) {
+				$(".exportButton").hide();
+			}
 		});
 		$scope.loadData();
 	};
@@ -536,6 +552,10 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			
 			title = $scope.title;
 			usersList = $scope.usersList;
+			
+			if($scope.usersList.length === 0) {
+				$(".exportButton").hide();
+			}
 		});
 		$scope.loadData();
 	};
@@ -547,6 +567,10 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			
 			title = $scope.title;
 			usersList = $scope.usersList;
+			
+			if($scope.usersList.length === 0) {
+				$(".exportButton").hide();
+			}
 		});
 		$scope.loadData();
 	};
@@ -624,6 +648,13 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 		
 		swal("פרטים", tableDetails);
 	};
+	
+	$scope.exportData = function () {
+        var blob = new Blob([document.getElementById('exportable').innerHTML], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+        });
+        saveAs(blob, "Report.xls");
+    };
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {

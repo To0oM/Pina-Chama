@@ -11,43 +11,48 @@
                 <img src = "../img/cubes.jpg"></img>
             </div>
             <br>
-            <table id="volunteer">
-                <thead>
-                    <tr>
-						<th class="headDetails"></th>
-                        <th id="head8" class="col8"><img src = "../img/mail.jpg"></img></th>
-                        <th id="head7" class="col7">סטטוס</th>
-                        <th id="head6" class="col6">כתובת</th>
-                        <th id="head5" class="col5">טלפון</th>
-                        <th id="head4" class="col4">ת.לידה</th>
-                        <th id="head3" class="col3">שם משפחה</th>
-                        <th id="head2" class="col2">שם פרטי</th>
-                        <th id="head1" class="col1">.ת.ז</th>
-                    </tr>
-                </thead>
+			
+			<div id="exportable">
+				<table id="volunteer">
+					<thead>
+						<tr>
+							<th class="headDetails"></th>
+							<th id="head8" class="col8"><img src = "../img/mail.jpg"></img></th>
+							<th id="head7" class="col7">סטטוס</th>
+							<th id="head6" class="col6">כתובת</th>
+							<th id="head5" class="col5">טלפון</th>
+							<th id="head4" class="col4">ת.לידה</th>
+							<th id="head3" class="col3">שם משפחה</th>
+							<th id="head2" class="col2">שם פרטי</th>
+							<th id="head1" class="col1">.ת.ז</th>
+						</tr>
+					</thead>
 
-                <table id="volunteer">
-                    <tr>
-                        <td>
-                            <div class="scrollit">
-                                <table id="volunteer">
-                                    <tr class="innerTable" ng-repeat="user in usersList">
-										<td><button type="button" class="colDetails" ng-click="showTableDetails($index)">הערות</button></td>
-                                        <td class="col8"><a href="https://www.google.co.il">{{user.email}}</a></td>
-                                        <td class="col7" id="active">{{user.active}}</td>
-                                        <td class="col6">{{user.address}}</td>
-                                        <td class="col5">{{user.phoneNumber}}</td>
-                                        <td class="col4">{{user.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
-                                        <td class="col3">{{user.lastName}}</td>
-                                        <td class="col2">{{user.firstName}}</td>
-                                        <td class="col1">{{user.id}}</td>
-                                    </tr>
-                                </table>
-                            </div>	
-                        </td>		
-                    </tr>		
-                </table>
-            </table>		
+					<table id="volunteer">
+						<tr>
+							<td>
+								<div class="scrollit">
+									<table id="volunteer">
+										<tr class="innerTable" ng-repeat="user in usersList">
+											<td><button type="button" class="colDetails" ng-click="showTableDetails($index)">הערות</button></td>
+											<td class="col8"><a href="https://www.google.co.il">{{user.email}}</a></td>
+											<td class="col7" id="active">{{user.active}}</td>
+											<td class="col6">{{user.address}}</td>
+											<td class="col5">{{user.phoneNumber}}</td>
+											<td class="col4">{{user.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
+											<td class="col3">{{user.lastName}}</td>
+											<td class="col2">{{user.firstName}}</td>
+											<td class="col1">{{user.id}}</td>
+										</tr>
+									</table>
+								</div>	
+							</td>		
+						</tr>		
+					</table>
+				</table>		
+			</div>
+			
+			<br><br>
         </div>
     </div>
 </div>
