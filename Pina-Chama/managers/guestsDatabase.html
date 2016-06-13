@@ -1,4 +1,4 @@
-<div class="row" ng-controller="databaseController">
+﻿<div class="row" ng-controller="databaseController">
     <div class="box">
         <div class="col-lg-12">
             <hr>
@@ -34,7 +34,7 @@
 									<table id="volunteer">
 										<tr ng-repeat="user in usersList">
 											<td><button type="button" class="colDetails" ng-click="showGuestDetails($index)">הערות</button></td>
-											<td class="col27"><a href="https://www.google.co.il">{{user.email}}</a></td>
+											<td class="col27"><a href="mailto:{{user.email}}">{{user.email}}</a></td>
 											<td class="col26">{{user.address}}</td>
 											<td class="col25">{{user.phoneNumber}}</td>
 											<td class="col24">{{user.dateOfBirth | date : 'dd/MM/yyyy'}}</td>
@@ -51,6 +51,19 @@
 			</div>
 			
 			<br><br>
+			
+			<span class = "sendEmailsCmd">			
+				<a class="sendEmailsButton" type="button" ng-click="sendEmail()"><img class = "button_sendEmails" src = "../img/email.png"></img></a>
+			</span>
+			<span class = "exportCmd">
+				<a class="exportButton" type="button" ng-click="exportData()"><img class = "button_export" src = "../img/excel.png"></img></a>
+			</span>		
+
+			<br><br>
+			
+			<div class="emailTxt">
+				* כפתור 'שלח מייל לכולם'- שולח את המייל לרשימת האורחים, לא כולל משתמשים לא פעילים.
+			</div>
         </div>
     </div>
 </div>

@@ -495,7 +495,9 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			$scope.title = title;
 			
 			if($scope.usersList === undefined) {
+				$(".sendEmailsButton").hide();
 				$(".exportButton").hide();
+				$(".emailTxt").hide();
 			}
 		});
 	};
@@ -509,7 +511,9 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			usersList = $scope.usersList;
 			
 			if($scope.usersList.length === 0) {
+				$(".sendEmailsButton").hide();
 				$(".exportButton").hide();
+				$(".emailTxt").hide();
 			}
 		});
 		$scope.loadData();
@@ -524,7 +528,9 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			usersList = $scope.usersList;
 			
 			if($scope.usersList.length === 0) {
+				$(".sendEmailsButton").hide();
 				$(".exportButton").hide();
+				$(".emailTxt").hide();
 			}
 		});
 		$scope.loadData();
@@ -539,7 +545,9 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			usersList = $scope.usersList;
 			
 			if($scope.usersList.length === 0) {
+				$(".sendEmailsButton").hide();
 				$(".exportButton").hide();
+				$(".emailTxt").hide();
 			}
 		});
 		$scope.loadData();
@@ -554,7 +562,9 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			usersList = $scope.usersList;
 			
 			if($scope.usersList.length === 0) {
+				$(".sendEmailsButton").hide();
 				$(".exportButton").hide();
+				$(".emailTxt").hide();
 			}
 		});
 		$scope.loadData();
@@ -569,7 +579,9 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
 			usersList = $scope.usersList;
 			
 			if($scope.usersList.length === 0) {
+				$(".sendEmailsButton").hide();
 				$(".exportButton").hide();
+				$(".emailTxt").hide();
 			}
 		});
 		$scope.loadData();
@@ -655,6 +667,21 @@ app.controller('databaseController', ['$scope', '$http', function($scope, $http)
         });
         saveAs(blob, "Report.xls");
     };
+	
+	$scope.sendEmail = function () {
+		var mailAdrress = "";
+		for(var i=0; i<$scope.usersList.length; i++)
+		{
+			if($scope.usersList[i].active === "פעיל")
+			{
+				mailAdrress += $scope.usersList[i].email;
+				if(i != $scope.usersList.length - 1)
+					mailAdrress += ",";
+			}
+		}
+		
+		window.location.replace("mailto:"+mailAdrress);
+	};
 }]);﻿
 
 app.controller('arrangementController', ['$scope', '$http', function($scope, $http) {

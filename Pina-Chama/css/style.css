@@ -14,7 +14,7 @@
 
 .scrollit {
 	overflow:scroll;
-	height:295px;
+	height:550px;
 }
 
 #volunteer {
@@ -1006,7 +1006,6 @@ ul.cHome li {
 /*-----------------------------------------------for export to excel----------------------------------------------*/
 .button_export {
 	margin-top: -20px;
-	margin-left: 40%;
 }
 
 .button_export:hover {
@@ -1017,4 +1016,33 @@ ul.cHome li {
 
 .button_export:active {
 	margin-top: -18px;
+}
+
+.exportCmd {
+	display: inline;
+}
+
+/*-----------------------------------------------for send email to everyone----------------------------------------------*/
+.button_sendEmails {
+	margin-top: -20px;
+	margin-left: 30%;
+}
+
+.button_sendEmails:hover {
+	-moz-opacity: 0.6;
+	opacity:.60;
+	filter: alpha(opacity=60);
+}
+
+.button_sendEmails:active {
+	margin-top: -18px;
+}
+
+.sendEmailsCmd {
+	display: inline;
+}
+
+.emailTxt {
+	direction: rtl;
+	padding-right: 20px;
 }

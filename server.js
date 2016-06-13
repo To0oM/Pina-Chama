@@ -586,7 +586,7 @@ app.put('/pesonalDetails/:id', function(req, res) {
 		{$set: {id: id, firstName: req.body.firstName, lastName: req.body.lastName, userType: req.body.userType, dateOfBirth: req.body.dateOfBirth,
 				phoneNumber: req.body.phoneNumber, address: address, addStreet: req.body.addStreet, addApartment: req.body.addApartment, 
 				addCity: req.body.addCity, addPostalCode: req.body.addPostalCode, email: req.body.email, volunteerStartDate: req.body.volunteerStartDate,
-				comments: comments, active: 'פעיל', permanent: req.body.permanent, team: team, dateOfVisit: req.body.dateOfVisit}},
+				comments: comments, active: req.body.active, permanent: req.body.permanent, team: team, dateOfVisit: req.body.dateOfVisit}},
 		{new: true} , function(err, user) {
 			res.json(user);
 		});
