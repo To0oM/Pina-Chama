@@ -15,8 +15,13 @@ var stocksPinaList;
 var stocksBakeryList;
 var stocksFalafelList;
 
-var shifts;
+var sunShifts;
+var monShifts;
+var tueShifts;
+var wedShifts;
+var thuShifts;
 var shiftRequests;
+
 var cakes;
 var cakeRequests;
 
@@ -688,27 +693,68 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	//load the shifts, cakes, cakeRequests and shiftRequests from the database.
 	$scope.refresh = function () {
 		$http.get('/refresh').success(function(response) {
-			$scope.shifts = shifts;
+			$scope.sunShifts = sunShifts;
+			$scope.monShifts = monShifts;
+			$scope.tueShifts = tueShifts;
+			$scope.wedShifts = wedShifts;
+			$scope.thuShifts = thuShifts;
 			$scope.shiftRequests = shiftRequests;
+			
 			$scope.cakes = cakes;
 			$scope.cakeRequests = cakeRequests;
 		});
 	};
 	
 	$scope.loadShiftsDB = function() {
-		$http.get('/volunteersShifts').success(function(response) {
-			$scope.shifts = response;
+		var params = {
+			day: "Sun"
+		};
+		
+		$http.get('/volunteersShifts/' + params.day).success(function(response) {
+			$scope.sunShifts = response;
 			
-			shifts = $scope.shifts;
+			sunShifts = $scope.sunShifts;
 		});
-
-		$http.get('/managersShiftsRequests').success(function(response) {
-			$scope.shiftRequests = response;
+		
+		params.day = "Mon";
+		
+		$http.get('/volunteersShifts/' + params.day).success(function(response) {
+			$scope.monShifts = response;
 			
-			shiftRequests = $scope.shiftRequests;
+			monShifts = $scope.monShifts;
 		});
-
-		$scope.refresh();
+		
+		params.day = "Tue";
+		
+		$http.get('/volunteersShifts/' + params.day).success(function(response) {
+			$scope.tueShifts = response;
+			
+			tueShifts = $scope.tueShifts;
+		});
+		
+		params.day = "Wed";
+		
+		$http.get('/volunteersShifts/' + params.day).success(function(response) {
+			$scope.wedShifts = response;
+			
+			wedShifts = $scope.wedShifts;
+		});
+		
+		params.day = "Thu";
+		
+		$http.get('/volunteersShifts/' + params.day).success(function(response) {
+			$scope.thuShifts = response;
+			
+			thuShifts = $scope.thuShifts;
+			
+			$http.get('/managersShiftsRequests', params).success(function(response) {
+				$scope.shiftRequests = response;
+				
+				shiftRequests = $scope.shiftRequests;
+				
+				$scope.refresh();
+			});
+		});
 	};
 	
 	$scope.loadCakesDB = function() {
@@ -730,6 +776,110 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	//initial load
 	$scope.loadShiftsDB();
 	$scope.loadCakesDB();
+	
+	$scope.editShift = function(updateShifts){
+		$http.put('/saveShifts/' + updateShifts.currentDay, updateShifts).success(function(response) {
+			$scope.loadShiftsDB();
+			$scope.loadCakesDB();
+		});
+	};
+	
+	$scope.popShiftday = function(dayNum){
+		var updateShifts = {
+		};
+		
+		switch (dayNum) {
+			case 1:
+				updateShifts.currentDay = "Sun";
+				updateShifts.currentDayShifts = $scope.sunShifts;
+				console.log("currentDayShifts: " + updateShifts.currentDayShifts);
+				break;
+			case 2:
+				updateShifts.currentDay = "Mon";
+				updateShifts.currentDayShifts = $scope.monShifts;
+				break;
+			case 3:
+				updateShifts.currentDay = "Tue";
+				updateShifts.currentDayShifts = $scope.tueShifts;
+				break;
+			case 4:
+				updateShifts.currentDay = "Wed";
+				updateShifts.currentDayShifts = $scope.wedShifts;
+				break;
+			case 5:
+				updateShifts.currentDay = "Thu";
+				updateShifts.currentDayShifts = $scope.thuShifts;
+				break;
+		}
+		
+		$scope.editShift(updateShifts);
+	};
+	
+	$scope.popCakeday = function(dayNum){
+		var windowHeight = $(window).height();
+		$('.black_overlay').css('height', windowHeight);
+		
+		switch (dayNum) {
+			case 1:
+				$("#cakeDay").html(" ראשון");	
+				break;
+			case 2:
+				$("#cakeDay").html(" שני");	
+				break;
+			case 3:
+				$("#cakeDay").html(" שלישי");
+				break;
+			case 4:
+				$("#cakeDay").html(" רביעי");	
+				break;
+			case 5:
+				$("#cakeDay").html(" חמישי");	
+				break;
+		}
+		
+		$("#addCakeDayDiv").fadeIn();
+		$("#fade").fadeIn();
+
+		$scope.cakeday.shiftDay = dayNum;
+	};
+	
+	$scope.editCakeDay = function() {
+		$http.put('/editCakeDay', $scope.guestPost).success(function(response) {
+			$scope.loadCakesDB();
+		});
+	};
+	
+	$scope.editShiftDay = function() {
+		$http.put('/editShiftDay', $scope.guestPost).success(function(response) {
+			$scope.loadShiftsDB();
+		});
+	};
+	
+	$scope.submitShiftDayForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.shiftDayForm.$valid) {
+			$scope.editShiftDay();
+			$scope.closeShift();
+		}
+	};
+	
+	$scope.submitCakeDayForm = function() {
+		// check to make sure the form is completely valid
+		if ($scope.cakeDayForm.$valid) {
+			$scope.editCakeDay();
+			$scope.closeCake();
+		}
+	};
+	
+	$scope.closeShift = function(){
+		$("#addShiftDayDiv").fadeOut();
+		$("#fade").fadeOut();
+	};
+	
+	$scope.closeCake = function(){
+		$("#addCakeDayDiv").fadeOut();
+		$("#fade").fadeOut();
+	};
 }]);﻿
 
 app.controller('guestBookController', ['$scope', '$http', function($scope, $http) {
