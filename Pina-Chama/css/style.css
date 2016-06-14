@@ -856,6 +856,9 @@ a:hover, a:focus {
 .shift{
 	height: 50px;
 	text-align: center;
+	outline: none;
+	border: none;
+	font-size: 20px;
 }
 
 .shift-time{
@@ -864,6 +867,8 @@ a:hover, a:focus {
 }
 
 .shift-success{
+	width: 100%;
+	height: 25px;
 	color:#3c763d;
 	background-color:#dff0d8;
 	border-color:#d6e9c6;
@@ -894,6 +899,8 @@ a:hover, a:focus {
 }
 
 .shift-danger{
+	width: 100%;
+	height: 25px;
 	color:#a94442;
 	background-color:#f2dede;
 	border-color:#ebccd1;
@@ -901,6 +908,65 @@ a:hover, a:focus {
 
 .shift-danger hr{
 	border-top-color:#e4b9c0;
+}
+
+.editShift {
+	border-radius: 2px;
+	width: 149px;
+	height: 45px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color:#F0CFCF;
+	color: #a94442;
+	border: 2px solid #e7e7e7;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-box-shadow: 3px 6px 3px #cccccc;
+	-moz-box-shadow: 3px 6px 3px #cccccc;
+	box-shadow: 3px 3px 3px #cccccc;
+	font-weight:bold;
+	outline: 0 none;
+}
+
+.editShift:hover {
+	background-color: white; 
+	color: #a94442;
+	-webkit-box-shadow: 2px 3px 2px #b3b3b3;
+	-moz-box-shadow: 2px 3px 2px #b3b3b3;
+	box-shadow: 2px 3px 2px #b3b3b3;
+	outline: 0 none;
+}
+
+.editShift:active {
+	background-color: white; 
+	color: #a94442;
+	border: 1px solid #e39c9c;
+	-webkit-box-shadow: 0px 0px 0px;
+	-moz-box-shadow: 0px 0px 0px ;
+	box-shadow: 0px 0px 0px ;
+	position:relative;
+	top:3px;
+	outline: 0 none;
+}
+
+.editCake {
+	width: 185px;
+	height: 45px;
+}
+
+.titleVolunteers1 {
+	font: 15px 'Open Sans Hebrew', sans-serif;
+	
+}
+
+.titleVolunteers2 {
+	font: 15px 'Open Sans Hebrew', sans-serif;
 }
 
 .col-md-4{
@@ -919,7 +985,6 @@ a:hover, a:focus {
 .col-sm-7{
 	height: 150px;
 }
-
 /*------------------------------------for donations---------------------------------------------------*/
 ul.bullet {
 	list-style: none;
@@ -951,7 +1016,6 @@ ul.bullet li {
 	width: 60px;
 	height: 60px;
 	float: left;
-	/*background-image: url("../img/homeButton.png");*/
 }
 
 .button_home:hover {
@@ -1002,7 +1066,6 @@ ul.cHome li {
 	direction: rtl;
 	padding-right: 20px;
 }
-
 /*-----------------------------------------------for export to excel----------------------------------------------*/
 .button_export {
 	margin-top: -20px;

@@ -507,17 +507,228 @@ app.post('/volunteersShiftRequest', function (req, res) {
 });
 
 //get all volunteers's shifts in db.
-app.get('/volunteersShifts', function(req, res) {
-	Shifts.find(function(err, shifts) {
+app.get('/volunteersShifts/:day', function(req, res) {
+	var day = req.params.day;
+	var shifts = {};
+	
+	Shifts.findOne({shiftDay: day, shiftTime: "first"}, function(err, firstShift) {
 		if (err)
 			throw err;
-		res.json(shifts);
+		
+		if(firstShift){
+			shifts.firstShift = firstShift;
+		}else{
+			shifts.firstShift = {
+				shiftDay: day,
+				shiftTime: "first",
+				volunteer1Name: "",
+				volunteer2Name: ""
+			};
+		}
 	});
+	
+	Shifts.findOne({shiftDay: day, shiftTime: "second"}, function(err, secondShift) {
+		if (err)
+			throw err;
+		if(secondShift){
+			shifts.secondShift = secondShift;
+		}else{
+			shifts.secondShift = {
+				shiftDay: day,
+				shiftTime: "second",
+				volunteer1Name: "",
+				volunteer2Name: ""
+			}
+		}
+	});
+	
+	Shifts.findOne({shiftDay: day, shiftTime: "third"}, function(err, thirdShift) {
+		if (err)
+			throw err;
+		if(thirdShift){
+			shifts.thirdShift = thirdShift;
+		}else{
+			shifts.thirdShift = {
+				shiftDay: day,
+				shiftTime: "third",
+				volunteer1Name: "",
+				volunteer2Name: ""
+			}
+		}
+	});
+	
+	Shifts.findOne({shiftDay: day, shiftTime: "fourth"}, function(err, fourthShift) {
+		if (err)
+			throw err;
+		if(fourthShift){
+			shifts.fourthShift = fourthShift;
+		}else{
+			shifts.fourthShift = {
+				shiftDay: day,
+				shiftTime: "fourth",
+				volunteer1Name: "",
+				volunteer2Name: ""
+			}
+		}
+	});
+	
+	Shifts.findOne({shiftDay: day, shiftTime: "fifth"}, function(err, fifthShift) {
+		if (err)
+			throw err;
+		if(fifthShift){
+			shifts.fifthShift = fifthShift;
+		}else{
+			shifts.fifthShift = {
+				shiftDay: day,
+				shiftTime: "fifth",
+				volunteer1Name: "",
+				volunteer2Name: ""
+			}
+		}
+	});
+	
+	Shifts.findOne({shiftDay: day, shiftTime: "sixth"}, function(err, sixthShift) {
+		if (err)
+			throw err;
+		if(sixthShift){
+			shifts.sixthShift = sixthShift;
+		}else{
+			shifts.sixthShift = {
+				shiftDay: day,
+				shiftTime: "sixth",
+				volunteer1Name: "",
+				volunteer2Name: ""
+			}
+		}
+	});
+	
+	setTimeout(function (){
+		res.json(shifts);
+	}, 300);
+});
+
+//for update item
+app.put('/saveShifts/:day', function(req, res) {
+	var update = req.body;
+	var day = req.params.day;
+	var currentDayShifts = update.currentDayShifts;
+	
+	/* ------ first shift ------ */
+	Shifts.findOneAndUpdate({shiftDay: day, shiftTime: "first"},
+		{$set: {volunteer1Name: currentDayShifts.firstShift.volunteer1Name, volunteer2Name: currentDayShifts.firstShift.volunteer2Name}},
+		{new: true} , function(err, sunFirst) {
+			if(!sunFirst){
+				new Shifts({
+					shiftDay: currentDayShifts.firstShift.shiftDay,
+					shiftTime: currentDayShifts.firstShift.shiftTime,
+					volunteer1Name: currentDayShifts.firstShift.volunteer1Name,
+					volunteer2Name: currentDayShifts.firstShift.volunteer2Name
+				}).save(function (err){
+					if (err)
+						throw err;
+				});
+			}
+		}
+	);
+	
+	/* ------ second shift ------ */
+	Shifts.findOneAndUpdate({shiftDay: day, shiftTime: "second"},
+		{$set: {volunteer1Name: currentDayShifts.secondShift.volunteer1Name, volunteer2Name: currentDayShifts.secondShift.volunteer2Name}},
+		{new: true} , function(err, sunFirst) {
+			if(!sunFirst){
+				new Shifts({
+					shiftDay: currentDayShifts.secondShift.shiftDay,
+					shiftTime: currentDayShifts.secondShift.shiftTime,
+					volunteer1Name: currentDayShifts.secondShift.volunteer1Name,
+					volunteer2Name: currentDayShifts.secondShift.volunteer2Name
+				}).save(function (err){
+					if (err)
+						throw err;
+				});
+			}
+		}
+	);
+	
+	/* ------ third shift ------ */
+	Shifts.findOneAndUpdate({shiftDay: day, shiftTime: "third"},
+		{$set: {volunteer1Name: currentDayShifts.thirdShift.volunteer1Name, volunteer2Name: currentDayShifts.thirdShift.volunteer2Name}},
+		{new: true} , function(err, sunFirst) {
+			if(!sunFirst){
+				new Shifts({
+					shiftDay: currentDayShifts.thirdShift.shiftDay,
+					shiftTime: currentDayShifts.thirdShift.shiftTime,
+					volunteer1Name: currentDayShifts.thirdShift.volunteer1Name,
+					volunteer2Name: currentDayShifts.thirdShift.volunteer2Name
+				}).save(function (err){
+					if (err)
+						throw err;
+				});
+			}
+		}
+	);
+	
+	/* ------ fourth shift ------ */
+	Shifts.findOneAndUpdate({shiftDay: day, shiftTime: "fourth"},
+		{$set: {volunteer1Name: currentDayShifts.fourthShift.volunteer1Name, volunteer2Name: currentDayShifts.fourthShift.volunteer2Name}},
+		{new: true} , function(err, sunFirst) {
+			if(!sunFirst){
+				new Shifts({
+					shiftDay: currentDayShifts.fourthShift.shiftDay,
+					shiftTime: currentDayShifts.fourthShift.shiftTime,
+					volunteer1Name: currentDayShifts.fourthShift.volunteer1Name,
+					volunteer2Name: currentDayShifts.fourthShift.volunteer2Name
+				}).save(function (err){
+					if (err)
+						throw err;
+				});
+			}
+		}
+	);
+	
+	/* ------ fifth shift ------ */
+	Shifts.findOneAndUpdate({shiftDay: day, shiftTime: "fifth"},
+		{$set: {volunteer1Name: currentDayShifts.fifthShift.volunteer1Name, volunteer2Name: currentDayShifts.fifthShift.volunteer2Name}},
+		{new: true} , function(err, sunFirst) {
+			if(!sunFirst){
+				new Shifts({
+					shiftDay: currentDayShifts.fifthShift.shiftDay,
+					shiftTime: currentDayShifts.fifthShift.shiftTime,
+					volunteer1Name: currentDayShifts.fifthShift.volunteer1Name,
+					volunteer2Name: currentDayShifts.fifthShift.volunteer2Name
+				}).save(function (err){
+					if (err)
+						throw err;
+				});
+			}
+		}
+	);
+	
+	/* ------ sixth shift ------ */
+	Shifts.findOneAndUpdate({shiftDay: day, shiftTime: "sixth"},
+		{$set: {volunteer1Name: currentDayShifts.sixthShift.volunteer1Name, volunteer2Name: currentDayShifts.sixthShift.volunteer2Name}},
+		{new: true} , function(err, sunFirst) {
+			if(!sunFirst){
+				new Shifts({
+					shiftDay: currentDayShifts.sixthShift.shiftDay,
+					shiftTime: currentDayShifts.sixthShift.shiftTime,
+					volunteer1Name: currentDayShifts.sixthShift.volunteer1Name,
+					volunteer2Name: currentDayShifts.sixthShift.volunteer2Name
+				}).save(function (err){
+					if (err)
+						throw err;
+				});
+			}
+		}
+	);
+	
+	setTimeout(function (){
+		res.json("saved!");
+	}, 300);
 });
 
 //get all shifts requests in db.
 app.get('/managersShiftsRequests', function(req, res) {
-	ShiftRequests.find(function(err, shiftRequests) {
+	ShiftRequests.find({shiftDay: req.day}, function(err, shiftRequests) {
 		if (err)
 			throw err;
 		res.json(shiftRequests);
@@ -545,7 +756,7 @@ app.post('/bakersCakeRequest', function (req, res) {
 
 //get all bakers's cakes arrangement in db.
 app.get('/bakersCakes', function(req, res) {
-	Cakes.find(function(err, cakes) {
+	Cakes.find({cakeDay: req.day}, function(err, cakes) {
 		if (err)
 			throw err;
 		res.json(cakes);

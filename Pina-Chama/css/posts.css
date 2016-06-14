@@ -13,7 +13,7 @@
 	filter: alpha(opacity=60);
 }
 
-#addMessageDiv, #addGuestPostDiv {
+#addMessageDiv, #addGuestPostDiv, #addShiftDayDiv, #addCakeDayDiv{
 	background: rgba(255,255,255,0.95);
 	display: none;
 	position: absolute;
@@ -27,7 +27,7 @@
 	direction: rtl;
 }
 
-#addMessageSpan, #addGuestPostSpan {
+#addMessageSpan, #addGuestPostSpan, #addShiftDaySpan, #addCakeDaySpan {
 	padding-right: 100px;
 	display: block;
 }
@@ -36,7 +36,7 @@
 	text-align: center;
 }
 
-#addMessage, #addGuestPost{
+#addMessage, #addGuestPost, #editCakeDay, #editShiftDay, #editShif{
 	background: #4f93ce;
 	border: 1px solid currentColor;
 	font-size: 1.1rem;
@@ -50,13 +50,13 @@
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-#addMessTitle, #addGuestPostTitle{
+#addMessTitle, #addGuestPostTitle, #addshiftDayTitle, #addCakeDayTitle{
 	padding-top: -60px;
 	padding-right: -100px;
 	text-align: center;
 }
 
-#close{
+#close, #closeCake, #closeShift{
 	position:absolute;
 	background:black;
 	color:white;
@@ -76,7 +76,7 @@
 	z-index:1003;
 }
 
-#addGuestPostDiv h5{
+#addGuestPostDiv h5, #addCakeDayDiv h5{
 	padding-right: 90px;
 }
 
@@ -91,8 +91,8 @@
 	vertical-align: top;
 }
 
-#addMessageDiv input[type=text], #addGuestPostDiv input[type=text]
-#addMessageDiv input[type=date], #addGuestPostDiv input[type=date]
+#addMessageDiv input[type=text], #addGuestPostDiv input[type=text], #addshiftDayTitle input[type=text],
+#addMessageDiv input[type=date], #addGuestPostDiv input[type=date], #addCakeDayTitle input[type=text],
 #addMessageDiv textarea, #addGuestPostDiv textarea{
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
@@ -113,8 +113,8 @@
 	resize: none;
 }
 
-#addMessageDiv input[type=text]:focus, #addGuestPostDiv input[type=text]:focus, 
-#addMessageDiv input[type=date]:focus, #addGuestPostDiv input[type=date]:focus, 
+#addMessageDiv input[type=text]:focus, #addGuestPostDiv input[type=text]:focus, #addshiftDayTitle  input[type=text]:focus,
+#addMessageDiv input[type=date]:focus, #addGuestPostDiv input[type=date]:focus, #addCakeDayTitle  input[type=text]:focus,
 #addMessageDiv textarea:focus, #addGuestPostDiv textarea:focus{
 	font: 15px 'Open Sans Hebrew', sans-serif;
 	-moz-box-shadow: 0 0 8px #88D5E9;
