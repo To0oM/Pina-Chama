@@ -180,7 +180,19 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 	$scope.submitForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.userForm.$valid) {
-			$scope.addUser();
+			if($(".keyManager").val() === "96A2G4Q")
+			{
+				$scope.addUser();
+			}
+			else
+			{
+				swal({
+					title: 'לא ניתן להירשם',
+					text:
+						'קוד אימות אינו תקין, אנא נסה שנית\n',
+					showCloseButton: true
+				});
+			}
 		}
 	};
 	
@@ -243,17 +255,26 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 		}
 	};
 	
-	//$("#UserType").val('manager');
 	chooseUserType();
 	$("#UserType").change(chooseUserType);
-	//$("#email").val(userInfo.email);
 	
 	$scope.addUser = function() {
 		$scope.user.googleId = userInfo.userId;
 		
 		$http.post('/register', $scope.user).success(function(response) {
-			userInfo.fullName = $scope.user.firstName + ' ' + $scope.user.lastName;
-			redirection($scope.user.userType);
+			swal({
+				title: "נרשמת בהצלחה!",
+				text: "נרשמת בהצלחה לאתר, גלישה מהנה",
+				type: "success",
+				showCancelButton: false,
+				confirmButtonColor: "#19D119",
+				confirmButtonText: "המשך",
+				closeOnConfirm: false,
+				html: false
+			}, function(){
+				userInfo.fullName = $scope.user.firstName + ' ' + $scope.user.lastName;
+				redirection($scope.user.userType);
+			});
 		});
 	};
 }]);﻿
