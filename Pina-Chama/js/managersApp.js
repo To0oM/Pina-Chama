@@ -700,77 +700,109 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 			$scope.thuShifts = thuShifts;
 			$scope.shiftRequests = shiftRequests;
 			
-			$scope.cakes = cakes;
+			$scope.sunCakes = sunCakes;
+			$scope.monCakes = monCakes;
+			$scope.tueCakes = tueCakes;
+			$scope.wedCakes = wedCakes;
+			$scope.thuCakes = thuCakes;
 			$scope.cakeRequests = cakeRequests;
+			
+			$scope.classSet(1);
+			$scope.classSet(2);
+			$scope.classSet(3);
+			$scope.classSet(4);
+			$scope.classSet(5);
 		});
 	};
 	
-	$scope.loadShiftsDB = function() {
-		var params = {
-			day: "Sun"
-		};
-		
-		$http.get('/volunteersShifts/' + params.day).success(function(response) {
-			$scope.sunShifts = response;
+	$scope.loadShiftsRequestsDB = function() {
+		$http.get('/managersShiftsRequests').success(function(response) {
+			$scope.shiftRequests = response;
 			
-			sunShifts = $scope.sunShifts;
-		});
-		
-		params.day = "Mon";
-		
-		$http.get('/volunteersShifts/' + params.day).success(function(response) {
-			$scope.monShifts = response;
+			shiftRequests = $scope.shiftRequests;
 			
-			monShifts = $scope.monShifts;
-		});
-		
-		params.day = "Tue";
-		
-		$http.get('/volunteersShifts/' + params.day).success(function(response) {
-			$scope.tueShifts = response;
-			
-			tueShifts = $scope.tueShifts;
-		});
-		
-		params.day = "Wed";
-		
-		$http.get('/volunteersShifts/' + params.day).success(function(response) {
-			$scope.wedShifts = response;
-			
-			wedShifts = $scope.wedShifts;
-		});
-		
-		params.day = "Thu";
-		
-		$http.get('/volunteersShifts/' + params.day).success(function(response) {
-			$scope.thuShifts = response;
-			
-			thuShifts = $scope.thuShifts;
-			
-			$http.get('/managersShiftsRequests', params).success(function(response) {
-				$scope.shiftRequests = response;
-				
-				shiftRequests = $scope.shiftRequests;
-				
+			//make a fake server call to make a little delay for the refresh call.
+			$http.get('/refresh').success(function(response) {
 				$scope.refresh();
 			});
 		});
 	};
 	
+	$scope.loadShiftsDB = function() {
+		$http.get('/volunteersShifts/Sun').success(function(response) {
+			$scope.sunShifts = response;
+			
+			sunShifts = $scope.sunShifts;
+		});
+		
+		$http.get('/volunteersShifts/Mon').success(function(response) {
+			$scope.monShifts = response;
+			
+			monShifts = $scope.monShifts;
+		});
+		
+		$http.get('/volunteersShifts/Tue').success(function(response) {
+			$scope.tueShifts = response;
+			
+			tueShifts = $scope.tueShifts;
+		});
+		
+		$http.get('/volunteersShifts/Wed').success(function(response) {
+			$scope.wedShifts = response;
+			
+			wedShifts = $scope.wedShifts;
+		});
+		
+		$http.get('/volunteersShifts/Thu').success(function(response) {
+			$scope.thuShifts = response;
+			
+			thuShifts = $scope.thuShifts;
+			
+			$scope.loadShiftsRequestsDB();
+		});
+	};
+	
 	$scope.loadCakesDB = function() {
-		$http.get('/bakersCakes').success(function(response) {
-			$scope.cakes = response;
+		$http.get('/bakersCakes/Sun').success(function(response) {
+			$scope.sunCakes = response;
 			
-			cakes = $scope.cakes;
+			sunCakes = $scope.sunCakes;
 		});
 		
-		$http.get('/managersCakesRequests').success(function(response) {
-			$scope.cakeRequests = response;
+		$http.get('/bakersCakes/Mon').success(function(response) {
+			$scope.monCakes = response;
 			
-			cakeRequests = $scope.cakeRequests;
+			monCakes = $scope.monCakes;
 		});
 		
-		$scope.refresh();
+		$http.get('/bakersCakes/Tue').success(function(response) {
+			$scope.tueCakes = response;
+			
+			tueCakes = $scope.tueCakes;
+		});
+		
+		$http.get('/bakersCakes/Wed').success(function(response) {
+			$scope.wedCakes = response;
+			
+			wedCakes = $scope.wedCakes;
+		});
+		
+		$http.get('/bakersCakes/Thu').success(function(response) {
+			$scope.thuCakes = response;
+			
+			thuCakes = $scope.thuCakes;
+			
+			$http.get('/managersCakesRequests').success(function(response) {
+				$scope.cakeRequests = response;
+				
+				cakeRequests = $scope.cakeRequests;
+				
+				//make a fake server call to make a little delay for the refresh call.
+				$http.get('/refresh').success(function(response) {
+					$scope.refresh();
+				});
+			});
+		});
 	};
 	
 	//initial load
@@ -780,11 +812,10 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	$scope.editShift = function(updateShifts){
 		$http.put('/saveShifts/' + updateShifts.currentDay, updateShifts).success(function(response) {
 			$scope.loadShiftsDB();
-			$scope.loadCakesDB();
 		});
 	};
 	
-	$scope.popShiftday = function(dayNum){
+	$scope.saveShiftsDay = function(dayNum){
 		var updateShifts = {
 		};
 		
@@ -792,7 +823,6 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 			case 1:
 				updateShifts.currentDay = "Sun";
 				updateShifts.currentDayShifts = $scope.sunShifts;
-				console.log("currentDayShifts: " + updateShifts.currentDayShifts);
 				break;
 			case 2:
 				updateShifts.currentDay = "Mon";
@@ -815,70 +845,140 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 		$scope.editShift(updateShifts);
 	};
 	
-	$scope.popCakeday = function(dayNum){
-		var windowHeight = $(window).height();
-		$('.black_overlay').css('height', windowHeight);
-		
-		switch (dayNum) {
-			case 1:
-				$("#cakeDay").html(" ראשון");	
-				break;
-			case 2:
-				$("#cakeDay").html(" שני");	
-				break;
-			case 3:
-				$("#cakeDay").html(" שלישי");
-				break;
-			case 4:
-				$("#cakeDay").html(" רביעי");	
-				break;
-			case 5:
-				$("#cakeDay").html(" חמישי");	
-				break;
+	$scope.addCake = function(updateCakes){
+		if(updateCakes.currentNewCake){
+			if(!updateCakes.currentNewCake.cake){
+				updateCakes.currentNewCake.cake = "";
+			}
+			
+			if(!updateCakes.currentNewCake.bakerName){
+				updateCakes.currentNewCake.bakerName = "";
+			}
+			
+			
+			if (updateCakes.currentNewCake.bakerName !== ""){
+				$http.put('/addCake/' + updateCakes.currentDay, updateCakes).success(function(response) {
+					$scope.resetFields(updateCakes.currentDay);
+					$scope.loadCakesDB();
+				});
+			}
 		}
-		
-		$("#addCakeDayDiv").fadeIn();
-		$("#fade").fadeIn();
-
-		$scope.cakeday.shiftDay = dayNum;
 	};
 	
-	$scope.editCakeDay = function() {
-		$http.put('/editCakeDay', $scope.guestPost).success(function(response) {
-			$scope.loadCakesDB();
+	$scope.resetFields = function(currentDay){
+		switch (currentDay) {
+			case "Sun":
+				$scope.newCake.sunCakes.cake = "";
+				$scope.newCake.sunCakes.bakerName = "";
+				break;
+			case "Mon":
+				$scope.newCake.monCakes.cake = "";
+				$scope.newCake.monCakes.bakerName = "";
+				break;
+			case "Tue":
+				$scope.newCake.tueCakes.cake = "";
+				$scope.newCake.tueCakes.bakerName = "";
+				break;
+			case "Wed":
+				$scope.newCake.wedCakes.cake = "";
+				$scope.newCake.wedCakes.bakerName = "";
+				break;
+			case "Thu":
+				$scope.newCake.thuCakes.cake = "";
+				$scope.newCake.thuCakes.bakerName = "";
+				break;
+		}
+	};
+	
+	$scope.addBaker = function(dayNum){
+		var updateCakes = {
+		};
+		if($scope.newCake){
+			switch (dayNum) {
+				case 1:
+					updateCakes.currentDay = "Sun";
+					updateCakes.currentNewCake = $scope.newCake.sunCakes;
+					break;
+				case 2:
+					updateCakes.currentDay = "Mon";
+					updateCakes.currentNewCake = $scope.newCake.monCakes;
+					break;
+				case 3:
+					updateCakes.currentDay = "Tue";
+					updateCakes.currentNewCake = $scope.newCake.tueCakes;
+					break;
+				case 4:
+					updateCakes.currentDay = "Wed";
+					updateCakes.currentNewCake = $scope.newCake.wedCakes;
+					break;
+				case 5:
+					updateCakes.currentDay = "Thu";
+					updateCakes.currentNewCake = $scope.newCake.thuCakes;
+					break;
+			}
+			
+			$scope.addCake(updateCakes);
+		}
+	};
+	
+	$scope.removeShiftRequest = function(id) {
+		swal({
+			title: "מחיקת בקשה למשמרת",
+			text: "האם אתה בטוח שברצונך למחוק בקשה זו?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "כן, מחק!",
+			closeOnConfirm: false,
+			html: false
+		}, function(){
+			$http.delete('/shiftRequest/' + id).success(function(response) {
+				$scope.loadShiftsRequestsDB();
+			});
+			swal("הבקשה נמחקה!",
+			"בקשה זו הוסרה מרשימת הבקשות",
+			"success");
 		});
 	};
 	
-	$scope.editShiftDay = function() {
-		$http.put('/editShiftDay', $scope.guestPost).success(function(response) {
-			$scope.loadShiftsDB();
+	$scope.removeBaker = function(id) {
+		swal({
+			title: "מחיקת אופה",
+			text: "האם אתה בטוח שברצונך למחוק אופה זה?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "כן, מחק!",
+			closeOnConfirm: false,
+			html: false
+		}, function(){
+			$http.delete('/baker/' + id).success(function(response) {
+				$scope.loadCakesDB();
+			});
+			swal("נמחק!",
+			"אופה זה הוסר מרשימת האופים",
+			"success");
 		});
 	};
 	
-	$scope.submitShiftDayForm = function() {
-		// check to make sure the form is completely valid
-		if ($scope.shiftDayForm.$valid) {
-			$scope.editShiftDay();
-			$scope.closeShift();
-		}
-	};
-	
-	$scope.submitCakeDayForm = function() {
-		// check to make sure the form is completely valid
-		if ($scope.cakeDayForm.$valid) {
-			$scope.editCakeDay();
-			$scope.closeCake();
-		}
-	};
-	
-	$scope.closeShift = function(){
-		$("#addShiftDayDiv").fadeOut();
-		$("#fade").fadeOut();
-	};
-	
-	$scope.closeCake = function(){
-		$("#addCakeDayDiv").fadeOut();
-		$("#fade").fadeOut();
+	$scope.removeCakeRequest = function(id) {
+		swal({
+			title: "מחיקת בקשה לסיפוק עוגה",
+			text: "האם אתה בטוח שברצונך למחוק בקשה זו?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "כן, מחק!",
+			closeOnConfirm: false,
+			html: false
+		}, function(){
+			$http.delete('/cakeRequest/' + id).success(function(response) {
+				$scope.loadCakesDB();
+			});
+			swal("הבקשה נמחקה!",
+			"בקשה זו הוסרה מרשימת הבקשות",
+			"success");
+		});
 	};
 }]);﻿
 

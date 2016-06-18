@@ -364,31 +364,61 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	};
 	
 	$scope.shiftRequest = {
+		applicantName: userInfo.fullName,
+		applicantPhoneNumber: userInfo.phoneNumber
 	};
 	
 	//load the shifts from the database.
 	$scope.refresh = function () {
 		$http.get('/refresh').success(function(response) {
-			$scope.shifts = shifts;
+			$scope.sunShifts = sunShifts;
+			$scope.monShifts = monShifts;
+			$scope.tueShifts = tueShifts;
+			$scope.wedShifts = wedShifts;
+			$scope.thuShifts = thuShifts;
 		});
 	};
 	
 	$scope.loadShiftsDB = function() {
-		$http.get('/volunteersShifts').success(function(response) {
-			$scope.shifts = response;
+		$http.get('/volunteersShifts/Sun').success(function(response) {
+			$scope.sunShifts = response;
 			
-			shifts = $scope.shifts;
+			sunShifts = $scope.sunShifts;
 		});
 		
-		$scope.refresh();
+		$http.get('/volunteersShifts/Mon').success(function(response) {
+			$scope.monShifts = response;
+			
+			monShifts = $scope.monShifts;
+		});
+		
+		$http.get('/volunteersShifts/Tue').success(function(response) {
+			$scope.tueShifts = response;
+			
+			tueShifts = $scope.tueShifts;
+		});
+		
+		$http.get('/volunteersShifts/Wed').success(function(response) {
+			$scope.wedShifts = response;
+			
+			wedShifts = $scope.wedShifts;
+		});
+		
+		$http.get('/volunteersShifts/Thu').success(function(response) {
+			$scope.thuShifts = response;
+			
+			thuShifts = $scope.thuShifts;
+			
+			$scope.refresh();
+		});
 	};
 	
 	$scope.resetsFields = function() {
 		$scope.shiftRequest.shiftDate = '';
 		$scope.shiftRequest.shiftTime = '';
 		$scope.shiftRequest.comments = '';
-		$scope.shiftRequest.applicantName = '';
-		$scope.shiftRequest.applicantPhoneNumber = '';
+		$scope.shiftRequest.applicantName = userInfo.fullName;
+		$scope.shiftRequest.applicantPhoneNumber = userInfo.phoneNumber;
 		$scope.shiftRequest.requestDate = '';
 	};
 	
@@ -398,8 +428,6 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	$scope.addRequest = function() {
 		$scope.shiftRequest.requestDate = new Date();
 		
-		$scope.shiftRequest.applicantName = userInfo.fullName;
-
 		$http.post('/volunteersShiftRequest', $scope.shiftRequest).success(function(response) {
 			$scope.loadShiftsDB();
 			$scope.resetsFields();

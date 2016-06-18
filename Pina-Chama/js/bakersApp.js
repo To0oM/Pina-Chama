@@ -281,31 +281,61 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	};
 	
 	$scope.cakeRequest = {
+		applicantName: userInfo.fullName,
+		applicantPhoneNumber: userInfo.phoneNumber
 	};
 	
 	//load the cakes arrangement from the database.
 	$scope.refresh = function () {
 		$http.get('/refresh').success(function(response) {
-			$scope.cakes = cakes;
+			$scope.sunCakes = sunCakes;
+			$scope.monCakes = monCakes;
+			$scope.tueCakes = tueCakes;
+			$scope.wedCakes = wedCakes;
+			$scope.thuCakes = thuCakes;
 		});
 	};
 	
 	$scope.loadCakesDB = function() {
-		$http.get('/bakersCakes').success(function(response) {
-			$scope.cakes = response;
+		$http.get('/bakersCakes/Sun').success(function(response) {
+			$scope.sunCakes = response;
 			
-			cakes = $scope.cakes;
+			sunCakes = $scope.sunCakes;
 		});
 		
-		$scope.refresh();
+		$http.get('/bakersCakes/Mon').success(function(response) {
+			$scope.monCakes = response;
+			
+			monCakes = $scope.monCakes;
+		});
+		
+		$http.get('/bakersCakes/Tue').success(function(response) {
+			$scope.tueCakes = response;
+			
+			tueCakes = $scope.tueCakes;
+		});
+		
+		$http.get('/bakersCakes/Wed').success(function(response) {
+			$scope.wedCakes = response;
+			
+			wedCakes = $scope.wedCakes;
+		});
+		
+		$http.get('/bakersCakes/Thu').success(function(response) {
+			$scope.thuCakes = response;
+			
+			thuCakes = $scope.thuCakes;
+			
+			$scope.refresh();
+		});
 	};
 	
 	$scope.resetsFields = function() {
 		$scope.cakeRequest.cakeDate = '';
 		$scope.cakeRequest.cake = '';
 		$scope.cakeRequest.comments = '';
-		$scope.cakeRequest.applicantName = '';
-		$scope.cakeRequest.applicantPhoneNumber = '';
+		$scope.cakeRequest.applicantName = userInfo.fullName;
+		$scope.cakeRequest.applicantPhoneNumber = userInfo.phoneNumber;
 		$scope.cakeRequest.requestDate = '';
 	};
 	
@@ -315,8 +345,6 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 	$scope.addRequest = function() {
 		$scope.cakeRequest.requestDate = new Date();
 		
-		$scope.cakeRequest.applicantName = userInfo.fullName;
-
 		$http.post('/bakersCakeRequest', $scope.cakeRequest).success(function(response) {
 			$scope.loadCakesDB();
 			$scope.resetsFields();

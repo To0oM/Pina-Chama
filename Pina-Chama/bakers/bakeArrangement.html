@@ -20,33 +20,43 @@
 							<div class = "arrangementDiv">
 								<div class="col-md-4 col-sm-6">
 									<div class="shift shift-days">חמישי</div>
+									
+									<div class="col-md-4 col-sm-8" ng-repeat="cake in thuCakes">
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.bakerName}}</div>
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.cake}}</div>
+									</div>
 								</div>
 								<div class="col-md-4 col-sm-6">
 									<div class="shift shift-days">רביעי</div>
+									
+									<div class="col-md-4 col-sm-8" ng-repeat="cake in wedCakes">
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.bakerName}}</div>
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.cake}}</div>
+									</div>
 								</div>
 								<div class="col-md-4 col-sm-6">
 									<div class="shift shift-days">שלישי</div>
+									
+									<div class="col-md-4 col-sm-8" ng-repeat="cake in tueCakes">
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.bakerName}}</div>
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.cake}}</div>
+									</div>
 								</div>
 								<div class="col-md-4 col-sm-6">
 									<div class="shift shift-days">שני</div>
+									
+									<div class="col-md-4 col-sm-8" ng-repeat="cake in monCakes">
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.bakerName}}</div>
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.cake}}</div>
+									</div>
 								</div>
 								<div class="col-md-4 col-sm-6">
 									<div class="shift shift-days">ראשון</div>
-								</div>
-								<div class="col-md-4 col-sm-6">
-									<div class="shift shift-danger col-sm-7">אין צורך</div>
-								</div>
-								<div class="col-md-4 col-sm-6">
-									<div class="shift shift-success col-sm-7">יש צורך</div>
-								</div>
-								<div class="col-md-4 col-sm-6">
-									<div class="shift shift-success col-sm-7">יש צורך</div>
-								</div>
-								<div class="col-md-4 col-sm-6">
-									<div class="shift shift-danger col-sm-7">אין צורך</div>
-								</div>
-								<div class="col-md-4 col-sm-6">
-									<div class="shift shift-success col-sm-7">יש צורך</div>
+									
+									<div class="col-md-4 col-sm-8" ng-repeat="cake in sunCakes">
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.bakerName}}</div>
+										<div type = "text" class="shift shift-success col-sm-7">{{cake.cake}}</div>
+									</div>
 								</div>
 							</div>
 						</section>

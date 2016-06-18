@@ -17,7 +17,7 @@
 					</nav>
 					<div class="content-wrap">
 						<section id="section-linemove-1">
-							<div class = "arrangementDiv">
+							<div class = "volArrangementDiv">
 								<div class="col-md-4">
 									<div class="shift shift-days">חמישי</div>
 								</div>
@@ -36,113 +36,214 @@
 								<div class="col-md-4">
 									<div class="shift shift-head">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ימים<br>שעות</div>
 								</div>
+								
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "thuShifts.firstShift.volunteer1Name !== ''">{{thuShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.firstShift.volunteer1Name === ''">{{thuShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "thuShifts.firstShift.volunteer2Name !== ''">{{thuShifts.firstShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.firstShift.volunteer2Name === ''">{{thuShifts.firstShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "wedShifts.firstShift.volunteer1Name !== ''">{{wedShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.firstShift.volunteer1Name === ''">{{wedShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "wedShifts.firstShift.volunteer2Name !== ''">{{wedShifts.firstShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.firstShift.volunteer2Name === ''">{{wedShifts.firstShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "tueShifts.firstShift.volunteer1Name !== ''">{{tueShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.firstShift.volunteer1Name === ''">{{tueShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "tueShifts.firstShift.volunteer2Name !== ''">{{tueShifts.firstShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.firstShift.volunteer2Name === ''">{{tueShifts.firstShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "monShifts.firstShift.volunteer1Name !== ''">{{monShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.firstShift.volunteer1Name === ''">{{monShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "monShifts.firstShift.volunteer2Name !== ''">{{monShifts.firstShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.firstShift.volunteer2Name === ''">{{monShifts.firstShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "sunShifts.firstShift.volunteer1Name !== ''">{{sunShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.firstShift.volunteer1Name === ''">{{sunShifts.firstShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "sunShifts.firstShift.volunteer2Name !== ''">{{sunShifts.firstShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.firstShift.volunteer2Name === ''">{{sunShifts.firstShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-time">08:00 - 10:00</div>
+									<div class="shift shift-time">07:00 - 08:30</div>
+								</div>
+								<div class = "cenCakeHr"></div>
+								
+								<div class="col-md-4">
+									<div class="shift shift-success" ng-if = "thuShifts.secondShift.volunteer1Name !== ''">{{thuShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.secondShift.volunteer1Name === ''">{{thuShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "thuShifts.secondShift.volunteer2Name !== ''">{{thuShifts.secondShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.secondShift.volunteer2Name === ''">{{thuShifts.secondShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "wedShifts.secondShift.volunteer1Name !== ''">{{wedShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.secondShift.volunteer1Name === ''">{{wedShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "wedShifts.secondShift.volunteer2Name !== ''">{{wedShifts.secondShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.secondShift.volunteer2Name === ''">{{wedShifts.secondShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "tueShifts.secondShift.volunteer1Name !== ''">{{tueShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.secondShift.volunteer1Name === ''">{{tueShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "tueShifts.secondShift.volunteer2Name !== ''">{{tueShifts.secondShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.secondShift.volunteer2Name === ''">{{tueShifts.secondShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "monShifts.secondShift.volunteer1Name !== ''">{{monShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.secondShift.volunteer1Name === ''">{{monShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "monShifts.secondShift.volunteer2Name !== ''">{{monShifts.secondShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.secondShift.volunteer2Name === ''">{{monShifts.secondShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "sunShifts.secondShift.volunteer1Name !== ''">{{sunShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.secondShift.volunteer1Name === ''">{{sunShifts.secondShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "sunShifts.secondShift.volunteer2Name !== ''">{{sunShifts.secondShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.secondShift.volunteer2Name === ''">{{sunShifts.secondShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-time">08:30 - 11:00</div>
+								</div>
+								<div class = "cenCakeHr"></div>
+								
+								<div class="col-md-4">
+									<div class="shift shift-success" ng-if = "thuShifts.thirdShift.volunteer1Name !== ''">{{thuShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.thirdShift.volunteer1Name === ''">{{thuShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "thuShifts.thirdShift.volunteer2Name !== ''">{{thuShifts.thirdShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.thirdShift.volunteer2Name === ''">{{thuShifts.thirdShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-time">10:00 - 12:00</div>
+									<div class="shift shift-success" ng-if = "wedShifts.thirdShift.volunteer1Name !== ''">{{wedShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.thirdShift.volunteer1Name === ''">{{wedShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "wedShifts.thirdShift.volunteer2Name !== ''">{{wedShifts.thirdShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.thirdShift.volunteer2Name === ''">{{wedShifts.thirdShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "tueShifts.thirdShift.volunteer1Name !== ''">{{tueShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.thirdShift.volunteer1Name === ''">{{tueShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "tueShifts.thirdShift.volunteer2Name !== ''">{{tueShifts.thirdShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.thirdShift.volunteer2Name === ''">{{tueShifts.thirdShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "monShifts.thirdShift.volunteer1Name !== ''">{{monShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.thirdShift.volunteer1Name === ''">{{monShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "monShifts.thirdShift.volunteer2Name !== ''">{{monShifts.thirdShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.thirdShift.volunteer2Name === ''">{{monShifts.thirdShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "sunShifts.thirdShift.volunteer1Name !== ''">{{sunShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.thirdShift.volunteer1Name === ''">{{sunShifts.thirdShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "sunShifts.thirdShift.volunteer2Name !== ''">{{sunShifts.thirdShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.thirdShift.volunteer2Name === ''">{{sunShifts.thirdShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-time">11:00 - 13:30</div>
+								</div>
+								<div class = "cenCakeHr"></div>
+								
+								<div class="col-md-4">
+									<div class="shift shift-success" ng-if = "thuShifts.fourthShift.volunteer1Name !== ''">{{thuShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.fourthShift.volunteer1Name === ''">{{thuShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "thuShifts.fourthShift.volunteer2Name !== ''">{{thuShifts.fourthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.fourthShift.volunteer2Name === ''">{{thuShifts.fourthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "wedShifts.fourthShift.volunteer1Name !== ''">{{wedShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.fourthShift.volunteer1Name === ''">{{wedShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "wedShifts.fourthShift.volunteer2Name !== ''">{{wedShifts.fourthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.fourthShift.volunteer2Name === ''">{{wedShifts.fourthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-time">12:00 - 14:00</div>
+									<div class="shift shift-success" ng-if = "tueShifts.fourthShift.volunteer1Name !== ''">{{tueShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.fourthShift.volunteer1Name === ''">{{tueShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "tueShifts.fourthShift.volunteer2Name !== ''">{{tueShifts.fourthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.fourthShift.volunteer2Name === ''">{{tueShifts.fourthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "monShifts.fourthShift.volunteer1Name !== ''">{{monShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.fourthShift.volunteer1Name === ''">{{monShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "monShifts.fourthShift.volunteer2Name !== ''">{{monShifts.fourthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.fourthShift.volunteer2Name === ''">{{monShifts.fourthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "sunShifts.fourthShift.volunteer1Name !== ''">{{sunShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.fourthShift.volunteer1Name === ''">{{sunShifts.fourthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "sunShifts.fourthShift.volunteer2Name !== ''">{{sunShifts.fourthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.fourthShift.volunteer2Name === ''">{{sunShifts.fourthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-time">13:30 - 16:00</div>
+								</div>
+								<div class = "cenCakeHr"></div>
+								
+								<div class="col-md-4">
+									<div class="shift shift-success" ng-if = "thuShifts.fifthShift.volunteer1Name !== ''">{{thuShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.fifthShift.volunteer1Name === ''">{{thuShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "thuShifts.fifthShift.volunteer2Name !== ''">{{thuShifts.fifthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.fifthShift.volunteer2Name === ''">{{thuShifts.fifthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "wedShifts.fifthShift.volunteer1Name !== ''">{{wedShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.fifthShift.volunteer1Name === ''">{{wedShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "wedShifts.fifthShift.volunteer2Name !== ''">{{wedShifts.fifthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.fifthShift.volunteer2Name === ''">{{wedShifts.fifthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "tueShifts.fifthShift.volunteer1Name !== ''">{{tueShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.fifthShift.volunteer1Name === ''">{{tueShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "tueShifts.fifthShift.volunteer2Name !== ''">{{tueShifts.fifthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.fifthShift.volunteer2Name === ''">{{tueShifts.fifthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-time">14:00 - 16:00</div>
+									<div class="shift shift-success" ng-if = "monShifts.fifthShift.volunteer1Name !== ''">{{monShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.fifthShift.volunteer1Name === ''">{{monShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "monShifts.fifthShift.volunteer2Name !== ''">{{monShifts.fifthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.fifthShift.volunteer2Name === ''">{{monShifts.fifthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "sunShifts.fifthShift.volunteer1Name !== ''">{{sunShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.fifthShift.volunteer1Name === ''">{{sunShifts.fifthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "sunShifts.fifthShift.volunteer2Name !== ''">{{sunShifts.fifthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.fifthShift.volunteer2Name === ''">{{sunShifts.fifthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-time">16:00 - 18:30</div>
+								</div>
+								<div class = "cenCakeHr"></div>
+								
+								<div class="col-md-4">
+									<div class="shift shift-success" ng-if = "thuShifts.sixthShift.volunteer1Name !== ''">{{thuShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.sixthShift.volunteer1Name === ''">{{thuShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "thuShifts.sixthShift.volunteer2Name !== ''">{{thuShifts.sixthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "thuShifts.sixthShift.volunteer2Name === ''">{{thuShifts.sixthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "wedShifts.sixthShift.volunteer1Name !== ''">{{wedShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.sixthShift.volunteer1Name === ''">{{wedShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "wedShifts.sixthShift.volunteer2Name !== ''">{{wedShifts.sixthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "wedShifts.sixthShift.volunteer2Name === ''">{{wedShifts.sixthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
+									<div class="shift shift-success" ng-if = "tueShifts.sixthShift.volunteer1Name !== ''">{{tueShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.sixthShift.volunteer1Name === ''">{{tueShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "tueShifts.sixthShift.volunteer2Name !== ''">{{tueShifts.sixthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "tueShifts.sixthShift.volunteer2Name === ''">{{tueShifts.sixthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
+									<div class="shift shift-success" ng-if = "monShifts.sixthShift.volunteer1Name !== ''">{{monShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.sixthShift.volunteer1Name === ''">{{monShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "monShifts.sixthShift.volunteer2Name !== ''">{{monShifts.sixthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "monShifts.sixthShift.volunteer2Name === ''">{{monShifts.sixthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-time">16:00 - 18:00</div>
+									<div class="shift shift-success" ng-if = "sunShifts.sixthShift.volunteer1Name !== ''">{{sunShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.sixthShift.volunteer1Name === ''">{{sunShifts.sixthShift.volunteer1Name}}</div>
+									<div class="shift shift-success" ng-if = "sunShifts.sixthShift.volunteer2Name !== ''">{{sunShifts.sixthShift.volunteer2Name}}</div>
+									<div class="shift shift-danger" ng-if = "sunShifts.sixthShift.volunteer2Name === ''">{{sunShifts.sixthShift.volunteer2Name}}</div>
 								</div>
 								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
-								</div>
-								<div class="col-md-4">
-									<div class="shift shift-success">פנוי</div>
-								</div>
-								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
-								</div>
-								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
-								</div>
-								<div class="col-md-4">
-									<div class="shift shift-danger">תפוס</div>
-								</div>
-								<div class="col-md-4">
-									<div class="shift shift-time">18:00 - 20:00</div>
+									<div class="shift shift-time">18:30 - 21:00</div>
 								</div>
 							</div>
 						</section>
