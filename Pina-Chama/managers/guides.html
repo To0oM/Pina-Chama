@@ -6,35 +6,39 @@
             </h2>
         <hr>
 		
-		
-		<form id="vidForm">
-		
-			<ul class="formGuide">	
-					<!--שם הסרטון:
-				<input  id="vidName" type="text" >
-				שם הקובץ:
-				<input  id="vidFile" type="text" >-->
-				
+		<form name="vidForm" id="vidForm" ng-submit="submitForm()">
+			<ul class="formGuide">
 				<span class = "inline">
-					<label id="Name">שם הסרטון</label>
-					<input type="text" name="name" class="name" id="name"/>
+					<label id="lblVidName">שם הסרטון</label>
+					<input type="text" class="vidName" id="vidName" ng-required="true" ng-model="video.vidName"/>
 				</span>
 				
 				<span class = "inline">
-					<label id="File">שם הקובץ</label>
-					<input type="text" name="file" class="file" id="file"/>
+					<label id="lblVidFileName">שם הקובץ</label>
+					<input type="text" class="vidFileName" id="vidFileName" ng-required="true" ng-model="video.fileName"/>
 				</span>
 				
-				<span id = "cmd">
-					<button type="button" id="addNewVid" class="addNewVid" onclick="addVideo()">+</button>
+				<span id = "vidCmd">
+					<button type="submit" id="addNewVid" class="addNewVid">+</button>
 				</span>
 				
-				<!--<br><br>
-				<button type="button" id="newVid" onclick="addVideo()">הוסף סרטון</button>
-				<br><br>-->
+				<br>
+				
+				<span class = "chkbxSpan">
+					<input type="checkbox" class = "intendedTo" id="ToVolunteers" value="מתנדבים" ng-model="video.intendeToVolunteers" ng-required="!video.intendeToVolunteers && !video.intendeToBakery"></input><label for = "ToVolunteers">מתנדבים</label>
+					<input type="checkbox" class = "intendedTo" id="ToBakery" value="מתנדבים בחדר אפייה" ng-model="video.intendeToBakery" ng-required="!video.intendeToVolunteers && !video.intendeToBakery"></input><label for = "ToBakery">מתנדבים בחדר אפייה</label>
+				</span>
 			</ul>
 		</form>
 		<div id="allVideos">
+			<div class = "videoDiv" ng-repeat="video in videos">
+				<p class = "vidNameHeader">{{video.vidName}}</p>
+				<input type = "image" class = "deleteVid" src = "../img/Red X.png" title="מחק סרטון" ng-click="remove(video._id)"></input>
+				<video class='video-js vjs-default-skin' width='550px' height='250px' controls preload='none'>
+					<source ng-src = "{{video.mp4FileName}}" type='video/mp4' />
+					<source ng-src = "{{video.webmFileName}}" type='video/webm' />
+				</video>
+			</div>
 		</div>
     </div>
 </div>

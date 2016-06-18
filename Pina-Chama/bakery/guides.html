@@ -2,8 +2,18 @@
     <div class="box">
         <hr>
             <h2 class="intro-text text-center">פינת
-                <strong>הנחיות</strong>
+                <strong>מדריכים</strong>
             </h2>
-            <hr>
+        <hr>
+		
+		<div id="allVideos">
+			<div class = "videoDiv" ng-repeat="video in videos">
+				<p class = "vidNameHeader">{{video.vidName}}</p>
+				<video class='video-js vjs-default-skin' width='550px' height='250px' controls preload='none'>
+					<source ng-src = "{{video.mp4FileName}}" type='video/mp4' />
+					<source ng-src = "{{video.webmFileName}}" type='video/webm' />
+				</video>
+			</div>
+		</div>
     </div>
 </div>

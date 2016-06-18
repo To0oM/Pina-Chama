@@ -10,17 +10,25 @@
 #vidForm{
 	margin-top: 50px;
 	direction: rtl;
-	text-align: center;
 }
 
-.name, 
-.file{
+.videoDiv{
+	width: 580px;
+}
+
+.deleteVid{
+	width: 20px;
+	padding-top: 115px;
+	float: right;
+	outline: none;
+}
+
+.vidName, .vidFileName {
 	box-shadow: 0 1px 1px #f9ebeb inset, 0 0 0.5px #c73838;
 	outline: 0 none;
 }
 
-.name:focus, 
-.file:focus{
+.vidName:focus, .vidFileName:focus {
 	border-color: rgba(229, 103, 23, 0.8);
 	box-shadow: 0 1px 1px #f9ebeb inset, 0 0 2px #c73838;
 	outline: 0 none;
@@ -37,14 +45,17 @@
 
 .formGuide{
 	direction: rtl;
-	text-align: center;
 	margin-right: 5px;
+	text-align: center;
+}
+
+.vidNameHeader{
+	text-align: center;
 }
 
 .formGuide label{
 	margin:0 0 3px 0;
 	padding:0px;
-	display:block;
 	font-weight: bold;
 	color: #BD3636;
 }
@@ -53,16 +64,19 @@
 	padding: 6px;
 }
  
-.formGuide #Name, 
-.formGuide #File, 
-.formGuide #cmd{
+.formGuide #lblVidName, .formGuide #lblVidFileName, .formGuide #vidCmd {
 	display: block;
 	border: none;
 	margin: none;
 	padding: none;
+	width:200px;
+	border: 0px;
+	border-radius: 5px;
+	direction: rtl;
+	text-align: center;
 }
 
-.formGuide #cmd{
+.formGuide #vidCmd {
 	display: inline;
 }
 
@@ -112,18 +126,9 @@
 	top:3px;
 }
 
-#name{
+#vidFileName, #vidName{
 	width:200px;
 	border: 0px;
 	border-radius: 5px;
 	direction: rtl;
-	text-align: center;
-}
-
-#file{
-	width:200px;
-	border: 0px;
-	border-radius: 5px;
-	direction: rtl;
-	text-align: center;
 }

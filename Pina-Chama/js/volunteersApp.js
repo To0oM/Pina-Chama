@@ -197,7 +197,22 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
+	$scope.loadData = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.videos = videos;
+		});
+	};
 	
+	$scope.loadVideos = function() {
+		$http.get('/loadVideos/' + userInfo.userType).success(function(response) {
+			$scope.videos = response;
+			
+			videos = $scope.videos;
+		});
+		$scope.loadData();
+	};
+	
+	$scope.loadVideos();
 }]);﻿
 
 app.controller('stockController', ['$scope', '$http', function($scope, $http) {

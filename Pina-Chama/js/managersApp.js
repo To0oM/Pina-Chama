@@ -333,7 +333,58 @@ app.controller('mainController', ['$scope', '$http', function($scope, $http) {
 }]);﻿
 
 app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
+	$scope.submitForm = function() {
+		// check to make sure the form is completely valid.
+		if ($scope.vidForm.$valid) {
+			$scope.addVideo();
+		}
+	};
 	
+	$scope.addVideo = function() {
+		$scope.video.mp4FileName = '../videos/' + $scope.video.fileName + '.mp4';
+		$scope.video.webmFileName = '../videos/' + $scope.video.fileName + '.webm';
+		
+		$http.post('/addVideo', $scope.video).success(function(response) {
+			$scope.loadVideos();
+		});
+	}
+	
+	$scope.loadData = function () {
+		$http.get('/refresh').success(function(response) {
+			$scope.videos = videos;
+		});
+	};
+	
+	$scope.loadVideos = function() {
+		$http.get('/loadVideos').success(function(response) {
+			$scope.videos = response;
+			
+			videos = $scope.videos;
+		});
+		$scope.loadData();
+	};
+	
+	$scope.loadVideos();
+	
+	$scope.remove = function(id) {
+		swal({
+			title: "מחיקת סרטון",
+			text: "האם אתה בטוח שברצונך למחוק סרטון זה?",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#DD6B55",
+			confirmButtonText: "כן, מחק!",
+			closeOnConfirm: false,
+			html: false
+		}, function(){
+			$http.delete('/video/' + id).success(function(response) {
+				$scope.loadVideos();
+			});
+			swal("נמחק!",
+			"סרטון זה הוסר מרשימת הסרטונים",
+			"success");
+		});
+	};
 }]);﻿
 
 app.controller('stockController', ['$scope', '$http', function($scope, $http) {
