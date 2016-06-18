@@ -815,6 +815,466 @@ app.controller('arrangementController', ['$scope', '$http', function($scope, $ht
 		});
 	};
 	
+	$scope.classSet = function(dayNum){
+		switch (dayNum) {
+			case 1:
+				if($scope.sunShifts.firstShift.volunteer1Name === ''){
+					$("#sunFirstVol1").toggleClass("shift-success", false);
+					$("#sunFirstVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#sunFirstVol1").toggleClass("shift-success", true);
+					$("#sunFirstVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.sunShifts.firstShift.volunteer2Name === ''){
+					$("#sunFirstVol2").toggleClass("shift-success", false);
+					$("#sunFirstVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#sunFirstVol2").toggleClass("shift-success", true);
+					$("#sunFirstVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.sunShifts.secondShift.volunteer1Name === ''){
+					$("#sunSecondVol1").toggleClass("shift-success", false);
+					$("#sunSecondVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#sunSecondVol1").toggleClass("shift-success", true);
+					$("#sunSecondVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.sunShifts.secondShift.volunteer2Name === ''){
+					$("#sunSecondVol2").toggleClass("shift-success", false);
+					$("#sunSecondVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#sunSecondVol2").toggleClass("shift-success", true);
+					$("#sunSecondVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.sunShifts.thirdShift.volunteer1Name === ''){
+					$("#sunThirdVol1").toggleClass("shift-success", false);
+					$("#sunThirdVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#sunThirdVol1").toggleClass("shift-success", true);
+					$("#sunThirdVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.sunShifts.thirdShift.volunteer2Name === ''){
+					$("#sunThirdVol2").toggleClass("shift-success", false);
+					$("#sunThirdVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#sunThirdVol2").toggleClass("shift-success", true);
+					$("#sunThirdVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.sunShifts.fourthShift.volunteer1Name === ''){
+					$("#sunFourthVol1").toggleClass("shift-success", false);
+					$("#sunFourthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#sunFourthVol1").toggleClass("shift-success", true);
+					$("#sunFourthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.sunShifts.fourthShift.volunteer2Name === ''){
+					$("#sunFourthVol2").toggleClass("shift-success", false);
+					$("#sunFourthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#sunFourthVol2").toggleClass("shift-success", true);
+					$("#sunFourthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.sunShifts.fifthShift.volunteer1Name === ''){
+					$("#sunFifthVol1").toggleClass("shift-success", false);
+					$("#sunFifthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#sunFifthVol1").toggleClass("shift-success", true);
+					$("#sunFifthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.sunShifts.fifthShift.volunteer2Name === ''){
+					$("#sunFifthVol2").toggleClass("shift-success", false);
+					$("#sunFifthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#sunFifthVol2").toggleClass("shift-success", true);
+					$("#sunFifthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.sunShifts.sixthShift.volunteer1Name === ''){
+					$("#sunSixthVol1").toggleClass("shift-success", false);
+					$("#sunSixthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#sunSixthVol1").toggleClass("shift-success", true);
+					$("#sunSixthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.sunShifts.sixthShift.volunteer2Name === ''){
+					$("#sunSixthVol2").toggleClass("shift-success", false);
+					$("#sunSixthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#sunSixthVol2").toggleClass("shift-success", true);
+					$("#sunSixthVol2").toggleClass("shift-danger", false);
+				}
+				break;
+			case 2:
+				if($scope.monShifts.firstShift.volunteer1Name === ''){
+					$("#monFirstVol1").toggleClass("shift-success", false);
+					$("#monFirstVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#monFirstVol1").toggleClass("shift-success", true);
+					$("#monFirstVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.monShifts.firstShift.volunteer2Name === ''){
+					$("#monFirstVol2").toggleClass("shift-success", false);
+					$("#monFirstVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#monFirstVol2").toggleClass("shift-success", true);
+					$("#monFirstVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.monShifts.secondShift.volunteer1Name === ''){
+					$("#monSecondVol1").toggleClass("shift-success", false);
+					$("#monSecondVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#monSecondVol1").toggleClass("shift-success", true);
+					$("#monSecondVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.monShifts.secondShift.volunteer2Name === ''){
+					$("#monSecondVol2").toggleClass("shift-success", false);
+					$("#monSecondVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#monSecondVol2").toggleClass("shift-success", true);
+					$("#monSecondVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.monShifts.thirdShift.volunteer1Name === ''){
+					$("#monThirdVol1").toggleClass("shift-success", false);
+					$("#monThirdVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#monThirdVol1").toggleClass("shift-success", true);
+					$("#monThirdVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.monShifts.thirdShift.volunteer2Name === ''){
+					$("#monThirdVol2").toggleClass("shift-success", false);
+					$("#monThirdVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#monThirdVol2").toggleClass("shift-success", true);
+					$("#monThirdVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.monShifts.fourthShift.volunteer1Name === ''){
+					$("#monFourthVol1").toggleClass("shift-success", false);
+					$("#monFourthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#monFourthVol1").toggleClass("shift-success", true);
+					$("#monFourthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.monShifts.fourthShift.volunteer2Name === ''){
+					$("#monFourthVol2").toggleClass("shift-success", false);
+					$("#monFourthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#monFourthVol2").toggleClass("shift-success", true);
+					$("#monFourthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.monShifts.fifthShift.volunteer1Name === ''){
+					$("#monFifthVol1").toggleClass("shift-success", false);
+					$("#monFifthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#monFifthVol1").toggleClass("shift-success", true);
+					$("#monFifthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.monShifts.fifthShift.volunteer2Name === ''){
+					$("#monFifthVol2").toggleClass("shift-success", false);
+					$("#monFifthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#monFifthVol2").toggleClass("shift-success", true);
+					$("#monFifthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.monShifts.sixthShift.volunteer1Name === ''){
+					$("#monSixthVol1").toggleClass("shift-success", false);
+					$("#monSixthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#monSixthVol1").toggleClass("shift-success", true);
+					$("#monSixthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.monShifts.sixthShift.volunteer2Name === ''){
+					$("#monSixthVol2").toggleClass("shift-success", false);
+					$("#monSixthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#monSixthVol2").toggleClass("shift-success", true);
+					$("#monSixthVol2").toggleClass("shift-danger", false);
+				}
+				break;
+			case 3:
+				if($scope.tueShifts.firstShift.volunteer1Name === ''){
+					$("#tueFirstVol1").toggleClass("shift-success", false);
+					$("#tueFirstVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#tueFirstVol1").toggleClass("shift-success", true);
+					$("#tueFirstVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.tueShifts.firstShift.volunteer2Name === ''){
+					$("#tueFirstVol2").toggleClass("shift-success", false);
+					$("#tueFirstVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#tueFirstVol2").toggleClass("shift-success", true);
+					$("#tueFirstVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.tueShifts.secondShift.volunteer1Name === ''){
+					$("#tueSecondVol1").toggleClass("shift-success", false);
+					$("#tueSecondVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#tueSecondVol1").toggleClass("shift-success", true);
+					$("#tueSecondVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.tueShifts.secondShift.volunteer2Name === ''){
+					$("#tueSecondVol2").toggleClass("shift-success", false);
+					$("#tueSecondVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#tueSecondVol2").toggleClass("shift-success", true);
+					$("#tueSecondVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.tueShifts.thirdShift.volunteer1Name === ''){
+					$("#tueThirdVol1").toggleClass("shift-success", false);
+					$("#tueThirdVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#tueThirdVol1").toggleClass("shift-success", true);
+					$("#tueThirdVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.tueShifts.thirdShift.volunteer2Name === ''){
+					$("#tueThirdVol2").toggleClass("shift-success", false);
+					$("#tueThirdVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#tueThirdVol2").toggleClass("shift-success", true);
+					$("#tueThirdVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.tueShifts.fourthShift.volunteer1Name === ''){
+					$("#tueFourthVol1").toggleClass("shift-success", false);
+					$("#tueFourthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#tueFourthVol1").toggleClass("shift-success", true);
+					$("#tueFourthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.tueShifts.fourthShift.volunteer2Name === ''){
+					$("#tueFourthVol2").toggleClass("shift-success", false);
+					$("#tueFourthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#tueFourthVol2").toggleClass("shift-success", true);
+					$("#tueFourthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.tueShifts.fifthShift.volunteer1Name === ''){
+					$("#tueFifthVol1").toggleClass("shift-success", false);
+					$("#tueFifthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#tueFifthVol1").toggleClass("shift-success", true);
+					$("#tueFifthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.tueShifts.fifthShift.volunteer2Name === ''){
+					$("#tueFifthVol2").toggleClass("shift-success", false);
+					$("#tueFifthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#tueFifthVol2").toggleClass("shift-success", true);
+					$("#tueFifthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.tueShifts.sixthShift.volunteer1Name === ''){
+					$("#tueSixthVol1").toggleClass("shift-success", false);
+					$("#tueSixthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#tueSixthVol1").toggleClass("shift-success", true);
+					$("#tueSixthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.tueShifts.sixthShift.volunteer2Name === ''){
+					$("#tueSixthVol2").toggleClass("shift-success", false);
+					$("#tueSixthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#tueSixthVol2").toggleClass("shift-success", true);
+					$("#tueSixthVol2").toggleClass("shift-danger", false);
+				}
+				break;
+			case 4:
+				if($scope.wedShifts.firstShift.volunteer1Name === ''){
+					$("#wedFirstVol1").toggleClass("shift-success", false);
+					$("#wedFirstVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#wedFirstVol1").toggleClass("shift-success", true);
+					$("#wedFirstVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.wedShifts.firstShift.volunteer2Name === ''){
+					$("#wedFirstVol2").toggleClass("shift-success", false);
+					$("#wedFirstVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#wedFirstVol2").toggleClass("shift-success", true);
+					$("#wedFirstVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.wedShifts.secondShift.volunteer1Name === ''){
+					$("#wedSecondVol1").toggleClass("shift-success", false);
+					$("#wedSecondVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#wedSecondVol1").toggleClass("shift-success", true);
+					$("#wedSecondVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.wedShifts.secondShift.volunteer2Name === ''){
+					$("#wedSecondVol2").toggleClass("shift-success", false);
+					$("#wedSecondVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#wedSecondVol2").toggleClass("shift-success", true);
+					$("#wedSecondVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.wedShifts.thirdShift.volunteer1Name === ''){
+					$("#wedThirdVol1").toggleClass("shift-success", false);
+					$("#wedThirdVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#wedThirdVol1").toggleClass("shift-success", true);
+					$("#wedThirdVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.wedShifts.thirdShift.volunteer2Name === ''){
+					$("#wedThirdVol2").toggleClass("shift-success", false);
+					$("#wedThirdVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#wedThirdVol2").toggleClass("shift-success", true);
+					$("#wedThirdVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.wedShifts.fourthShift.volunteer1Name === ''){
+					$("#wedFourthVol1").toggleClass("shift-success", false);
+					$("#wedFourthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#wedFourthVol1").toggleClass("shift-success", true);
+					$("#wedFourthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.wedShifts.fourthShift.volunteer2Name === ''){
+					$("#wedFourthVol2").toggleClass("shift-success", false);
+					$("#wedFourthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#wedFourthVol2").toggleClass("shift-success", true);
+					$("#wedFourthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.wedShifts.fifthShift.volunteer1Name === ''){
+					$("#wedFifthVol1").toggleClass("shift-success", false);
+					$("#wedFifthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#wedFifthVol1").toggleClass("shift-success", true);
+					$("#wedFifthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.wedShifts.fifthShift.volunteer2Name === ''){
+					$("#wedFifthVol2").toggleClass("shift-success", false);
+					$("#wedFifthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#wedFifthVol2").toggleClass("shift-success", true);
+					$("#wedFifthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.wedShifts.sixthShift.volunteer1Name === ''){
+					$("#wedSixthVol1").toggleClass("shift-success", false);
+					$("#wedSixthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#wedSixthVol1").toggleClass("shift-success", true);
+					$("#wedSixthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.wedShifts.sixthShift.volunteer2Name === ''){
+					$("#wedSixthVol2").toggleClass("shift-success", false);
+					$("#wedSixthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#wedSixthVol2").toggleClass("shift-success", true);
+					$("#wedSixthVol2").toggleClass("shift-danger", false);
+				}
+				break;
+			case 5:
+				if($scope.thuShifts.firstShift.volunteer1Name === ''){
+					$("#thuFirstVol1").toggleClass("shift-success", false);
+					$("#thuFirstVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#thuFirstVol1").toggleClass("shift-success", true);
+					$("#thuFirstVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.thuShifts.firstShift.volunteer2Name === ''){
+					$("#thuFirstVol2").toggleClass("shift-success", false);
+					$("#thuFirstVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#thuFirstVol2").toggleClass("shift-success", true);
+					$("#thuFirstVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.thuShifts.secondShift.volunteer1Name === ''){
+					$("#thuSecondVol1").toggleClass("shift-success", false);
+					$("#thuSecondVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#thuSecondVol1").toggleClass("shift-success", true);
+					$("#thuSecondVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.thuShifts.secondShift.volunteer2Name === ''){
+					$("#thuSecondVol2").toggleClass("shift-success", false);
+					$("#thuSecondVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#thuSecondVol2").toggleClass("shift-success", true);
+					$("#thuSecondVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.thuShifts.thirdShift.volunteer1Name === ''){
+					$("#thuThirdVol1").toggleClass("shift-success", false);
+					$("#thuThirdVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#thuThirdVol1").toggleClass("shift-success", true);
+					$("#thuThirdVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.thuShifts.thirdShift.volunteer2Name === ''){
+					$("#thuThirdVol2").toggleClass("shift-success", false);
+					$("#thuThirdVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#thuThirdVol2").toggleClass("shift-success", true);
+					$("#thuThirdVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.thuShifts.fourthShift.volunteer1Name === ''){
+					$("#thuFourthVol1").toggleClass("shift-success", false);
+					$("#thuFourthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#thuFourthVol1").toggleClass("shift-success", true);
+					$("#thuFourthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.thuShifts.fourthShift.volunteer2Name === ''){
+					$("#thuFourthVol2").toggleClass("shift-success", false);
+					$("#thuFourthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#thuFourthVol2").toggleClass("shift-success", true);
+					$("#thuFourthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.thuShifts.fifthShift.volunteer1Name === ''){
+					$("#thuFifthVol1").toggleClass("shift-success", false);
+					$("#thuFifthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#thuFifthVol1").toggleClass("shift-success", true);
+					$("#thuFifthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.thuShifts.fifthShift.volunteer2Name === ''){
+					$("#thuFifthVol2").toggleClass("shift-success", false);
+					$("#thuFifthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#thuFifthVol2").toggleClass("shift-success", true);
+					$("#thuFifthVol2").toggleClass("shift-danger", false);
+				}
+				
+				if($scope.thuShifts.sixthShift.volunteer1Name === ''){
+					$("#thuSixthVol1").toggleClass("shift-success", false);
+					$("#thuSixthVol1").toggleClass("shift-danger", true);
+				}else{
+					$("#thuSixthVol1").toggleClass("shift-success", true);
+					$("#thuSixthVol1").toggleClass("shift-danger", false);
+				}
+				if($scope.thuShifts.sixthShift.volunteer2Name === ''){
+					$("#thuSixthVol2").toggleClass("shift-success", false);
+					$("#thuSixthVol2").toggleClass("shift-danger", true);
+				}else{
+					$("#thuSixthVol2").toggleClass("shift-success", true);
+					$("#thuSixthVol2").toggleClass("shift-danger", false);
+				}
+				break;
+		}
+	};
+	
 	$scope.saveShiftsDay = function(dayNum){
 		var updateShifts = {
 		};
