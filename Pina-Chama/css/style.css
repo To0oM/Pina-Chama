@@ -1200,7 +1200,13 @@ ul.cHome li {
 	display: block;
 }
 
-.col-md-5{
+.col-md-5 {
+	font-family: 'Open Sans Hebrew', sans-serif;
+	font-size: 18px;
+}
+
+.col-md-5 p{
+	font-family: 'Open Sans Hebrew', sans-serif;
 	font-size: 18px;
 }
 
