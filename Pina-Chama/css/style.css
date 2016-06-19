@@ -378,16 +378,6 @@
 		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 }
 
-a {
-	color: #2CC185;
-	text-decoration: none;
-	outline: none;
-}
-
-a:hover, a:focus {
-	color: #74777b;
-}
-
 /***********Default tab style***********/
 @font-face {
 	font-weight: normal;
@@ -550,6 +540,7 @@ a:hover, a:focus {
 .tabs-style-linemove nav a {
 	padding: 1em 0;
 	color: #74777b;
+	text-decoration: none;
 	line-height: 1;
 	-webkit-transition: color 0.3s, -webkit-transform 0.3s; 
 	transition: color 0.3s, transform 0.3s;
@@ -557,6 +548,7 @@ a:hover, a:focus {
 
 .tabs-style-linemove nav li.tab-current a {
 	color: #2CC185;
+	text-decoration: none;
 	-webkit-transform: translate3d(0,8px,0);
 	transform: translate3d(0,8px,0);
 }
@@ -806,12 +798,16 @@ a:hover, a:focus {
 	direction: rtl;
 }
 
+.reqCol0{
+	width: 2%;
+}
+
 .reqCol1{
-	width: 19%;
+	width: 20%;
 }
 
 .reqCol2{
-	width: 15%;
+	width: 14%;
 }
 
 .reqCol3{
@@ -819,11 +815,11 @@ a:hover, a:focus {
 }
 
 .reqCol4{
-	width: 15%;
+	width: 14%;
 }
 
 .reqCol5{
-	width: 20%;
+	width: 19%;
 }
 
 .reqCol6{
@@ -831,7 +827,21 @@ a:hover, a:focus {
 }
 
 
-.arrangementDiv{
+.arrangementDiv {
+	background: rgba(255,255,255,0.7);
+	padding-top: 10px;
+	height: 435px;
+	direction: rtl;
+}
+
+.volArrangementDiv {
+	background: rgba(255,255,255,0.7);
+	padding-top: 10px;
+	height: 390px;
+	direction: rtl;
+}
+
+.bakersArrangementDiv {
 	direction: rtl;
 }
 
@@ -879,6 +889,8 @@ a:hover, a:focus {
 }
 
 .shift-info{
+	width: 100%;
+	height: 30px;
 	color:#31708f;
 	background-color:#d9edf7;
 	border-color:#bce8f1;
@@ -889,6 +901,8 @@ a:hover, a:focus {
 }
 
 .shift-warning{
+	width: 100%;
+	height: 30px;
 	color:#8a6d3b;
 	background-color:#fcf8e3;
 	border-color:#faebcc;
@@ -910,9 +924,22 @@ a:hover, a:focus {
 	border-top-color:#e4b9c0;
 }
 
+.cenHr {
+	width: 100%;
+	height: 5px;
+	display: inline-block;
+}
+
+.cenCakeHr {
+	width: 100%;
+	height: 5px;
+	display: inline-block;
+	float: right;
+}
+
 .editShift {
 	border-radius: 2px;
-	width: 149px;
+	width: 100%;
 	height: 45px;
 	text-align: center;
 	text-decoration: none;
@@ -956,7 +983,7 @@ a:hover, a:focus {
 }
 
 .editCake {
-	width: 185px;
+	width: 100%;
 	height: 45px;
 }
 
@@ -969,11 +996,23 @@ a:hover, a:focus {
 	font: 15px 'Open Sans Hebrew', sans-serif;
 }
 
+.deleteCake{
+	width: 20px;
+	padding-top: 20px;
+	float: right;
+	outline: none;
+}
+
+.delShiftReq{
+	width: 20px;
+	outline: none;
+}
+
 .col-md-4{
 	position:relative;
 	min-height:1px;
-	padding-right:15px;
-	padding-left:15px;
+	padding-right:10px;
+	padding-left:10px;
 	float:left;
 	width:16.66666666%;
 }
@@ -983,18 +1022,31 @@ a:hover, a:focus {
 }
 
 .col-sm-7{
-	height: 150px;
+	height: 30px;
 }
+
+.col-sm-8{
+	padding-right:0;
+	padding-left:0;
+	width: 100%;
+}
+
 /*------------------------------------for donations---------------------------------------------------*/
+.donations h4 {
+	margin: 0 20px 0 0;
+}
+
 ul.bullet {
 	list-style: none;
-    list-style-image: url('../img/red_arrow.png');
     margin: 0 0 0 0;
 }
 
 ul.bullet li {
-    margin: 0.5em 0 0 0;
-    padding: 0 0 0 0;
+	background: url('../img/red_arrow.png') no-repeat right top 3px;
+	padding-right: 0;
+	direction: rtl;
+    margin: 20px 0 0 0;
+    padding: 0 40px 0 0px;
 }
 
 .donations {
@@ -1031,41 +1083,51 @@ ul.bullet li {
 /*-----------------------------------------for contactUs page------------------------------------------------*/
 ul.cEmailAdress {
 	list-style: none;
-    list-style-image: url('../img/mailIcon.png');
-    margin: 0 0 0 0;
+	margin: 0 0 0 0;
 }
 
 ul.cEmailAdress li {
-    margin: 1.00em 0 0 0;
-    padding: 0 0 0 0;
+	background: url('../img/mailIcon.png') no-repeat right -10px top -13px;
+	margin: 20px -40px 0 0;
+	padding: 0 50px 0 0;
+	padding-top: 6px;
+	height: 50px;
+	width: 40%;
 }
 
 ul.cPhone {
 	list-style: none;
-    list-style-image: url('../img/phoneIcon.png');
-    margin: 0 0 0 0;
+	margin: 0 0 0 0;
 }
 
 ul.cPhone li {
-    margin: 1.00em 0 0 0;
-    padding: 0 0 0 0;
+	background: url('../img/phoneIcon.png') no-repeat right -8px top -7px;
+	margin: 20px -40px 0 0;
+	padding: 0 50px 0 0;
+	padding-top: 6px;
+	height: 50px;
+	width: 40%;
 }
 
 ul.cHome {
 	list-style: none;
-    list-style-image: url('../img/homeIcon.png');
-    margin: 0 0 0 0;
+	margin: 0 0 0 0;
 }
 
 ul.cHome li {
-    margin: 1.00em 0 0 0;
-    padding: 0 0 0 0;
+	background: url('../img/homeIcon.png') no-repeat right -3px top 4px;
+	margin: 20px -40px 0 0;
+	padding: 0 50px 0 0;
+	padding-top: 6px;
+	height: 65px;
+	width: 40%;
 }
 
 .contactUs {
 	direction: rtl;
 	padding-right: 20px;
 }
+
 /*-----------------------------------------------for export to excel----------------------------------------------*/
 .button_export {
 	margin-top: -20px;
@@ -1108,4 +1170,13 @@ ul.cHome li {
 .emailTxt {
 	direction: rtl;
 	padding-right: 20px;
+}
+
+/*-----------------------------------------footer------------------------------------------------*/
+.text{
+	padding-top: 0px;
+}
+
+.footLinks{
+	padding-top: 25px;
 }
