@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var cakesSchema = new Schema({
-	cakeDate: Date,
+	cakeDay: String,
 	cake: String,
-	bakersNames: String
+	bakerName: String
 });
 
 mongoose.model('cakes', cakesSchema);

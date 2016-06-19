@@ -5,6 +5,7 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
+var encode = require( 'hashcode' ).hashCode;
 
 var app = express();              //init the server
 
@@ -59,6 +60,29 @@ var Shifts = mongoose.model('shifts');
 var CakeRequests = mongoose.model('cakeRequests');
 var Cakes = mongoose.model('cakes');
 var Posts = mongoose.model('posts');
+var Videos = mongoose.model('videos');
+
+app.post('/registerKey', function (req, res) {
+	var hash = encode().value(req.body.value);
+	
+	if(hash == 471730922){
+		res.json('Approved');
+	}else{
+		res.json('Denied');
+	}
+});
+
+app.get('/getUserInfo', function(req, res) {
+	var response = {
+	};
+	
+	response.googleId = req.session.googleId;
+	response.fullName = req.session.fullName;
+	response.userType = req.session.userType;
+	response.phoneNumber = req.session.phoneNumber;
+	
+	res.json(response);
+});
 
 app.post('/register', function (req, res) {
 	var id = (req.body.id === undefined)? 0: req.body.id;
@@ -94,7 +118,7 @@ app.post('/register', function (req, res) {
 			console.log(err);
 		}else{
 			req.session.googleId = req.body.googleId;
-			req.session.name = req.body.firstName + ' ' + req.body.lastName;
+			req.session.fullName = req.body.firstName + ' ' + req.body.lastName;
 			req.session.userType = req.body.userType;
 			req.session.phoneNumber = req.body.phoneNumber;
 			
@@ -120,7 +144,6 @@ app.get('/managersDB', function(req, res) {
 		if (err)
 			throw err;
 		
-		// object of the user
 		res.json(users);
 	});
 });
@@ -130,7 +153,6 @@ app.get('/volunteersDB', function(req, res) {
 		if (err)
 			throw err;
 		
-		// object of the user
 		res.json(users);
 	});
 });
@@ -140,7 +162,6 @@ app.get('/guestsDB', function(req, res) {
 		if (err)
 			throw err;
 		
-		// object of the user
 		res.json(users);
 	});
 });
@@ -150,7 +171,6 @@ app.get('/bakeryDB', function(req, res) {
 		if (err)
 			throw err;
 		
-		// object of the user
 		res.json(users);
 	});
 });
@@ -160,7 +180,6 @@ app.get('/bakersDB', function(req, res) {
 		if (err)
 			throw err;
 		
-		// object of the user
 		res.json(users);
 	});
 });
@@ -186,7 +205,7 @@ app.put('/register/:id', function (req, res) {
 		
 		if (users){
 			req.session.googleId = id;
-			req.session.name = users.firstName + ' ' + users.lastName;
+			req.session.fullName = users.firstName + ' ' + users.lastName;
 			req.session.userType = users.userType;
 			req.session.phoneNumber = users.phoneNumber;
 		}
@@ -348,7 +367,7 @@ app.get('/volunteersPosts', function(req, res) {
 	});
 });
 
-/*---------------------------------------------------------Out of Stock----------------------------------------------------*/
+/*----------------------------------------------Out of Stock----------------------------------------------*/
 //find out of stock in db
 app.get('/stockPina', function(req, res) {
 	OutOfStocks.find({groupType : 'pina'}, function(err, stocks) {
@@ -457,7 +476,7 @@ app.put('/stock/:id/:value', function(req, res) {
 		});
 });
 
-/*---------------------------------------------------------Messages----------------------------------------------------*/
+/*----------------------------------------------Messages----------------------------------------------*/
 //save messages in DB.
 app.post('/message', function (req, res) {
 	new Messages({
@@ -487,7 +506,7 @@ app.delete('/message/:id', function(req, res) {
 	});
 });
 
-/*---------------------------------------------------------Shift Request----------------------------------------------------*/
+/*-----------------------------------------Shift Request-----------------------------------------*/
 //save shift request in DB.
 app.post('/volunteersShiftRequest', function (req, res) {
 	new ShiftRequests({
@@ -506,7 +525,7 @@ app.post('/volunteersShiftRequest', function (req, res) {
 	});
 });
 
-//get all volunteers's shifts in db.
+//get all volunteers's shifts in db from the selected day.
 app.get('/volunteersShifts/:day', function(req, res) {
 	var day = req.params.day;
 	var shifts = {};
@@ -728,14 +747,14 @@ app.put('/saveShifts/:day', function(req, res) {
 
 //get all shifts requests in db.
 app.get('/managersShiftsRequests', function(req, res) {
-	ShiftRequests.find({shiftDay: req.day}, function(err, shiftRequests) {
+	ShiftRequests.find(function(err, shiftRequests) {
 		if (err)
 			throw err;
 		res.json(shiftRequests);
 	});
 });
 
-/*-------------------------------------------------------cake Request--------------------------------------------------*/
+/*---------------------------------cake Request---------------------------------*/
 //save cake request in DB.
 app.post('/bakersCakeRequest', function (req, res) {
 	new CakeRequests({
@@ -754,12 +773,60 @@ app.post('/bakersCakeRequest', function (req, res) {
 	});
 });
 
-//get all bakers's cakes arrangement in db.
-app.get('/bakersCakes', function(req, res) {
-	Cakes.find({cakeDay: req.day}, function(err, cakes) {
+//get all bakers's cakes arrangement in db from the selected day.
+app.get('/bakersCakes/:day', function(req, res) {
+	var day = req.params.day;
+	
+	Cakes.find({cakeDay: day}, function(err, cakes) {
 		if (err)
 			throw err;
+		
 		res.json(cakes);
+	});
+});
+
+//add a new baker.
+app.put('/addCake/:day', function(req, res) {
+	var update = req.body;
+	var day = req.params.day;
+	var currentNewCake = update.currentNewCake;
+	
+	new Cakes({
+		cakeDay: day,
+		cake: currentNewCake.cake,
+		bakerName: currentNewCake.bakerName
+	}).save(function (err){
+		if (err)
+			throw err;
+		
+		res.json("saved!");
+	});
+});
+
+//for delete a shift request from db.
+app.delete('/shiftRequest/:id', function(req, res) {
+	var id = req.params.id;
+	
+	ShiftRequests.remove({_id: id}, function (err, shiftRequest) {
+		res.json(shiftRequest);
+	});
+});
+
+//for delete a cake baker from db.
+app.delete('/baker/:id', function(req, res) {
+	var id = req.params.id;
+	
+	Cakes.remove({_id: id}, function (err, cake) {
+		res.json(cake);
+	});
+});
+
+//for delete a cake request from db.
+app.delete('/cakeRequest/:id', function(req, res) {
+	var id = req.params.id;
+	
+	CakeRequests.remove({_id: id}, function (err, cakeRequest) {
+		res.json(cakeRequest);
 	});
 });
 
@@ -772,7 +839,7 @@ app.get('/managersCakesRequests', function(req, res) {
 	});
 });
 
-/*---------------------------------------------------------Personal Details----------------------------------------------------*/
+/*-------------------------------------Personal Details-------------------------------------*/
 //for edit item
 app.get('/pesonalDetails/:id', function(req, res) {
 	var id = req.params.id;
@@ -803,7 +870,7 @@ app.put('/pesonalDetails/:id', function(req, res) {
 		});
 });
 
-/*-------------------------------------------------------Guests Book Posts--------------------------------------------------*/
+/*-----------------------------------------Guests Book Posts-----------------------------------------*/
 //save posts in DB
 app.post('/guestPost', function (req, res) {
 	new Posts({
@@ -836,6 +903,63 @@ app.get('/getLastInsertion', function(req, res) {
 		if (err)
 			throw err;
 		res.json(posts);
+	});
+});
+
+/*------------------------------------------guides------------------------------------------*/
+app.post('/addVideo', function (req, res) {
+	new Videos({
+		vidName: req.body.vidName,
+		fileName: req.body.fileName,
+		mp4FileName: req.body.mp4FileName,
+		webmFileName: req.body.webmFileName,
+		intendeToVolunteers: req.body.intendeToVolunteers,
+		intendeToBakery: req.body.intendeToBakery
+	}).save(function (err){
+		if (err){
+			console.log(err);
+		}else{
+			res.json('saved!');
+		}
+	});
+});
+
+//for loading all videos from DB - manager use.
+app.get('/loadVideos', function(req, res) {
+	Videos.find(function(err, videos) {
+		if (err)
+			throw err;
+		
+		res.json(videos);
+	});
+});
+
+//for loading the user videos from DB.
+app.get('/loadVideos/:userType', function(req, res) {
+	var userType = req.params.userType;
+	
+	if(userType === "volunteer"){
+		Videos.find({intendeToVolunteers: true}, function(err, videos) {
+			if (err)
+				throw err;
+			
+			res.json(videos);
+		});
+	}else if(userType === "bakery"){
+		Videos.find({intendeToBakery: true}, function(err, videos) {
+			if (err)
+				throw err;
+			
+			res.json(videos);
+		});
+	}
+});
+
+//for delete a video from db.
+app.delete('/video/:id', function(req, res) {
+	var id = req.params.id;
+	Videos.remove({_id: id}, function (err, videos) {
+		res.json(videos);
 	});
 });
 

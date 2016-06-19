@@ -1,5 +1,8 @@
 var userInfo = {
-	fullName:''
+	googleId: '',
+	fullName: '',
+	userType: '',
+	phoneNumber: ''
 };
 
 var messages;
@@ -11,6 +14,8 @@ var pagesNum;
 var stocksPinaList;
 var stocksBakeryList;
 var stocksFalafelList;
+
+var videos;
 
 var user;
 
@@ -32,12 +37,16 @@ function getCookie(cname) {
 }
 
 app.controller('connectionContreoller', ['$scope', '$http', function($scope, $http) {
-	userInfo.fullName = JSON.parse(localStorage.getItem("userName"));
-	
-	$("#userName").html(userInfo.fullName);
+	$http.get('/getUserInfo').success(function(response) {
+		userInfo.googleId = response.googleId;
+		userInfo.fullName = response.fullName;
+		userInfo.userType = response.userType;
+		userInfo.phoneNumber = response.phoneNumber;
+		
+		$("#userName").html(userInfo.fullName);
+	});
 	
 	$scope.signOut = function() {
-		localStorage.removeItem("userName");
 		document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://pina-chama.azurewebsites.net/";
 	};
 }]);﻿
@@ -455,6 +464,14 @@ app.controller('stockController', ['$scope', '$http', function($scope, $http) {
 		});
 	}
 }]);﻿
+
+app.controller('aboutCotroller', ['$scope', '$http', function($scope, $http) {
+	$("#homeButton").hide();
+}]);
+
+app.controller('contactUsCotroller', ['$scope', '$http', function($scope, $http) {
+	$("#homeButton").hide();
+}]);
 
 app.config(function ($routeProvider) {
 	$routeProvider

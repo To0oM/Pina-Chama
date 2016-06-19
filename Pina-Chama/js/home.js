@@ -10,6 +10,9 @@ var state = '';
 var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
+	$("#homeHeader").hide();
+	$("#homeHeader").prop('style').visibility = 'hidden';
+	
 	var signinCallback = function(authResult) {
 		if (authResult['status']['signed_in']) {
 			// Update the app to reflect a signed in user
@@ -180,19 +183,22 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 	$scope.submitForm = function() {
 		// check to make sure the form is completely valid
 		if ($scope.userForm.$valid) {
-			if($(".keyManager").val() === "96A2G4Q")
-			{
-				$scope.addUser();
-			}
-			else
-			{
-				swal({
-					title: 'לא ניתן להירשם',
-					text:
-						'קוד אימות אינו תקין, אנא נסה שנית\n',
-					showCloseButton: true
-				});
-			}
+			var key = {
+				value: $(".keyManager").val()
+			};
+			
+			$http.post('/registerKey', key).success(function(response) {
+				if((!$scope.required.validationKey) || (response === "Approved")){
+					$scope.addUser();
+				}else{
+					swal({
+						title: 'לא ניתן להירשם',
+						text:
+							'קוד אימות אינו תקין, אנא נסה שנית\n',
+						showCloseButton: true
+					});
+				}
+			});
 		}
 	};
 	
@@ -280,12 +286,16 @@ myApp.controller('registerCotroller', ['$scope', '$http', function($scope, $http
 }]);﻿
 
 myApp.controller('aboutCotroller', ['$scope', '$http', function($scope, $http) {
-	$scope.gotoHomePage = function() {
-		
-	};
+	$("#homeHeader").show();
+	$("#homeHeader").prop('style').visibility = 'visible';
 }]);
 
 myApp.controller('contactUsCotroller', ['$scope', '$http', function($scope, $http) {
+	$("#homeHeader").show();
+	$("#homeHeader").prop('style').visibility = 'visible';
+}]);
+
+myApp.controller('QandACotroller', ['$scope', '$http', function($scope, $http) {
 	$scope.gotoHomePage = function() {
 		
 	};
@@ -312,6 +322,11 @@ myApp.config(function ($routeProvider) {
 		templateUrl: 'about.html',
 		controller: 'aboutCotroller',
 		controllerAs:'about'
+	})
+		.when('/QuestionsAnswers', {
+		templateUrl: 'general/QuestionsAnswers.html',
+		controller: 'QandACotroller',
+		controllerAs:'QandA'
 	})
 		.otherwise({
 		redirectTo: '/main'
@@ -341,6 +356,5 @@ function redirection(userType){
 			break;
 	}
 	
-	localStorage.setItem("userName", JSON.stringify(userInfo.fullName));
 	window.location.replace(path);
 }
