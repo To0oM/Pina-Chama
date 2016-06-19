@@ -1,28 +1,29 @@
 {
-  "name": "pina-chama-test",
+  "name": "Pina-Chama",
   "version": "1.0.0",
-  "description": "testing for pina chama web app",
+  "description": "Pina-Chama web application",
   "main": "server.js",
   "scripts": {
-    "test": "server.js",
+    "test": "",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/To0oM/Pina-Chama-test.git"
+    "url": "git+https://github.com/alonaya/Pina-Chama.git"
   },
   "author": "Tom Matityahu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/To0oM/Pina-Chama-test/issues"
+    "url": "https://github.com/alonaya/Pina-Chama/issues"
   },
-  "homepage": "https://github.com/To0oM/Pina-Chama-test#readme",
+  "homepage": "http://pina-chama.azurewebsites.net/",
   "dependencies": {
     "body-parser": "^1.15.0",
     "cookie": "^0.3.1",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-alpha.1",
     "express": "^4.13.4",
+    "hashcode": "^1.0.3",
     "mongoose": "^4.4.13",
     "nodejs": "0.0.0"
   }
