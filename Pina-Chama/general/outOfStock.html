@@ -33,12 +33,12 @@
 						</span>
 
 						<span class = "inline">
-							<label id="Product">מוצר</label>
+							<label id="Product">מוצר<span class="required">*</span></label>
 							<input type="text" name="product" class="product" id="product" ng-required="required.product" ng-model="stock.product"/>
 						</span>
 						
 						<span class = "inline">
-							<label id="Quantity">כמות</label>
+							<label id="Quantity">כמות<span class="required">*</span></label>
 							<input type="text" pattern="\d*" maxlength="5" name="quantity" class="quantity" id="quantity" ng-required="required.quantity" ng-model="stock.quantity"/>
 						</span>
 						
@@ -68,8 +68,14 @@
 					</ul>
 				</form>	
 			</div>
+	
+			<div class="commentsDiv">
+				<span class="comments">
+					השדות המסומנים ב - <span class="required">*</span> הינם שדות חובה.
+				</span>
+			</div>
 			
-			<br><br><br>
+			<br><br>
 			<h3 id="title" class="intro-text text-center"> רשימת מוצרים חסרים </h3>
 			
 			
