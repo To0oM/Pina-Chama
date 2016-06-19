@@ -38,3 +38,6 @@ Please visit our wiki for furthur project info:
 - [Iteration 2 - MLS](../../wiki/MLS-(Iteration2))
 - [Iteration 3 - GRMP](../../wiki/GRMP-(Iteration3))
 - [Iteration 4 - GVBS](../../wiki/GVBS-(Iteration4))
+
+### [Project Summary](https://github.com/alonaya/Pina-Chama/wiki/Project-Summary)
+### [Final Presentation](https://github.com/alonaya/Pina-Chama/raw/master/docs/finalPresentation.pptx) 
