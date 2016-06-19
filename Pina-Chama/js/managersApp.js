@@ -358,6 +358,7 @@ app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
 		$scope.video.webmFileName = '../videos/' + $scope.video.fileName + '.webm';
 		
 		$http.post('/addVideo', $scope.video).success(function(response) {
+			$scope.resetFields();
 			$scope.loadVideos();
 		});
 	}
@@ -397,6 +398,17 @@ app.controller('guidesController', ['$scope', '$http', function($scope, $http) {
 			"סרטון זה הוסר מרשימת הסרטונים",
 			"success");
 		});
+	};
+	
+	$scope.resetFields = function(){
+		$scope.video.vidName = "";
+		$scope.video.fileName = "";
+		
+		$scope.video.intendeToBakery = false;
+		$scope.video.intendeToVolunteers = false;
+		
+		$scope.video.mp4FileName = '';
+		$scope.video.webmFileName = '';
 	};
 }]);﻿
 
