@@ -296,9 +296,8 @@ myApp.controller('contactUsCotroller', ['$scope', '$http', function($scope, $htt
 }]);
 
 myApp.controller('QandACotroller', ['$scope', '$http', function($scope, $http) {
-	$scope.gotoHomePage = function() {
-		
-	};
+	$("#homeHeader").show();
+	$("#homeHeader").prop('style').visibility = 'visible';
 }]);
 
 myApp.config(function ($routeProvider) {

@@ -1598,6 +1598,10 @@ app.controller('contactUsCotroller', ['$scope', '$http', function($scope, $http)
 	$("#homeButton").hide();
 }]);
 
+app.controller('QandACotroller', ['$scope', '$http', function($scope, $http) {
+	$("#homeButton").hide();
+}]);
+
 app.config(function ($routeProvider) {
 	$routeProvider
 		.when('/guestBook', {
@@ -1664,6 +1668,11 @@ app.config(function ($routeProvider) {
 		templateUrl: '../about.html',
 		controller: 'aboutCotroller',
 		controllerAs:'about'
+	})
+		.when('/QuestionsAnswers', {
+		templateUrl: '../general/QuestionsAnswers.html',
+		controller: 'QandACotroller',
+		controllerAs:'QandA'
 	})
 		.otherwise({
 		redirectTo: '/main'
