@@ -9,7 +9,7 @@ var encode = require( 'hashcode' ).hashCode;
 
 var app = express();              //init the server
 
-var DB_URL = mongodb://pinaChama:phbvjnvduagmhui@ds064748.mlab.com:64748/mLabMongoDB-g || 'mongodb://localhost/mLabMongoDB-g';
+var DB_URL = 'mongodb://pinaChama:phbvjnvduagmhui@ds064748.mlab.com:64748/mLabMongoDB-g' || 'mongodb://localhost/mLabMongoDB-g';
 var port = process.env.PORT || 8080;
 
 
